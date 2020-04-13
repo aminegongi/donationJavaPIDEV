@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="590.0" prefWidth="400.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UiInscriptionController">
+    <stylesheets>
+        <URL value="@/styles/uiinscription.css" />
+    </stylesheets>
+   <children>
+      <StackPane fx:id="stackInscri" prefHeight="590.0" prefWidth="400.0" style="-fx-background-color: #f0f0f0;">
+         <children>
+            <ScrollPane prefHeight="590.0" prefWidth="400.0" style="-fx-background-color: #f0f0f0;">
+               <content>
+                  <VBox fx:id="Flowpane" prefHeight="580.0" prefWidth="380.0" spacing="6.0" styleClass="scroll-bar" stylesheets="@../styles/uiinscription.css">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="371.0">
+                           <children>
+                              <ImageView fx:id="imgback" fitHeight="23.0" fitWidth="22.0" onMouseClicked="#BackToLogin" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/Icon/icons8_back_26px_1.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                              <Separator orientation="VERTICAL" prefHeight="45.0" prefWidth="21.0" visible="false" />
+                              <Label prefHeight="41.0" prefWidth="293.0" text="Inscription">
+                                 <font>
+                                    <Font name="Calibri" size="32.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Separator prefHeight="19.0" prefWidth="371.0" visible="false" />
+                        <JFXComboBox fx:id="CBType" onAction="#choixType" prefHeight="25.0" prefWidth="238.0" promptText=" Votre Type : " />
+                        <Separator prefHeight="16.0" prefWidth="350.0" />
+                        <VBox fx:id="VBoxInscri" prefHeight="413.0" prefWidth="322.0" />
+                        <Separator prefHeight="4.0" prefWidth="322.0" visible="false" />
+                        <VBox alignment="CENTER" prefHeight="92.0" prefWidth="350.0" spacing="4.0">
+                           <children>
+                              <Label text="Méthode de vérification :                                                         " textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Calibri" size="15.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="350.0">
+                                 <children>
+                                    <RadioButton fx:id="rbtVerifMail" mnemonicParsing="false" selected="true" text="par Email">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="VerifCompte" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <Separator orientation="VERTICAL" prefHeight="37.0" prefWidth="18.0" visible="false" />
+                                    <RadioButton fx:id="rbtVerifSMS" mnemonicParsing="false" text="par SMS" toggleGroup="$VerifCompte" />
+                                    <Separator orientation="VERTICAL" prefHeight="37.0" prefWidth="18.0" visible="false" />
+                                    <RadioButton fx:id="rbtVerifPhone" mnemonicParsing="false" text="par Téléphone" toggleGroup="$VerifCompte" wrapText="true" />
+                                    <Separator orientation="VERTICAL" prefHeight="37.0" prefWidth="18.0" visible="false" />
+                                 </children>
+                              </HBox>
+                              <JFXButton fx:id="btInscri" onAction="#Inscri" prefHeight="27.0" prefWidth="283.0" stylesheets="@../styles/uiinscription.css" text="S'inscrire" textAlignment="CENTER" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

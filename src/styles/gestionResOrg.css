@@ -1,0 +1,64 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+
+
+
+
+
+.vbox1
+{
+    
+    -fx-background-color : #ffffff; 
+    -fx-border-color : #056F8B;
+    -fx-border-width: 1px;
+    -fx-border-radius: 2px;
+    
+}
+.vbox1:hover{
+    -fx-scale-x : 1.05;
+    -fx-scale-y : 1.05;
+    -fx-border-color : #056F8B;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+.titrePublication
+{
+    -fx-font-size : 25;
+    -fx-text-alignment :center ;
+}
+.phoneNumber
+{
+    -fx-font-size : 20;
+    
+}
+.userName
+{
+    -fx-font-size : 20;
+    
+}
+.roleName
+{
+    -fx-font-size : 1O;
+    -fx-text-fill:#999;
+    
+}
+.textLong
+{
+    -fx-font-size : 20;
+    -fx-font-weight: bold ; 
+    -fx-text-fill:#056F8B; 
+    
+}
+
+
+
+
+
+
+

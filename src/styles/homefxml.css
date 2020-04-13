@@ -1,0 +1,74 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+.buttonJ
+{
+    -fx-background-color : #f6e859;
+    -fx-border-color: #f6e859;
+    -fx-text-fill:  #ffffff;
+}
+.buttonJ:hover
+{
+    -fx-background-color : #f6c859 ;
+    -fx-text-fill:  #ffffff;
+}
+.buttonJ:pressed
+{
+    -fx-background-color : #f6c859 ;
+    -fx-text-fill: #ffffff;
+}
+
+.btnHechem{
+    -fx-background-color : #CDCDCD;
+    -fx-border-width: 1;
+    -fx-border-color:#f6e859;
+}
+
+.btnHechem:hover{
+    -fx-background-color : #f6e859;
+    -fx-border-width: 1;
+    -fx-border-color:#f6e859;
+}
+
+.vbxAdd{
+    -fx-padding: 70px 0px 0px 350px;
+}
+/*     update hechem           */
+
+.hbBtn{
+    -fx-padding: 7px 0px 0px 80px;
+    -fx-spacing: 15px;
+}
+
+.vbInterm{
+    -fx-padding: 0px 0px 0px 40px;
+}
+
+.vbEmp {
+  -fx-background-color: #FFF;
+  -fx-border-color: #f6e859;
+  -fx-border-width: 2px;
+}
+
+
+.btnBackEnd
+{
+    -fx-background-color : transparent;
+    -fx-border-color: #D98532; /*#355ECE;*/
+    -fx-text-fill:  #ffffff;
+}
+.btnBackEnd:hover
+{
+    -fx-background-color : #e47202 ;
+    -fx-text-fill:  #ffffff;
+}
+.btnBackEnd:pressed
+{
+    -fx-background-color : #e47202 ;
+    -fx-text-fill: #ffffff;
+}

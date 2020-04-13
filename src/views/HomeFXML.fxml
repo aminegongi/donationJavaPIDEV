@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" stylesheets="@../styles/homefxml.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeFXMLController">
+   <children>
+      <StackPane prefHeight="720.0" prefWidth="1280.0" />
+      <Pane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <ImageView fitHeight="890.0" fitWidth="1322.0" layoutX="-42.0" layoutY="-14.0" onMouseMoved="#setColorNeutre" opacity="0.72" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/melany-rochester-AsYKWGD7GIk-unsplash.jpg" />
+               </image>
+            </ImageView>
+            <Polygon fx:id="cagnotePoly" fill="DODGERBLUE" layoutX="308.0" layoutY="403.0" onMouseClicked="#goToCagnotte" onMouseMoved="#changeColorCagnotte" opacity="0.5" points="22.5, 146.0, 80.0, -234.75, -134.0, -234.75, -190.25, 146.0" scaleX="0.82" scaleY="0.82" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: F83F29;" />
+            <Text fill="WHITE" layoutX="182.0" layoutY="283.0" onMouseClicked="#goToCagnotte" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous voulez faire un Don" textAlignment="CENTER" wrappingWidth="140.59765625">
+               <font>
+                  <Font size="37.0" />
+               </font>
+            </Text>
+            <Polygon fx:id="aidePoly" fill="DODGERBLUE" layoutX="493.0" layoutY="402.0" onMouseClicked="#goToAide" onMouseMoved="#changeColorAide" opacity="0.5" points="22.5, 146.0, 80.0, -234.75, -134.0, -234.75, -190.25, 146.0" scaleX="0.82" scaleY="0.82" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: F89843;" />
+            <Text fill="WHITE" layoutX="364.0" layoutY="275.0" onMouseClicked="#goToAide" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous proposez cherchez de l'aide" textAlignment="CENTER" wrappingWidth="153.59765625">
+               <font>
+                  <Font size="37.0" />
+               </font>
+            </Text>
+            <Polygon fx:id="emploiPoly" fill="DODGERBLUE" layoutX="678.0" layoutY="403.0" onMouseClicked="#goToEmploi" onMouseMoved="#changeColorEmploi" opacity="0.5" points="22.5, 146.0, 80.0, -234.75, -134.0, -234.75, -190.25, 146.0" scaleX="0.82" scaleY="0.82" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: F6E859;" />
+            <Text fill="WHITE" layoutX="547.0" layoutY="250.0" onMouseClicked="#goToEmploi" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous cherchez un plombier, un macon, un jardinier " textAlignment="CENTER" wrappingWidth="153.59765625">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Polygon fx:id="restau1Poly" fill="DODGERBLUE" layoutX="863.0" layoutY="403.0" onMouseClicked="#goToRestauDon" onMouseMoved="#changeColorRestau1" opacity="0.5" points="22.5, 146.0, 80.0, -234.75, -134.0, -234.75, -190.25, 146.0" scaleX="0.82" scaleY="0.82" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #2CB687;" />
+            <Text fill="WHITE" layoutX="731.0" layoutY="270.0" onMouseClicked="#goToRestauDon" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous cherchez un Restaurant Helpeur ?" textAlignment="CENTER" wrappingWidth="153.59765625">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Text>
+            <Polygon fx:id="restau2Poly" fill="DODGERBLUE" layoutX="1048.0" layoutY="404.0" onMouseClicked="#goToRestauOrg" onMouseMoved="#changeColorRestau2" opacity="0.5" points="22.5, 146.0, 80.0, -234.75, -134.0, -234.75, -190.25, 146.0" scaleX="0.82" scaleY="0.82" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #056F8B;" />
+            <Text fill="WHITE" layoutX="898.0" layoutY="312.0" onMouseClicked="#goToRestauOrg" strokeType="OUTSIDE" strokeWidth="0.0" text="Une organisation Cliquer Ici !" textAlignment="CENTER" wrappingWidth="200.0">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="36.0" fitWidth="40.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#goToProfil" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8_registration_26px.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

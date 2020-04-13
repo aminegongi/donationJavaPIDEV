@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GestionRestauDonController">
+   <children>
+      <StackPane fx:id="rootPaneM" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <BorderPane fx:id="border_pane" prefHeight="720.0" prefWidth="1280.0">
+               <left>
+                  <StackPane fx:id="stackSide" onMouseMoved="#OpenSidebar" prefHeight="400.0" prefWidth="20.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Pane fx:id="stackSide2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff0000;">
+                           <children>
+                              <Pane fx:id="paneSide" prefHeight="659.0" prefWidth="200.0" style="-fx-background-color: #ff0000;" visible="false">
+                                 <children>
+                                    <Circle fill="#99a7b5" layoutX="43.0" layoutY="54.0" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                                    <Label layoutX="87.0" layoutY="12.0" prefHeight="92.0" prefWidth="107.0" text="Ahmed Salah Ben Jalel" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox alignment="TOP_CENTER" layoutX="1.0" layoutY="143.0" prefHeight="359.0" prefWidth="197.0" spacing="10.0">
+                                       <children>
+                                          <JFXButton buttonType="RAISED" prefHeight="41.0" prefWidth="207.0" text="  Mes Informations" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../images/icons8_male_user_26px_1.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <JFXButton buttonType="RAISED" prefHeight="41.0" prefWidth="207.0" text="  Mes Informations" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../images/icons8_male_user_26px_1.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <JFXButton buttonType="RAISED" prefHeight="41.0" prefWidth="207.0" text="  Mes Informations" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../images/icons8_male_user_26px_1.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <JFXButton buttonType="RAISED" prefHeight="41.0" prefWidth="207.0" text="  Mes Informations" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../images/icons8_male_user_26px_1.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </StackPane>
+               </left>
+               <top>
+                  <Pane prefHeight="60.0" prefWidth="1280.0" style="-fx-background-color: #F2F1EF;" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" layoutY="2.0" prefHeight="30.0" prefWidth="1280.0">
+                           <children>
+                              <Separator orientation="VERTICAL" prefHeight="52.0" prefWidth="18.0" visible="false" />
+                              <ImageView fitHeight="34.0" fitWidth="28.0" onMouseClicked="#home" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/Icon/icons8_home_26px.png" />
+                                 </image>
+                              </ImageView>
+                              <Separator orientation="VERTICAL" prefHeight="52.0" prefWidth="25.0" visible="false" />
+                              <ImageView fitHeight="47.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                                 <image>
+                                    <Image url="@../images/DoNation.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                              <HBox prefHeight="27.0" prefWidth="446.0" translateX="200.0" translateY="15.0">
+                                 <children>
+                                    <JFXButton fx:id="btnTarif" buttonType="RAISED" onAction="#activerModifTarif" prefHeight="39.0" prefWidth="200.0" ripplerFill="#2cb687" style="-fx-border-radius: 5;" styleClass="button1" stylesheets="@../styles/dashbordadmin.css" text="Tarif">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children></HBox>
+                              <HBox prefHeight="63.0" prefWidth="143.0" translateX="400.0" translateY="5.0" visible="false">
+                                 <children>
+                                    <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/profile.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/profile.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/profile.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+               </top>
+               <center>
+                  <ScrollPane hbarPolicy="NEVER" onMouseMoved="#CloseSideBar" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/dashbordadmin.css" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+                     <content>
+                         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="659.0" prefWidth="1259.0">
+                           <AnchorPane fx:id="anchorPaneUser" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1800.0" prefHeight="200.0" prefWidth="200.0">
+                              <children>
+                                 <ScrollPane fx:id="scrollPaneUser" hbarPolicy="NEVER" prefHeight="656.0" prefWidth="1258.0" styleClass="scrollPaneUser" stylesheets="@../styles/dashbordadmin.css">
+                                   <content>
+                                     <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="660.0" prefWidth="1260.0" styleClass="backgroundUser" stylesheets="@../styles/dashbordadmin.css">
+                                          <children>
+                                             <FlowPane fx:id="flowPaneUser" layoutX="88.0" layoutY="38.0" prefHeight="612.0" prefWidth="1163.0" styleClass="backgroundUser" />
+                                          </children>
+                                       </AnchorPane>
+                                   </content>
+                                 </ScrollPane>
+                                 <Pane fx:id="paneBlack" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="680.0" minWidth="1800.0" opacity="0.85" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #000;" stylesheets="@../styles/dashbordadmin.css" />
+                                 <Pane fx:id="paneWeb" layoutX="238.0" layoutY="64.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="559.0" prefWidth="800.0">
+                                    <children>
+                                       <JFXButton fx:id="btnRetourWeb" alignment="CENTER" layoutX="337.0" layoutY="506.0" onAction="#retourWeb" prefHeight="49.0" prefWidth="127.0" ripplerFill="#498671" styleClass="buttonMessage" stylesheets="@../styles/dashbordadmin.css" text="Retour" textFill="#2cb687">
+                                          <font>
+                                             <Font size="26.0" />
+                                          </font>
+                                       </JFXButton>
+                                    </children></Pane>
+                              </children></AnchorPane>
+                        <AnchorPane fx:id="anchorPaneResto" minHeight="0.0" minWidth="0.0" prefHeight="659.0" prefWidth="1259.0" visible="false">
+                           <children>
+                              <Label layoutX="150.0" layoutY="241.0" prefHeight="98.0" prefWidth="273.0" text="Montant">
+                                 <font>
+                                    <Font size="60.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField fx:id="txtMontant" alignment="CENTER" focusColor="#2cb687" layoutX="556.0" layoutY="234.0" onKeyPressed="#montantControl" prefHeight="112.0" prefWidth="241.0" unFocusColor="#2cb687">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </JFXTextField>
+                              <Label layoutX="150.0" layoutY="429.0" prefHeight="98.0" prefWidth="168.0" text="User">
+                                 <font>
+                                    <Font size="60.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField fx:id="txtMail" focusColor="#2cb687" layoutX="378.0" layoutY="422.0" prefHeight="112.0" prefWidth="787.0" unFocusColor="#2cb687">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXButton fx:id="btnDonner" buttonType="RAISED" layoutX="921.0" layoutY="287.0" onAction="#Donner" prefHeight="65.0" prefWidth="200.0" ripplerFill="#2cb687" style="-fx-border-radius: 5;" styleClass="button1" stylesheets="@../styles/dashbordadmin.css" text="Donner">
+                                 <font>
+                                    <Font size="28.0" />
+                                 </font>
+                              </JFXButton>
+                              <Label layoutX="150.0" layoutY="73.0" text="Solde">
+                                 <font>
+                                    <Font size="60.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblSolde" alignment="CENTER" layoutX="518.0" layoutY="66.0" prefHeight="86.0" prefWidth="317.0" textFill="WHITE">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="btnServir" buttonType="RAISED" layoutX="921.0" layoutY="77.0" onAction="#servir" prefHeight="65.0" prefWidth="200.0" ripplerFill="#2cb687" style="-fx-border-radius: 5;" styleClass="button1" stylesheets="@../styles/dashbordadmin.css" text="Servir">
+                                 <font>
+                                    <Font size="28.0" />
+                                 </font>
+                              </JFXButton>
+                                 <StackPane fx:id="stackPaneDialog" prefHeight="658.0" prefWidth="1260.0" visible="false" />
+                              <Pane fx:id="paneMessage" layoutX="135.0" layoutY="400.0" prefHeight="259.0" prefWidth="1037.0" style="-fx-background-color: #2cb687;">
+                                 <children>
+                                    <Label fx:id="lblMessage" alignment="CENTER" layoutX="149.0" layoutY="47.0" prefHeight="63.0" prefWidth="774.0">
+                                       <font>
+                                          <Font size="40.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXButton fx:id="btnMessage" buttonType="RAISED" layoutX="446.0" layoutY="168.0" onAction="#fermerPaneMessage" prefHeight="39.0" prefWidth="145.0" styleClass="buttonMessage" stylesheets="@../styles/dashbordadmin.css" text="D'accord">
+                                       <font>
+                                          <Font size="23.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="paneModifTarif" layoutX="145.0" layoutY="410.0" prefHeight="259.0" prefWidth="1037.0" style="-fx-background-color: #2cb687;">
+                                 <children>
+                                    <Label fx:id="lblModifTarif" alignment="CENTER" layoutX="34.0" layoutY="45.0" prefHeight="63.0" prefWidth="570.0" text="Entrer votre nouveau tarif" textFill="WHITE">
+                                       <font>
+                                          <Font size="40.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXButton fx:id="btnModifTarif" buttonType="RAISED" layoutX="692.0" layoutY="163.0" onAction="#modifierTarif" prefHeight="47.0" prefWidth="227.0" styleClass="buttonMessage" stylesheets="@../styles/dashbordadmin.css" text="Modifier tarif">
+                                       <font>
+                                          <Font size="23.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXTextField fx:id="txtTarif" alignment="CENTER" focusColor="WHITE" layoutX="685.0" layoutY="38.0" onKeyPressed="#controlTarif" prefHeight="72.0" prefWidth="241.0" styleClass="montantTarif" stylesheets="@../styles/dashbordadmin.css" unFocusColor="WHITE">
+                                       <font>
+                                          <Font size="40.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXButton fx:id="btnAnnulerModifTarif" buttonType="RAISED" layoutX="257.0" layoutY="163.0" onAction="#annulerModifierTarif" prefHeight="47.0" prefWidth="227.0" styleClass="buttonMessage" stylesheets="@../styles/dashbordadmin.css" text="Annuler">
+                                       <font>
+                                          <Font size="23.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="btnAjouterTarif" buttonType="RAISED" layoutX="692.0" layoutY="163.0" onAction="#modifierTarif" prefHeight="47.0" prefWidth="227.0" styleClass="buttonMessage" stylesheets="@../styles/dashbordadmin.css" text="Ajouter tarif">
+                                       <font>
+                                          <Font size="23.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </Pane>
+                           </children></AnchorPane></AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </center>
+            </BorderPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

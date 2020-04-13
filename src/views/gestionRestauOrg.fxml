@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../styles/gestionResOrg.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GestionRestauOrgController">
+   <children>
+      <StackPane fx:id="rootPaneM" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <BorderPane fx:id="border_pane" prefHeight="720.0" prefWidth="1280.0">
+               <left>
+                  <StackPane fx:id="stackSide" onMouseMoved="#OpenSidebar" prefHeight="400.0" prefWidth="20.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Pane fx:id="stackSide2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff0000;">
+                           <children>
+                              <Pane fx:id="paneSide" prefHeight="659.0" prefWidth="200.0" style="-fx-background-color: #ff0000;" visible="false">
+                                 <children>
+                                    <Circle fill="#99a7b5" layoutX="43.0" layoutY="54.0" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                                    <Label layoutX="87.0" layoutY="12.0" prefHeight="92.0" prefWidth="107.0" text="Ahmed Salah Ben Jalel" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox alignment="TOP_CENTER" layoutX="1.0" layoutY="143.0" prefHeight="359.0" prefWidth="197.0" spacing="10.0">
+                                       <children>
+                                          <JFXButton buttonType="RAISED" prefHeight="41.0" prefWidth="207.0" text="  Mes Informations" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/user_male.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <JFXButton buttonType="RAISED" prefHeight="41.0" prefWidth="207.0" text="  Mes Informations" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/icons8_male_user_26px_1.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <JFXButton buttonType="RAISED" prefHeight="41.0" prefWidth="207.0" text="  Mes Informations" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/icons8_male_user_26px_1.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <JFXButton buttonType="RAISED" prefHeight="41.0" prefWidth="207.0" text="  Mes Informations" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/icons8_male_user_26px_1.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </StackPane>
+               </left>
+               <top>
+                  <Pane prefHeight="60.0" prefWidth="1280.0" style="-fx-background-color: #F2F1EF;" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" layoutY="2.0" prefHeight="30.0" prefWidth="1280.0">
+                           <children>
+                              <Separator orientation="VERTICAL" prefHeight="52.0" prefWidth="18.0" visible="false" />
+                              <ImageView fitHeight="34.0" fitWidth="28.0" onMouseClicked="#home" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/Icon/icons8_home_26px.png" />
+                                 </image>
+                              </ImageView>
+                              <Separator orientation="VERTICAL" prefHeight="52.0" prefWidth="25.0" visible="false" />
+                              <ImageView fitHeight="47.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                                 <image>
+                                    <Image url="@../images/DoNation.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                              <HBox prefHeight="27.0" prefWidth="446.0" translateX="200.0" translateY="15.0">
+                                 <children>
+                                    <JFXTextField focusColor="BLACK" prefHeight="33.0" prefWidth="411.0" promptText="Recherche" unFocusColor="WHITE">
+                                       <font>
+                                          <Font name="Calibri" size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/Icon/icons8_search_50px.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="63.0" prefWidth="143.0" translateX="400.0" translateY="5.0" visible="false">
+                                 <children>
+                                    <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/profile.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/profile.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/profile.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+               </top>
+               <center>
+                  <ScrollPane onMouseMoved="#CloseSideBar" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <content>
+                        <Pane onMouseClicked="#transtitionPublicite" prefHeight="657.0" prefWidth="1256.0" style="-fx-background-color: #FFFF;">
+                           <children>
+                              <Pane fx:id="PublicitePane" layoutX="1149.0" layoutY="-1.0" onMouseClicked="#pubClickedOn" prefHeight="659.0" prefWidth="107.0">
+                                 <children>
+                                    <Label fx:id="idPub1" text="Id" />
+                                    <ImageView fx:id="pubImage1" fitHeight="664.0" fitWidth="96.0" layoutX="13.0" layoutY="-4.0" onMouseClicked="#traitementPublicite1" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </Pane>
+                              <StackPane fx:id="ajouterStackPane1" layoutX="290.0" layoutY="7.0" prefHeight="125.0" prefWidth="714.0" visible="false">
+                                 <children>
+                                    <Pane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <Label fx:id="ajouterOfrreDemandeLabel1" layoutX="204.0" layoutY="-9.0" style="-fx-alignment: center;" text="ajouterOffre/demainde" textAlignment="CENTER" textFill="#056f8b">
+                                             <font>
+                                                <Font size="27.0" />
+                                             </font></Label>
+                                          <JFXTextField fx:id="titreInput1" layoutX="1.0" layoutY="15.0" />
+                                          <JFXTextField fx:id="nbrePlatInput1" layoutX="405.0" layoutY="92.0" prefHeight="25.0" prefWidth="94.0" />
+                                          <JFXTextArea fx:id="descpritionInput1" layoutX="-2.0" layoutY="45.0" prefHeight="72.0" prefWidth="291.0" />
+                                          <JFXButton fx:id="ajouterPublicationDon1" layoutX="509.0" layoutY="69.0" onAction="#modifierPublication" text="Modifier" />
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </StackPane>
+                              <StackPane fx:id="ajouterStackPane" layoutX="290.0" layoutY="7.0" prefHeight="125.0" prefWidth="714.0">
+                                 <children>
+                                    <Pane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <Label fx:id="ajouterOfrreDemandeLabel" layoutX="204.0" layoutY="-11.0" style="-fx-text-alignment: center;" text="ajouterOffre/demainde" textFill="#056f8b" textOverrun="CLIP">
+                                             <font>
+                                                <Font size="32.0" />
+                                             </font></Label>
+                                          <JFXTextField fx:id="nbrePlatInput" focusColor="#056f8b" layoutX="339.0" layoutY="85.0" prefHeight="25.0" prefWidth="133.0" promptText="nombre de plats" />
+                                          <JFXTextArea fx:id="descpritionInput" focusColor="#056f8b" layoutX="1.0" layoutY="40.0" prefHeight="67.0" prefWidth="292.0" promptText="description de la publication" />
+                                          <JFXTextField fx:id="titreInput" focusColor="#056f8b" layoutY="7.0" promptText="Titre de la publicatiion" />
+                                          <JFXButton fx:id="ajouterPublicationDon" buttonType="RAISED" layoutX="535.0" layoutY="88.0" onAction="#ajouterPublication" prefHeight="27.0" prefWidth="108.0" style="-fx-border-color: #3222; -fx-background-color: #056F8B;" text="Ajouter" textFill="WHITE">
+                                             <effect>
+                                                <Shadow />
+                                             </effect></JFXButton>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </StackPane>
+                              <ScrollPane layoutX="223.0" layoutY="146.0" prefHeight="514.0" prefWidth="865.0" style="-fx-background-color: #FFFF;">
+                                 <content>
+                                    <FlowPane fx:id="FlowPanePublications" prefHeight="778.0" prefWidth="843.0" style="-fx-background-color: #FFFFFF;">
+                                       <effect>
+                                          <ColorAdjust />
+                                       </effect></FlowPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </Pane>
+                     </content>
+                  </ScrollPane>
+               </center>
+            </BorderPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

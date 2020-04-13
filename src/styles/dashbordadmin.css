@@ -1,0 +1,472 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.button
+{
+    -fx-background-color : transparent;
+    -fx-border-color: #D98532; /*#355ECE;*/
+    -fx-text-fill:  #ffffff;
+}
+.button:hover
+{
+    -fx-background-color : #e47202 ;
+    -fx-text-fill:  #ffffff;
+}
+.button:pressed
+{
+    -fx-background-color : #e47202 ;
+    -fx-text-fill: #ffffff;
+}
+
+.button2
+{
+    -fx-background-color : #e47202;
+    -fx-border-color: #e47202; /*#355ECE;*/
+    -fx-text-fill:  #ffffff;
+}
+
+.button1
+{
+    -fx-background-color : #2cb687;
+    -fx-border-radius: 10;
+    -fx-border-color: #2cb687; /*#355ECE;*/
+    -fx-text-fill:  #ffffff;
+}
+
+.buttonMessage
+{
+    -fx-background-color : #FFF;
+    -fx-border-radius: 10;
+    -fx-border-color: #FFF; /*#355ECE;*/
+    -fx-text-fill:  #2cb687;
+    
+}
+.buttonMessage:hover
+{
+    -fx-background-color : #2cb687;
+    -fx-text-fill:  #ffffff;
+}
+
+.button1:hover
+{
+    -fx-background-color : #0e5a40;
+    -fx-text-fill:  #ffffff;
+}
+.buttonOrange
+{
+    -fx-background-color : transparent;
+    -fx-border-color: #D98532; /*#355ECE;*/
+    -fx-text-fill:  #ffffff;
+}
+
+.buttonFullOrange
+{
+    -fx-background-color :  #D98532;
+    -fx-border-color: #D98532; /*#355ECE;*/
+    -fx-text-fill:  #ffffff;
+}
+.buttonFullOrange:hover
+{
+    -fx-background-color : #e47202 ;
+    -fx-text-fill:  #ffffff;
+}
+.buttonFullOrange:pressed
+{
+    -fx-background-color : #e47202 ;
+    -fx-text-fill: #ffffff;
+}
+
+.scroll-bar
+{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.jfx-list-cell:selected {
+    -fx-background-color: #D98532; 
+}
+
+.jfx-list-cell {
+    -fx-background-insets: 2;
+}
+
+.jfx-list-cell .jfx-rippler {
+    -fx-rippler-fill: RED;
+}
+
+.jfx-list-cell:hover {
+    -fx-background-color: #e47202; 
+}
+
+.jfx-list-view {
+    -fx-background-insets: 0;
+    -fx-cell-vertical-margin: 10.0;
+    -fx-vertical-gap: 10 ; 
+}
+.vbox
+{
+    
+    -fx-background-color : #dddddd; 
+    -fx-border-color : #D98532;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+ 
+}
+
+.vbox:hover
+{
+    
+    -fx-background-color : #dddddd; 
+    -fx-border-color : #D98532;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    
+}
+
+.titre{
+-fx-color: #dddddd;
+-fx-font-weight: bold;
+-fx-font-size: 20px;
+-fx-padding: 25px 50px 10px 40px;
+
+}
+
+.buttonBox{
+    -fx-background-color : #000080;
+    
+}
+/*modified*/
+.vbox .button{
+    
+    -fx-background-color : #ffffff;
+    -fx-border-color : #45969b;
+    -fx-font-size: 15px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 2px;
+
+}
+/*modified*/
+.vbox .button:hover{
+-fx-background-color : #45969b;
+    -fx-font-size: 15px;
+
+}
+
+ .desc{
+    -fx-font-size: 15px;
+    -fx-padding-left: 30px;
+    -fx-padding-right: 30px;
+
+}
+
+.pbParLbl{
+    -fx-font-weight: bold;
+}
+.mailLbl{
+    -fx-font-size: 13px;
+}
+
+.aimeLbl{
+    -fx-font-size: 13px;
+}
+
+.hbox{
+      -fx-margin-top: 500px;
+      -fx-padding-right: 10px;
+      -fx-padding-bottom: 10px;
+      -fx-padding-left: 10px;
+
+}
+
+.flouPane{
+    -fx-background-color : transparent;
+}
+
+/****************************new***new***new***********************/
+.descdmndcplt{
+    -fx-font-size: 15px;
+}
+
+.titredmndcplt{
+-fx-font-weight: bold;
+-fx-font-size: 20px;
+
+
+}
+
+.userdmndcplt{
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.publieeparcplt{
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+
+/*padding top right  bottom left*/
+.hboxcplt{
+      
+      -fx-padding: 20px 0px 0px 0px;
+      
+
+
+}
+
+
+.hboxcplt .button{
+    
+    -fx-background-color : #ffffff;
+    -fx-border-color : #45969b;
+    -fx-border-width: 2px;
+    -fx-font-size: 15px;
+    -fx-text-fill : #45969b;
+    -fx-font-weight: bold;
+    -fx-border-radius: 2px;
+
+}
+
+.hboxcplt .button:hover{
+    
+    -fx-background-color:#45969b;
+    -fx-border-color : #45969b;
+    -fx-text-fill :#ffffff
+
+}
+
+.vboxdesc{
+    -fx-padding: 0px 0px 0px 10px;
+}
+
+.vboxAjoutDmnd{
+    -fx-padding: 0px 0px 0px 10px;
+}
+
+.vboxAjoutDmnd .button{
+    -fx-background-color : #ffffff;
+    -fx-border-color : #45969b;
+    -fx-border-width: 2px;
+    -fx-font-size: 15px;
+    -fx-text-fill : #45969b;
+    -fx-font-weight: bold;
+    -fx-border-radius: 2px;
+}
+
+.vboxAjoutDmnd .button:hover{
+    -fx-background-color:#45969b;
+    -fx-border-color : #45969b;
+    -fx-text-fill :#ffffff
+}
+
+ .vboxAjoutDmnd .label{
+    -fx-font-size: 15px;
+    -fx-padding-left: 30px;
+    -fx-padding-right: 30px;
+
+}
+
+.titreAjoutDmnd{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.vboxbtncat{
+        -fx-background-color : #dddddd; 
+    -fx-border-color : #D98532;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+.vboxbtncat:hover
+{
+    
+    -fx-background-color : #dddddd; 
+    -fx-border-color : #D98532;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    
+}
+
+.vboxbtncat .button{
+    
+    -fx-background-color : #ffffff;
+    -fx-border-color : #45969b;
+    -fx-font-size: 15px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 2px;
+
+}
+
+.vboxbtncat .button:hover{
+-fx-background-color : #45969b;
+    -fx-font-size: 15px;
+
+}
+
+.titrecatbox{
+    
+-fx-font-weight: bold;
+-fx-font-size: 14px;
+
+}
+
+.buttonAjt{
+    
+    -fx-background-color : #ffffff;
+    -fx-border-color : #45969b;
+    -fx-font-size: 15px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 2px;
+    -fx-text-fill :#45969b;
+    -fx-font-weight: bold;
+
+}
+
+.buttonAjt:hover{
+    -fx-background-color:#45969b;
+    -fx-border-color : #45969b;
+    -fx-text-fill :#ffffff
+}
+/*************** update Hamza *********************/
+
+.nomResto{
+    -fx-font-size: 20px;
+    -fx-font-weight: Bold;
+    -fx-text-fill: #2cb687;
+}
+
+
+.emplacement{
+    -fx-font-size: 16px;
+}
+
+.numTel{
+    -fx-text-alignment: left;
+    -fx-font-size: 16px;
+}
+
+.numTelV{
+    
+}
+
+.siteWeb{
+    -fx-text-alignment: left;
+    -fx-font-size: 16px;
+}
+
+.pageFb{
+    -fx-text-alignment: left;
+    -fx-font-size: 16px;
+}
+
+.linkRestoUser{
+    -fx-text-fill: #2cb687;
+    -fx-underline: true;
+}
+
+
+.linkRestoUser:visited{
+    -fx-text-fill: #2cb687;
+    -fx-underline: true;
+}
+
+
+.btnMaps{
+   
+    -fx-background-color : #fff;
+    -fx-border-radius: 5;
+    -fx-border-color: transparent; /*#355ECE;*/
+    -fx-text-fill:  linear-gradient(to right, #4285F4 10%, #EA4335 25%, #FBBC05 40%, #4285F4 55%, #34A853 70%, #EA4335 100%);
+    -fx-font-size: 20px; 
+    -fx-margin-bottom: 10px;
+}
+
+.btnMaps:hover{
+    -fx-background-color: #FFF;
+    -fx-border-radius: 5;
+    -fx-border-color: linear-gradient(to right, #4285F4 10%, #EA4335 25%, #FBBC05 40%, #4285F4 55%, #34A853 70%, #EA4335 100%);
+    -fx-text-fill:  linear-gradient(to right, #4285F4 10%, #EA4335 25%, #FBBC05 40%, #4285F4 55%, #34A853 70%, #EA4335 100%);
+}
+
+.VBoxRU{
+    
+    -fx-padding-left: 50px; 
+    -fx-background-color : #FFF;
+    -fx-border-color : #2cb687;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+      
+}
+
+.VBoxRU:hover{
+    -fx-background-color : #FFF;
+    -fx-border-color : #2cb687;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5;
+    /*-fx-effect: dropshadow(three-pass-box, #2cb687, 1, 0, 0, 0);*/
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-scale-z: 1;
+}
+
+
+.backgroundUser{
+   -fx-background-color : #fff;  
+}
+
+.scrollPaneUser{
+    -fx-background-color: transparent;
+}
+
+.paneBlack{
+    
+}
+
+.buttonDialog
+{
+    -fx-background-color : #2cb687;
+    -fx-border-radius: 0;
+    -fx-border-color: #FFF; /*#355ECE;*/
+    -fx-text-fill:  #FFF;
+    -fx-font-size: 17px;
+    
+}
+.buttonDialog:hover
+{
+    -fx-background-color : #2cb687;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-text-fill:  #ffffff;
+}
+
+.btnRetourMap{
+    -fx-background-color : #fff;
+    -fx-border-radius: 0;
+    -fx-border-width:2;
+    -fx-border-color: transparent; /*#355ECE;*/
+    -fx-text-fill:  linear-gradient(to right, #4285F4 10%, #EA4335 25%, #FBBC05 40%, #4285F4 55%, #34A853 70%, #EA4335 100%);
+    -fx-font-size: 20px; 
+    -fx-margin-bottom: 10px;
+}
+
+.btnRetourMap:hover{
+    -fx-background-color: #FFF;
+    -fx-border-width:3;
+    -fx-border-radius: 0;
+    -fx-border-color: linear-gradient(to right, #4285F4 10%, #EA4335 25%, #FBBC05 40%, #4285F4 55%, #34A853 70%, #EA4335 100%);
+    -fx-text-fill:  linear-gradient(to right, #4285F4 10%, #EA4335 25%, #FBBC05 40%, #4285F4 55%, #34A853 70%, #EA4335 100%);
+}
+
+.dialogErreur{
+    -fx-font-size: 30px;
+}
+
+.montantTarif{
+    -fx-text-fill: #FFF;
+}

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../styles/cagnotte_style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GestionCagnotteController">
+    <children>
+      <StackPane fx:id="rootPaneM" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <BorderPane fx:id="border_pane" prefHeight="720.0" prefWidth="1280.0">
+               <left>
+                  <StackPane fx:id="stackSide" onMouseMoved="#OpenSidebar" prefHeight="400.0" prefWidth="20.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Pane fx:id="stackSide2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff0000;">
+                           <children>
+                              <Pane fx:id="paneSide" prefHeight="659.0" prefWidth="200.0" style="-fx-background-color: #ff0000;" visible="false">
+                                 <children>
+                                    <Circle fill="#99a7b5" layoutX="43.0" layoutY="54.0" radius="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                                    <Label layoutX="87.0" layoutY="12.0" prefHeight="92.0" prefWidth="107.0" text="Ahmed Salah Ben Jalel" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox alignment="TOP_CENTER" layoutX="1.0" layoutY="143.0" prefHeight="359.0" prefWidth="197.0" spacing="10.0">
+                                       <children>
+                                          <JFXButton buttonType="RAISED" prefHeight="41.0" prefWidth="207.0" text="  Mes Informations" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../images/icons8_male_user_26px_1.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <JFXButton buttonType="RAISED" prefHeight="41.0" prefWidth="207.0" text="  Mes Informations" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../images/icons8_male_user_26px_1.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <JFXButton buttonType="RAISED" prefHeight="41.0" prefWidth="207.0" text="  Mes Informations" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../images/icons8_male_user_26px_1.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <JFXButton buttonType="RAISED" prefHeight="41.0" prefWidth="207.0" text="  Mes Informations" textFill="WHITE">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../images/icons8_male_user_26px_1.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </StackPane>
+               </left>
+               <top>
+                  <Pane prefHeight="60.0" prefWidth="1280.0" style="-fx-background-color: #F2F1EF;" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" layoutY="2.0" prefHeight="30.0" prefWidth="1280.0">
+                           <children>
+                              <Separator orientation="VERTICAL" prefHeight="52.0" prefWidth="18.0" visible="false" />
+                              <ImageView fitHeight="34.0" fitWidth="28.0" onMouseClicked="#home" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/Icon/icons8_home_26px_1.png" />
+                                 </image>
+                              </ImageView>
+                              <Separator orientation="VERTICAL" prefHeight="52.0" prefWidth="25.0" visible="false" />
+                              <ImageView fitHeight="47.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                                 <image>
+                                    <Image url="@../../images/DoNation.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                              <HBox prefHeight="27.0" prefWidth="446.0" translateX="200.0" translateY="15.0">
+                                 <children>
+                                    <JFXTextField fx:id="searchBar" focusColor="BLACK" onKeyReleased="#updateListeCagnotte" prefHeight="33.0" prefWidth="411.0" promptText="Recherche" unFocusColor="WHITE">
+                                       <font>
+                                          <Font name="Calibri" size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <ImageView fx:id="searchBarImg" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/Icon/icons8_search_50px.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="63.0" prefWidth="143.0" translateX="400.0" translateY="5.0" visible="false">
+                                 <children>
+                                    <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/profile.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/profile.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/profile.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+               </top>
+               <center>
+                  <ScrollPane onMouseMoved="#CloseSideBar" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <content>
+                        <Pane prefHeight="655.0" prefWidth="1256.0">
+                           <children>
+                              <ScrollPane fx:id="paneListerCagnottesParent" hbarPolicy="NEVER" layoutY="1.0" prefHeight="653.0" prefWidth="1260.0" style="-fx-background-color: #ffffff;" visible="false">
+                                 <content>
+                                    <FlowPane fx:id="paneListerCagnottes" prefHeight="34.0" prefWidth="1239.0" style="-fx-background-color: #ffffff;" visible="false">
+                                       <children>
+                                          <Pane fx:id="paneListerCagnotteChild" prefHeight="32.0" prefWidth="1242.0" style="-fx-background-color: #ffffff;">
+                                             <children>
+                                                <Button fx:id="ajouterCagnotteButton" layoutX="1192.0" layoutY="-1.0" mnemonicParsing="false" onAction="#ajouterCagnotte" text="+" />
+                                                <Label layoutX="560.0" layoutY="6.0" text="Liste des cagnottes" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </FlowPane>
+                                 </content>
+                              </ScrollPane>
+                              <Pane fx:id="paneBlackBackground" opacity="0.75" prefHeight="658.0" prefWidth="1260.0" style="-fx-background-color: #000000;" />
+                              <Pane fx:id="paneFaireDon" layoutX="350.0" layoutY="73.0" prefHeight="446.0" prefWidth="593.0" style="-fx-background-color: #ffffff;" visible="false">
+                                 <children>
+                                    <Label layoutX="269.0" layoutY="30.0" text="Faire un don" />
+                                    <JFXTextField fx:id="nom_field" layoutX="239.0" layoutY="107.0" />
+                                    <JFXTextField fx:id="montant_field" layoutX="239.0" layoutY="185.0" onKeyReleased="#don_check_montant" />
+                                    <Label layoutX="84.0" layoutY="190.0" text="Montant:" />
+                                    <Label layoutX="84.0" layoutY="112.0" text="Au nom de:" />
+                                    <ChoiceBox fx:id="methode_field" layoutX="242.0" layoutY="278.0" prefWidth="150.0" />
+                                    <Label layoutX="88.0" layoutY="283.0" text="Methode:" />
+                                    <Button fx:id="valider" layoutX="205.0" layoutY="359.0" mnemonicParsing="false" onAction="#validerPaiement" prefHeight="31.0" prefWidth="195.0" text="Valider don" />
+                                    <CheckBox fx:id="anon" layoutX="442.0" layoutY="123.0" mnemonicParsing="false" onAction="#setAnon" text="Reste anonyme" />
+                                    <Button fx:id="backToDetail" mnemonicParsing="false" onAction="#backToDetailButton" text="&lt;" />
+                                    <Label fx:id="don_error" layoutX="189.0" layoutY="330.0" text="label" textFill="#ee0606">
+                                       <font>
+                                          <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="paneAjouterCagnotte" layoutX="379.0" layoutY="14.0" prefHeight="613.0" prefWidth="505.0" style="-fx-background-color: #ffffff;">
+                                 <children>
+                                    <Label layoutX="98.0" layoutY="27.0" text="Demande d'ajout d'une cagnotte" />
+                                    <Label layoutX="63.0" layoutY="126.0" text="Titre:" />
+                                    <Label layoutX="62.0" layoutY="193.0" text="Categorie:" />
+                                    <Label layoutX="62.0" layoutY="401.0" text="Montant demandé:" />
+                                    <Label layoutX="62.0" layoutY="268.0" text="Date de début" />
+                                    <Label layoutX="62.0" layoutY="330.0" text="Date de fin" />
+                                    <JFXTextField fx:id="nom_field_ajout" layoutX="232.0" layoutY="121.0" />
+                                    <JFXTextField fx:id="montant_demande_field_ajout" layoutX="232.0" layoutY="396.0" onKeyReleased="#ajout_check_montant" />
+                                    <ChoiceBox fx:id="cat" layoutX="232.0" layoutY="188.0" prefWidth="150.0" />
+                                    <Button fx:id="ajouter" layoutX="157.0" layoutY="529.0" mnemonicParsing="false" onAction="#valider_ajout_cagnotte" prefHeight="31.0" prefWidth="191.0" text="Ajouter" />
+                                    <Button fx:id="backToList" layoutX="-1.0" layoutY="-1.0" mnemonicParsing="false" onAction="#backToListButton" text="&lt;" />
+                                    <DatePicker fx:id="date_debut_picker" layoutX="232.0" layoutY="263.0" promptText="JJ/MM/AAAA" />
+                                    <DatePicker fx:id="date_fin_picker" layoutX="232.0" layoutY="325.0" promptText="JJ/MM/AAAA" />
+                                    <Label fx:id="ajout_error" layoutX="157.0" layoutY="482.0" text="Label" textFill="#ee0606">
+                                       <font>
+                                          <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="paneWebBrowser" prefHeight="626.0" prefWidth="1254.0" visible="false">
+                                 <children>
+                                    <Button fx:id="backToFaireDon" layoutX="1184.0" layoutY="24.0" mnemonicParsing="false" onAction="#backToFaireDon" text="X" />
+                                    <WebView fx:id="webView" layoutX="74.0" layoutY="55.0" prefHeight="566.0" prefWidth="1110.0" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="paneDetailCagnotte" layoutX="400.0" layoutY="82.0" prefHeight="467.0" prefWidth="460.0" style="-fx-background-color: #ffffff;" visible="false">
+                                 <children>
+                                    <Button fx:id="backToList" layoutY="-1.0" mnemonicParsing="false" onAction="#backToListButton" text="&lt;" />
+                                    <Label layoutX="58.0" layoutY="58.0" text="Titre:" />
+                                    <Label layoutX="58.0" layoutY="96.0" text="Organisation:" />
+                                    <Label layoutX="58.0" layoutY="134.0" text="Commencée par:" />
+                                    <Label layoutX="58.0" layoutY="168.0" text="Date de debut:" />
+                                    <Label layoutX="55.0" layoutY="209.0" text="Date de fin:" />
+                                    <Label fx:id="nom" layoutX="352.0" layoutY="58.0" text="Void" />
+                                    <Label fx:id="organisation" layoutX="352.0" layoutY="96.0" text="Void" />
+                                    <Label fx:id="proprietaire" layoutX="352.0" layoutY="134.0" text="Void" />
+                                    <Label fx:id="date_fin" layoutX="352.0" layoutY="209.0" text="Void" />
+                                    <Label fx:id="date_debut" layoutX="352.0" layoutY="168.0" text="Void" />
+                                    <ProgressBar fx:id="progress_bar" layoutX="118.0" layoutY="269.0" prefHeight="34.0" prefWidth="210.0" progress="0.0" />
+                                    <Label fx:id="montant_actuel" layoutX="41.0" layoutY="276.0" text="Label" />
+                                    <Label fx:id="montant_demande" layoutX="350.0" layoutY="276.0" text="Label" />
+                                    <Button fx:id="faire_un_don" layoutX="145.0" layoutY="351.0" mnemonicParsing="false" onAction="#faire_un_don" text="Je me sens généreux" />
+                                    <Button fx:id="activate_don" layoutX="155.0" layoutY="361.0" mnemonicParsing="false" onAction="#activate_don" text="Prendre en charge" visible="false" />
+                                    <Button fx:id="pause_don" layoutX="308.0" layoutY="351.0" mnemonicParsing="false" onAction="#pause_don" prefHeight="30.0" prefWidth="88.0" text="Pause" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </content>
+                  </ScrollPane>
+               </center>
+            </BorderPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

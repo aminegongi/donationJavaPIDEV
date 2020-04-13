@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1400.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashbordAdminRestoController">
+   <stylesheets>
+      <URL value="@styles/dashbordadmin.css" />
+   </stylesheets>
+   <children>
+      <StackPane fx:id="rootPane" layoutX="-1.0" prefHeight="899.0" prefWidth="1402.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ScrollPane prefHeight="900.0" prefWidth="1400.0">
+               <content>
+                  <BorderPane prefHeight="897.0" prefWidth="1397.0">
+                     <left>
+                        <Pane prefHeight="791.0" prefWidth="230.0" style="-fx-background-color: D98532;" BorderPane.alignment="CENTER">
+                           <children>
+                              <VBox layoutX="-2.0" layoutY="51.0" prefHeight="767.0" prefWidth="235.0" spacing="9.0">
+                                 <children>
+                                    <Button fx:id="btnDash" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#goToDash" prefHeight="31.0" prefWidth="231.0" stylesheets="@../styles/dashbordadmin.css" text="DashBoard" textFill="WHITE">
+                                       <font>
+                                          <Font name="Calibri" size="15.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <graphic>
+                                          <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/Icon/icons8_home_50px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btnUsers" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#goToUsers" prefHeight="27.0" prefWidth="231.0" stylesheets="@../styles/dashbordadmin.css" text="Les Utilisateurs" textFill="WHITE">
+                                       <font>
+                                          <Font name="Calibri" size="15.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <graphic>
+                                          <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/Icon/icons8_user_groups_50px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btnCagnote" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#goToCagnote" prefHeight="27.0" prefWidth="231.0" stylesheets="@../styles/dashbordadmin.css" text="Gestion Cagnotte" textFill="WHITE">
+                                       <font>
+                                          <Font name="Calibri" size="15.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <graphic>
+                                          <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/Icon/icons8_user_groups_50px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btnAide" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#goToAide" prefHeight="27.0" prefWidth="231.0" stylesheets="@../styles/dashbordadmin.css" text="Gestion Aide" textFill="WHITE">
+                                       <font>
+                                          <Font name="Calibri" size="15.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <graphic>
+                                          <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/Icon/icons8_user_groups_50px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btnEmp" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#goToEmp" prefHeight="27.0" prefWidth="231.0" stylesheets="@../styles/dashbordadmin.css" text="Gestion Emploi" textFill="WHITE">
+                                       <font>
+                                          <Font name="Calibri" size="15.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <graphic>
+                                          <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/Icon/icons8_user_groups_50px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btnRestoDon" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#goToRestoDon" prefHeight="27.0" prefWidth="231.0" styleClass="button2" stylesheets="@../styles/dashbordadmin.css" text="Gestion Restaurant-Don" textFill="WHITE">
+                                       <font>
+                                          <Font name="Calibri" size="15.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <graphic>
+                                          <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/Icon/icons8_user_groups_50px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btnRestoOrg" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#goToRestoOrg" prefHeight="27.0" prefWidth="231.0" stylesheets="@../styles/dashbordadmin.css" text="Restaurant-Organisation" textFill="WHITE">
+                                       <font>
+                                          <Font name="Calibri" size="15.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <graphic>
+                                          <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/Icon/icons8_user_groups_50px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btnPub" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#goToPub" prefHeight="27.0" prefWidth="231.0" stylesheets="@../styles/dashbordadmin.css" text="Gestion Publicités" textFill="WHITE">
+                                       <font>
+                                          <Font name="Calibri" size="15.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <graphic>
+                                          <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/Icon/icons8_user_groups_50px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btnNews" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#goToNews" prefHeight="27.0" prefWidth="231.0" stylesheets="@../styles/dashbordadmin.css" text="Gestion Newsletters" textFill="WHITE">
+                                       <font>
+                                          <Font name="Calibri" size="15.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <graphic>
+                                          <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/Icon/icons8_user_groups_50px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Separator prefHeight="245.0" prefWidth="235.0" visible="false" />
+                                    <Pane prefHeight="81.0" prefWidth="235.0">
+                                       <children>
+                                          <ImageView fitHeight="32.0" fitWidth="31.0" layoutX="57.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/Icon/icons8_settings_50px.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="31.0" fitWidth="30.0" layoutX="17.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/Icon/icons8_logout_rounded_left_50px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                     </left>
+                     <top>
+                        <Pane prefHeight="78.0" prefWidth="1400.0" style="-fx-background-color: whitecream;" BorderPane.alignment="CENTER">
+                           <children>
+                              <HBox layoutX="-1.0" layoutY="-6.0" prefHeight="86.0" prefWidth="1400.0">
+                                 <children>
+                                    <Pane prefHeight="86.0" prefWidth="231.0" style="-fx-background-color: D98532;">
+                                       <children>
+                                          <Label layoutX="86.0" layoutY="13.0" prefHeight="74.0" prefWidth="141.0" text="Ahmed Salah Ben Foulen" textFill="WHITE" wrapText="true">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Circle fx:id="btnImage" layoutX="41.0" layoutY="50.0" onMouseClicked="#goToProfile" radius="33.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" />
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="86.0" prefWidth="1167.0">
+                                       <children>
+                                          <JFXComboBox fx:id="comboRecherche" focusColor="#e47202" layoutX="39.0" layoutY="30.0" prefHeight="26.0" prefWidth="169.0" unFocusColor="#e47202" />
+                                          <JFXTextField fx:id="txtRecherche" focusColor="#e47202" layoutX="219.0" layoutY="30.0" unFocusColor="#e47202" />
+                                          <JFXButton fx:id="btnRecherche" buttonType="RAISED" contentDisplay="CENTER" layoutX="387.0" layoutY="29.0" onAction="#chercherF" prefHeight="25.0" prefWidth="115.0" ripplerFill="#ddcaca" style="-fx-border-radius: 5;" styleClass="button2" stylesheets="@../styles/dashbordadmin.css" text="Chercher" wrapText="true" />
+                                          <JFXButton fx:id="btnGeneral" buttonType="RAISED" contentDisplay="CENTER" layoutX="526.0" layoutY="28.0" maxHeight="43.0" maxWidth="153.0" onAction="#general" prefHeight="25.0" prefWidth="115.0" ripplerFill="#ddcaca" style="-fx-border-radius: 5;" styleClass="button2" stylesheets="@../styles/dashbordadmin.css" text="Général" wrapText="true" />
+                                       </children></Pane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </Pane>
+                     </top>
+                     <center>
+                        <StackPane prefHeight="150.0" prefWidth="1038.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Pane fx:id="PaneCentrale" prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="lblTarifEmpty" layoutX="66.0" layoutY="56.0" prefHeight="34.0" prefWidth="398.0" textAlignment="CENTER" wrapText="true" />
+                                    <JFXListView fx:id="listViewTarif" depthTest="ENABLE" layoutX="15.0" layoutY="36.0" onMouseClicked="#onSelectResto" prefHeight="300.0" prefWidth="500.0" style="-fx-border-width: 3; -fx-border-color: #D98532; -fx-border-radius: 5;" stylesheets="@../styles/dashbordadmin.css" />
+                                    <JFXListView fx:id="listViewDonResto" depthTest="ENABLE" layoutX="620.0" layoutY="36.0" prefHeight="300.0" prefWidth="521.0" style="-fx-border-width: 3; -fx-border-color: #D98532; -fx-border-radius: 5;" stylesheets="@../styles/dashbordadmin.css" />
+                                    <Label fx:id="lblTarif" layoutX="181.0" layoutY="12.0" text="Liste des restaurants" textAlignment="CENTER">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font></Label>
+                                    <Label fx:id="lblDonResto" layoutX="822.0" layoutY="12.0" text="Les donations" textAlignment="CENTER">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font></Label>
+                                    <JFXListView fx:id="listViewRepasServi" depthTest="ENABLE" layoutX="334.0" layoutY="410.0" prefHeight="300.0" prefWidth="500.0" style="-fx-border-width: 3; -fx-border-color: #D98532; -fx-border-radius: 5;" stylesheets="@../styles/dashbordadmin.css" />
+                                    <Label fx:id="lblRepasServi" layoutX="524.0" layoutY="381.0" text="Les repas servi" textAlignment="CENTER">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font></Label>
+                                    <Label fx:id="lblDonEmpty" layoutX="681.0" layoutY="63.0" prefHeight="34.0" prefWidth="398.0" textAlignment="CENTER" wrapText="true" />
+                                    <Label fx:id="lblRepasEmpty" layoutX="385.0" layoutY="442.0" prefHeight="34.0" prefWidth="398.0" textAlignment="CENTER" wrapText="true" />
+                                    <Label fx:id="lblTotalTarif" alignment="CENTER" layoutX="89.0" layoutY="355.0" prefHeight="16.0" prefWidth="391.0" />
+                                    <Label fx:id="lblTotalDon" alignment="CENTER" layoutX="728.0" layoutY="347.0" prefHeight="16.0" prefWidth="285.0" textAlignment="CENTER" />
+                                    <Label fx:id="lblTotalRepas" alignment="CENTER" layoutX="392.0" layoutY="721.0" prefHeight="16.0" prefWidth="384.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </StackPane>
+                     </center>
+                  </BorderPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
