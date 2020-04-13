@@ -6,12 +6,12 @@
 package controllers;
 
 import Entities.Utilisateur;
-import Services.GestionnaireAdministrateur;
-import Services.GestionnaireEntreprise;
-import Services.GestionnaireOrganisation;
-import Services.GestionnaireRestaurant;
+//import Services.GestionnaireAdministrateur;
+//import Services.GestionnaireEntreprise;
+//import Services.GestionnaireOrganisation;
+//import Services.GestionnaireRestaurant;
 import Services.GestionnaireUtilisateur;
-import Services.GestionnaireUtilisateur_Simple;
+//import Services.GestionnaireUtilisateur_Simple;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;

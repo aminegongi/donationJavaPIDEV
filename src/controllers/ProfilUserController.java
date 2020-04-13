@@ -6,10 +6,8 @@
 package controllers;
 
 import Entities.Utilisateur;
-import Entities.Utilisateur_Simple;
 import Services.GestionnaireHistoriqueConnexion;
 import Services.GestionnaireUtilisateur;
-import Services.GestionnaireUtilisateur_Simple;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.io.File;
@@ -106,6 +104,7 @@ public class ProfilUserController implements Initializable {
         listFichier.add("*.jpg");
         System.out.println(role);
         flag = false;
+        /*
         if(role.equals("us"))
         {
             System.out.println(HomeFXMLController.u);
@@ -149,7 +148,7 @@ public class ProfilUserController implements Initializable {
             circleImage.setFill(new ImagePattern(i));
             sideName.setText(HomeFXMLController.r.getNom());
             sideCircle.setFill(new ImagePattern(i));
-        }
+        }*/
 
     }    
 
@@ -273,6 +272,7 @@ public class ProfilUserController implements Initializable {
 
     @FXML
     private void saveModif(MouseEvent event) {
+        /*
         if(role.equals("us"))
         {
             GestionnaireUtilisateur_Simple gus = new GestionnaireUtilisateur_Simple();
@@ -309,7 +309,7 @@ public class ProfilUserController implements Initializable {
             File file = new File("./src/images/"+HomeFXMLController.r.getImage());
             Image i= new Image(file.toURI().toString());
             circleImage.setFill(new ImagePattern(i));
-        }
+        }*/
     }
     
 }

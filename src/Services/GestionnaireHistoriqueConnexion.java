@@ -80,7 +80,7 @@ public class GestionnaireHistoriqueConnexion {
 
                 usTmp.setId(rs.getInt(1));
                 usTmp.setNom(rs.getString(2));
-                usTmp.setMail(rs.getString(3));
+                usTmp.setEmail(rs.getString(3));
 
                 hc.setUser(usTmp);
                 hc.setId(rs.getInt(4));
@@ -109,7 +109,7 @@ public class GestionnaireHistoriqueConnexion {
 
                 usTmp.setId(rs.getInt(1));
                 usTmp.setNom(rs.getString(2));
-                usTmp.setMail(rs.getString(3));
+                usTmp.setEmail(rs.getString(3));
 
                 hc.setUser(usTmp);
                 hc.setId(rs.getInt(4));
@@ -141,7 +141,7 @@ public class GestionnaireHistoriqueConnexion {
 
                 usTmp.setId(rs.getInt(1));
                 usTmp.setNom(rs.getString(2));
-                usTmp.setMail(rs.getString(3));
+                usTmp.setEmail(rs.getString(3));
 
                 hc.setUser(usTmp);
                 hc.setId(rs.getInt(4));

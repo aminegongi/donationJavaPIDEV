@@ -5,8 +5,8 @@
  */
 package controllers;
 
-import Entities.Utilisateur_Simple;
-import Services.GestionnaireUtilisateur_Simple;
+//import Entities.Utilisateur_Simple;
+//import Services.GestionnaireUtilisateur_Simple;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -100,9 +100,9 @@ public class DashbordAdmin_Users_USController implements Initializable {
         paneDprofil.setVisible(false);
         imgDProfil.setVisible(false);
         labelDProfil.setVisible(true);
-        affichageUS();
+        //affichageUS();
     }
-
+/*
     private void affichageUS() {
         GestionnaireUtilisateur_Simple gUs = new GestionnaireUtilisateur_Simple();
 
@@ -277,7 +277,7 @@ public class DashbordAdmin_Users_USController implements Initializable {
             }
         }
     }
-
+*/
     @FXML
     private void goToProfile(MouseEvent event) {
     }

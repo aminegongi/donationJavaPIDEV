@@ -7,16 +7,16 @@ package controllers;
 
 import Entities.Categorie_Emplois;
 import Entities.Emplois;
-import Entities.Organisation;
+//mport Entities.Organisation;
 import Services.EmploisService;
 import Entities.Utilisateur;
-import Entities.Utilisateur_Simple;
+//import Entities.Utilisateur_Simple;
 import Services.Categorie_EmploisService;
-import Services.GestionnaireEntreprise;
-import Services.GestionnaireOrganisation;
-import Services.GestionnaireRestaurant;
+//import Services.GestionnaireEntreprise;
+//import Services.GestionnaireOrganisation;
+//import Services.GestionnaireRestaurant;
 import Services.GestionnaireUtilisateur;
-import Services.GestionnaireUtilisateur_Simple;
+//import Services.GestionnaireUtilisateur_Simple;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -678,7 +678,7 @@ public class GestionEmploiController implements Initializable {
             VboxInterm.getChildren().add(description);
             VboxEmp.getChildren().add(VboxInterm);
             
-           String maill =listEmp.get(i).getUser().getMail();
+           String maill =listEmp.get(i).getUser().getEmail();
              
             /////////////////////////////////
              
@@ -1027,7 +1027,7 @@ public class GestionEmploiController implements Initializable {
             VboxEmp.getChildren().add(typecontrat);
             VboxEmp.getChildren().add(description);
             
-            String maill =listemmp.get(i).getUser().getMail();
+            String maill =listemmp.get(i).getUser().getEmail();
             //String maill ="aazaza";
   
             /////////////////////////////////
@@ -1497,7 +1497,7 @@ public class GestionEmploiController implements Initializable {
             VboxEmp.getChildren().add(typecontrat);
             VboxEmp.getChildren().add(description);
             
-            String maill =listemmp.get(i).getUser().getMail();
+            String maill =listemmp.get(i).getUser().getEmail();
             //String maill ="aazaza";
   
             /////////////////////////////////

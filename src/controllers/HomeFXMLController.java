@@ -5,16 +5,11 @@
  */
 package controllers;
 
-import Entities.Entreprise;
-import Entities.Organisation;
-import Entities.Restaurant;
+
 import Entities.Utilisateur;
-import Entities.Utilisateur_Simple;
-import Services.GestionnaireEntreprise;
-import Services.GestionnaireOrganisation;
-import Services.GestionnaireRestaurant;
+
 import Services.GestionnaireUtilisateur;
-import Services.GestionnaireUtilisateur_Simple;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -48,10 +43,7 @@ public class HomeFXMLController implements Initializable {
     @FXML
     private Pane rootPane;
     
-    static Utilisateur_Simple u=null ;
-    static Organisation o=null ;
-    static Entreprise e=null ;
-    static Restaurant r=null ;
+    static Utilisateur u=null ;
     static int isUser;
     static String isUserRole;
     /**
@@ -65,33 +57,7 @@ public class HomeFXMLController implements Initializable {
         GestionnaireUtilisateur gu = new GestionnaireUtilisateur();
         isUserRole=gu.getroleById(isUser);
 
-        switch(isUserRole){
-            case "us":
-                GestionnaireUtilisateur_Simple guss= new GestionnaireUtilisateur_Simple();
-                u= guss.fetchOneUS(isUser);
-                //restau1Poly.setVisible(false);
-                //restau2Poly.setVisible(false);
-                break;
-            case "org":
-                GestionnaireOrganisation go = new GestionnaireOrganisation();
-                o= go.fetchOneOrg(isUser);
-                break;
-            case "ent":
-                GestionnaireEntreprise  ge = new GestionnaireEntreprise();
-                e= ge.fetchOneENT(isUser);
-                //restau1Poly.setVisible(false);
-                //estau2Poly.setVisible(false);
-                aidePoly.setVisible(false);
-                break;
-            case "resto":
-                GestionnaireRestaurant gr = new GestionnaireRestaurant();
-                r= gr.fetchOneResto(isUser);
-                break;
-            case "error":
-                System.out.println("Error user get");
-                break;
-        }
-        
+ 
     }    
 
     

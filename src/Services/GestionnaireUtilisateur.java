@@ -237,7 +237,7 @@ public class GestionnaireUtilisateur {
             while(rs.next())
             {
                 OneU.setId(rs.getInt(1));
-                OneU.setMail(rs.getString(2));
+                OneU.setEmail(rs.getString(2));
                 OneU.setNom(rs.getString(3));
                 
                 //us.setDateNaissance(rs.getDate(12));
@@ -321,7 +321,7 @@ public class GestionnaireUtilisateur {
         try {
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(myAccountEmail));
-        message.setRecipient(Message.RecipientType.TO, new InternetAddress(user.getMail()));
+        message.setRecipient(Message.RecipientType.TO, new InternetAddress(user.getEmail()));
         message.setSubject("Donation , Bienvenu");
         
         String htmlCode = "<h1> Bienvenu Dans Donation </h1> <br/> il ne vous reste qu'une étape à faire avant d'etre parmis notre grande communauté <br/> <h2><b>votre code confirmation :" + user.getConfirmation_token() + "</b></h2>";

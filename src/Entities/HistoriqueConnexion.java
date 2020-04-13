@@ -124,7 +124,7 @@ public class HistoriqueConnexion {
 
     @Override
     public String toString() {
-        return "HistoriqueConnexion{" + "idHc=" + id + ", user= nom: " + user.getNom() +" , mail:"+user.getMail() + ", ipAdresse=" + ipAdresse + ", dateCnx=" + dateCnx + '}';
+        return "HistoriqueConnexion{" + "idHc=" + id + ", user= nom: " + user.getNom() +" , mail:"+user.getEmail() + ", ipAdresse=" + ipAdresse + ", dateCnx=" + dateCnx + '}';
     }
 
     

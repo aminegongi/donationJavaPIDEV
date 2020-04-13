@@ -10,14 +10,14 @@ import Services.PubliciteService;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import Entities.AppelAuDon;
 import Entities.OffreDon;
-import Entities.Organisation;
+//import Entities.Organisation;
 import Entities.PublicationDon;
 import Entities.PubliciteRegion;
 import Entities.Publicité;
-import Entities.Restaurant;
+//import Entities.Restaurant;
 import Services.AppelAuDonService;
-import Services.GestionnaireOrganisation;
-import Services.GestionnaireRestaurant;
+//import Services.GestionnaireOrganisation;
+//import Services.GestionnaireRestaurant;
 import Services.OffreDonService;
 import Utils.SmsRestauOrg;
 import com.jfoenix.controls.JFXButton;
@@ -314,8 +314,8 @@ public class GestionRestauOrgController implements Initializable {
             Circle c = new Circle(25);
             if (listX.get(i).getClass()==AppelAuDon.class){
             try {
-                GestionnaireOrganisation go2 = new GestionnaireOrganisation();
-                Organisation org2= go2.fetchOneOrg(listX.get(i).getAjoutePar());
+                //GestionnaireOrganisation go2 = new GestionnaireOrganisation();
+                //Organisation org2= go2.fetchOneOrg(listX.get(i).getAjoutePar());
                 
                 File file3 = new File("./src/images/"+org2.getImage());
                 

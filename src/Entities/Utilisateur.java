@@ -42,8 +42,8 @@ public class Utilisateur {
     private String pageFB;
     private String siteWeb;
     private String description;
-    private double longitude;
-    private double latitude;
+    private float longitude;
+    private float latitude;
     private int yesNews;
 
     public int getId() {
@@ -242,7 +242,7 @@ public class Utilisateur {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(float longitude) {
         this.longitude = longitude;
     }
 
@@ -250,7 +250,7 @@ public class Utilisateur {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(float latitude) {
         this.latitude = latitude;
     }
 
@@ -268,7 +268,7 @@ public class Utilisateur {
     }
 
     
-    public Utilisateur(int id, String username, String username_canonical, String email, String email_canonical, byte enabled, String salt, String password, java.sql.Date last_login, String confirmation_token, java.sql.Date password_requested_at, String roles, String nom, String numTel, String pays, String ville, String image, int pointXP, String prenom, String genre, java.sql.Date dateNaissance, String pageFB, String siteWeb, String description, double longitude, double latitude, int yesNews) {
+    public Utilisateur(int id, String username, String username_canonical, String email, String email_canonical, byte enabled, String salt, String password, java.sql.Date last_login, String confirmation_token, java.sql.Date password_requested_at, String roles, String nom, String numTel, String pays, String ville, String image, int pointXP, String prenom, String genre, java.sql.Date dateNaissance, String pageFB, String siteWeb, String description, float longitude, float latitude, int yesNews) {
         this.id = id;
         this.username = username;
         this.username_canonical = username_canonical;
@@ -297,6 +297,4 @@ public class Utilisateur {
         this.latitude = latitude;
         this.yesNews = yesNews;
     }
-    
-    
 }

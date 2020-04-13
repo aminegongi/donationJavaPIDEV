@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import Services.GestionnaireAdministrateur;
+//import Services.GestionnaireAdministrateur;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import static controllers.UiLoginController.mailToVal;
@@ -58,22 +58,22 @@ public class AdminLoginController implements Initializable {
     @FXML
     private void VerifMail(KeyEvent event) {
     }
-
+/*
     @FXML
     private void cnx(ActionEvent event) {
-        GestionnaireAdministrateur ga= new GestionnaireAdministrateur();
+        //GestionnaireAdministrateur ga= new GestionnaireAdministrateur();
         Boolean b=ga.checkLogin(txtMail.getText(), txtMdp.getText());
         idAdmin=ga.getidd(txtMail.getText());
         System.out.println(idAdmin);
         if(b){
-            /*Pane newLoadedPane;
-            try {
-                newLoadedPane = FXMLLoader.load(getClass().getResource("/views/DashbordAdmin.fxml"));
-                pane.getChildren().clear();
-                pane.getChildren().add(newLoadedPane);
-            } catch (IOException ex) {
-                Logger.getLogger(UiLoginController.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
+            //Pane newLoadedPane;
+            //try {
+            //    newLoadedPane = FXMLLoader.load(getClass().getResource("/views/DashbordAdmin.fxml"));
+            //    pane.getChildren().clear();
+            //    pane.getChildren().add(newLoadedPane);
+            //} catch (IOException ex) {
+            //    Logger.getLogger(UiLoginController.class.getName()).log(Level.SEVERE, null, ex);
+            //}
             
              try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/DashbordAdmin_Users.fxml"));
@@ -90,7 +90,7 @@ public class AdminLoginController implements Initializable {
             a.showAndWait();
         }
     }
-
+*/
     @FXML
     private void goLoginClient(MouseEvent event) {
         Pane newLoadedPane;

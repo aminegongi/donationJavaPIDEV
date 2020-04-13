@@ -64,7 +64,7 @@ public class EmploisService implements IServiceEmplois{
     smsemploi sms = new smsemploi();
     sms.sendSms("publiaction ajoutee");
     
-    sendMail(t.getUser().getMail());
+    sendMail(t.getUser().getEmail());
     }
     
   

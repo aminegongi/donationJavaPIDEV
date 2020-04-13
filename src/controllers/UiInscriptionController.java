@@ -397,6 +397,7 @@ public class UiInscriptionController implements Initializable {
     @FXML
     private void Inscri(ActionEvent event) {
         mailToVal=tfMail.getText();
+        /*
         if (CBType.getValue().equals("Utilisateur Simple")) {
             GestionnaireUtilisateur_Simple gus = new GestionnaireUtilisateur_Simple();
             if (!CheckBeforeInscriUS()) {
@@ -460,7 +461,7 @@ public class UiInscriptionController implements Initializable {
 
                     alE.showAndWait();
                 }
-        }
+        }*/
     }
 
     @FXML
