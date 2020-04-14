@@ -155,7 +155,7 @@ public class GestionRestauOrgController implements Initializable {
        
        ajouterStackPane1.setVisible(false);
         
-        affichage();
+        //affichage();
         if(roleUser.equals("org")){
             ajouterOfrreDemandeLabel.setText("Appel au don");
             titreInput.setVisible(true);
@@ -271,10 +271,10 @@ public class GestionRestauOrgController implements Initializable {
             FlowPanePublications.getChildren().remove(0, FlowPanePublications.getChildren().size());
         
         
-        affichage();
+        //affichage();
         }
     }
-
+/*
      private void affichage() {
           FlowPanePublications.getChildren().remove(0, FlowPanePublications.getChildren().size());
            List<OffreDon> list;
@@ -510,7 +510,7 @@ public class GestionRestauOrgController implements Initializable {
         
         
     }
-
+*/
     @FXML
     private void transtitionPublicite(MouseEvent event) { 
   trans.play(); 

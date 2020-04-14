@@ -98,7 +98,9 @@ public class UiLoginController implements Initializable {
             String mdp = txtMdp.getText();
             Utilisateur UHC = gu.fetchOneUS(gu.getIdByMail(mail));
             uh = UHC;
-            
+            System.out.println(uh);
+
+            /* Historique Mezel
             GestionnaireHistoriqueConnexion ghc = new GestionnaireHistoriqueConnexion();
             ghc.AjouterHC(new HistoriqueConnexion(UHC));
              try {
@@ -109,7 +111,7 @@ public class UiLoginController implements Initializable {
                 stage.show();
             } catch(Exception e) {
                 e.printStackTrace();
-            }
+            }*/
         }
         txtMail.clear();
         txtMdp.clear();

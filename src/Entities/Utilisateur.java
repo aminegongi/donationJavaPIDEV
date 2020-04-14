@@ -23,22 +23,25 @@ public class Utilisateur {
     private String username_canonical;
     private String email;
     private String email_canonical;
-    private byte enabled;
+    private int enabled;
     private String salt;
     private String password;
-    private java.sql.Date last_login;
+    private Date last_login;
     private String confirmation_token;
-    private java.sql.Date password_requested_at;
+    private Date password_requested_at;
     private String roles;
     private String nom;
     private String numTel;
-    private String pays;
-    private String ville;
+    
+    //private String pays;
+    //private String ville;
+    protected Adresse adresse;
+    
     private String image;
     private int pointXP;
     private String prenom;
     private String genre;
-    private java.sql.Date dateNaissance;
+    private Date dateNaissance;
     private String pageFB;
     private String siteWeb;
     private String description;
@@ -86,11 +89,11 @@ public class Utilisateur {
         this.email_canonical = email_canonical;
     }
 
-    public byte getEnabled() {
+    public int getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(byte enabled) {
+    public void setEnabled(int enabled) {
         this.enabled = enabled;
     }
 
@@ -110,11 +113,11 @@ public class Utilisateur {
         this.password = password;
     }
 
-    public java.sql.Date getLast_login() {
+    public Date getLast_login() {
         return last_login;
     }
 
-    public void setLast_login(java.sql.Date last_login) {
+    public void setLast_login(Date last_login) {
         this.last_login = last_login;
     }
 
@@ -126,11 +129,11 @@ public class Utilisateur {
         this.confirmation_token = confirmation_token;
     }
 
-    public java.sql.Date getPassword_requested_at() {
+    public Date getPassword_requested_at() {
         return password_requested_at;
     }
 
-    public void setPassword_requested_at(java.sql.Date password_requested_at) {
+    public void setPassword_requested_at(Date password_requested_at) {
         this.password_requested_at = password_requested_at;
     }
 
@@ -156,22 +159,6 @@ public class Utilisateur {
 
     public void setNumTel(String numTel) {
         this.numTel = numTel;
-    }
-
-    public String getPays() {
-        return pays;
-    }
-
-    public void setPays(String pays) {
-        this.pays = pays;
-    }
-
-    public String getVille() {
-        return ville;
-    }
-
-    public void setVille(String ville) {
-        this.ville = ville;
     }
 
     public String getImage() {
@@ -206,11 +193,11 @@ public class Utilisateur {
         this.genre = genre;
     }
 
-    public java.sql.Date getDateNaissance() {
+    public Date getDateNaissance() {
         return dateNaissance;
     }
 
-    public void setDateNaissance(java.sql.Date dateNaissance) {
+    public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 
@@ -261,14 +248,20 @@ public class Utilisateur {
     public void setYesNews(int yesNews) {
         this.yesNews = yesNews;
     }
-    
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
     
     
     public Utilisateur() {
     }
 
-    
-    public Utilisateur(int id, String username, String username_canonical, String email, String email_canonical, byte enabled, String salt, String password, java.sql.Date last_login, String confirmation_token, java.sql.Date password_requested_at, String roles, String nom, String numTel, String pays, String ville, String image, int pointXP, String prenom, String genre, java.sql.Date dateNaissance, String pageFB, String siteWeb, String description, float longitude, float latitude, int yesNews) {
+    public Utilisateur(int id, String username, String username_canonical, String email, String email_canonical, int enabled, String salt, String password, Date last_login, String confirmation_token, Date password_requested_at, String roles, String nom, String numTel, Adresse adresse, String image, int pointXP, String prenom, String genre, Date dateNaissance, String pageFB, String siteWeb, String description, float longitude, float latitude, int yesNews) {
         this.id = id;
         this.username = username;
         this.username_canonical = username_canonical;
@@ -283,8 +276,7 @@ public class Utilisateur {
         this.roles = roles;
         this.nom = nom;
         this.numTel = numTel;
-        this.pays = pays;
-        this.ville = ville;
+        this.adresse = adresse;
         this.image = image;
         this.pointXP = pointXP;
         this.prenom = prenom;
@@ -297,4 +289,13 @@ public class Utilisateur {
         this.latitude = latitude;
         this.yesNews = yesNews;
     }
+
+    @Override
+    public String toString() {
+        return "Utilisateur{" + "id=" + id + ", username=" + username + ", username_canonical=" + username_canonical + ", email=" + email + ", email_canonical=" + email_canonical + ", enabled=" + enabled + ", salt=" + salt + ", password=" + password + ", last_login=" + last_login + ", confirmation_token=" + confirmation_token + ", password_requested_at=" + password_requested_at + ", roles=" + roles + ", nom=" + nom + ", numTel=" + numTel + ", adresse=" + adresse + ", image=" + image + ", pointXP=" + pointXP + ", prenom=" + prenom + ", genre=" + genre + ", dateNaissance=" + dateNaissance + ", pageFB=" + pageFB + ", siteWeb=" + siteWeb + ", description=" + description + ", longitude=" + longitude + ", latitude=" + latitude + ", yesNews=" + yesNews + '}';
+    }
+
+    
+    
+
 }

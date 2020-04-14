@@ -13,7 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import Entities.Utilisateur;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,28 +31,97 @@ import org.mindrot.jbcrypt.BCrypt;
 public class GestionnaireUtilisateur {
 
     Connection cnx = DataSource.getInstance().getConnection();
+    
+    /** 
+   * Novant aman les ektbohom haka
+   * <p>
+   * <b> ROLE_US </b> => user simple
+   * <p>
+   * <b> ROLE_ORG </b> => organisaation
+   * <p>
+   * <b> ROLE_ENT </b> => entreprise
+   * <p>
+   * <b> ROLE_RES </b> => restaurant
+   * <p>
+   */
+    public List<Utilisateur> fetchUserByRole (String role){
+        List<Utilisateur> listP = new ArrayList<>();
+        String qSql="select "
+                + "`id`, " //1
+                + "`username`, " //2
+                + "`username_canonical`, " //3
+                + "`email`, " //4
+                + "`email_canonical`, " //5
+                + "`enabled`, " //6 
+                + "`salt`," //7 
+                + "`password`, " //8
+                + "`last_login`, " //9
+                + "`confirmation_token`, " //10
+                + "`password_requested_at`, " //11
+                + "`roles`," //12
+                + " `nom`, " //13
+                + "`numTel`, " //14
+                + "`pays`, " //15
+                + "`ville`, " //16
+                + "`image`, " //17
+                + "`pointXP`, " //18
+                + "`prenom`, " //19
+                + "`genre`," //20
+                + " `dateNaissance`, " //21
+                + "`pageFB`, " //22
+                + "`siteWeb`, " //23
+                + "`description`, " //24
+                + "`longitude`, " //25
+                + "`latitude`," //26 
+                + " `yesNews` " //27
+                + "from fos_user where roles like '%"+role+"%' ";
+                //select id,email, numTel,pays, ville, image, pointXP ,nom, prenom, genre, dateNaissance from fos_user where roles like '%ROLE_US%'
 
-    public boolean  mailMdp(String mail, String mdp){
-        String qSql = "select mdp from utilisateurs where mail='" + mail + "' Limit 1 ";
         try {
             Statement st = cnx.createStatement();
-            //pst.setString(1, mail);
-            st.executeQuery(qSql);
             ResultSet rs = st.executeQuery(qSql);
-            while (rs.next()) {
-                if(BCrypt.checkpw(mdp, rs.getString(1)))
-                    return true;
+            while(rs.next())
+            {
+                Utilisateur u=new Utilisateur();
+                u.setId(rs.getInt(1));
+                u.setUsername(rs.getString(2));
+                u.setUsername_canonical(rs.getString(3));
+                u.setEmail(rs.getString(4));
+                u.setEmail_canonical(rs.getString(5));
+                u.setEnabled(rs.getInt(6));
+                u.setPassword(rs.getString(8));
+                u.setRoles(role);
+                u.setNom(rs.getString(13));
+                u.setNumTel(rs.getString(14));
+                u.setAdresse(new Adresse(rs.getString(15), rs.getString(16)));
+                u.setImage(rs.getString(17));
+                u.setPrenom(rs.getString(19));
+                u.setGenre(rs.getString(20));
+                u.setDateNaissance(rs.getDate(21));
+                //System.out.println(rs.getString(21));
+                
+                u.setPageFB(rs.getString(22));
+                u.setSiteWeb(rs.getString(23));
+                u.setDescription(rs.getString(24));
+                u.setLatitude(rs.getFloat(25));                
+                u.setLongitude(rs.getFloat(26));
+                u.setYesNews(rs.getInt(27));
+
+                listP.add(u);
             }
-            System.out.println("U login Bravo ");
-        } 
-        catch (SQLException ex) {
-            System.out.println(ex.getErrorCode());
-            System.out.println("U login Erreur !!!");
-        }
-        return false;
+            System.out.println("User Select Bravo ");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }   
+        return listP;
     }
-    // JAVA return -1= login Mail MDP incorrect / -2=compte disabled /-3=compte non encore activer / else ID user
-    // Mysql champ val 0= disabled par admin / 1=activer /-1=non encore activer 
+    
+    
+    
+    
+    
+    
+    
     public void setImage(String img,int id){
             String qSql = "UPDATE utilisateurs SET image=? WHERE id=?";
             PreparedStatement pst = null;
@@ -68,18 +139,42 @@ public class GestionnaireUtilisateur {
             }
     }
     
+    // JAVA return -1= login Mail MDP incorrect / -2=compte disabled /-3=compte non encore activer / else ID user
+    // Mysql champ val 0= disabled par admin / 1=activer /-1=non encore activer 
+    public boolean  mailMdp(String mail, String mdp){
+        String qSql = "select password from fos_user where email='" + mail + "' Limit 1 ";
+        try {
+            Statement st = cnx.createStatement();
+            //pst.setString(1, mail);
+            st.executeQuery(qSql);
+            ResultSet rs = st.executeQuery(qSql);
+            while (rs.next()) {
+                System.out.println("*********dsds*************");
+                if(BCrypt.checkpw(mdp, rs.getString(1).replace("$2y", "$2a") ))
+                    return true;
+            }
+            System.out.println("U login Bravo ");
+        } 
+        catch (SQLException ex) {
+            System.out.println(ex.getErrorCode());
+            System.out.println("U login Erreur !!!");
+        }
+        return false;
+    }
     public int loginU(String mail, String mdp) {
         Boolean m=mailMdp(mail, mdp);
         System.out.println("**********************");
         System.out.println(m);
         if(m){
-            String qSql = "select id,mail,enabled from utilisateurs where mail='" + mail + "' Limit 1 ";
+            String qSql = "select id,email,enabled from fos_user where email='" + mail + "' Limit 1 ";
             try {
                 Statement st = cnx.createStatement();
                 //pst.setString(1, mail);
                 st.executeQuery(qSql);
                 ResultSet rs = st.executeQuery(qSql);
                 while (rs.next()) {
+                    System.out.println("******************rss****");
+                    System.out.println(rs.getInt(3));
                     if (rs.getInt(3) == 0) {
                         return -2;
                     } else if (rs.getInt(3) == -1) {
@@ -100,7 +195,7 @@ public class GestionnaireUtilisateur {
     }
 
     public boolean checkMail(String mail) {
-        String qSql = "select mail from utilisateurs where mail='" + mail + "' Limit 1 ";
+        String qSql = "select email from fos_user where email='" + mail + "' Limit 1 ";
         try {
             Statement st = cnx.createStatement();
             //pst.setString(1, mail);
@@ -118,7 +213,7 @@ public class GestionnaireUtilisateur {
     }
 
     public int getIdByMail(String mail) {
-        String qSql = "select id from utilisateurs where mail='" + mail + "' Limit 1 ";
+        String qSql = "select id from fos_user where email='" + mail + "' Limit 1 ";
         try {
             Statement st = cnx.createStatement();
             //pst.setString(1, mail);
@@ -136,7 +231,7 @@ public class GestionnaireUtilisateur {
     }
     
     public String getroleById(int id) {
-        String qSql = "select role from utilisateurs where id='" + id + "' Limit 1 ";
+        String qSql = "select roles from fos_user where id='" + id + "' Limit 1 ";
         try {
             Statement st = cnx.createStatement();
             //pst.setString(1, mail);
@@ -228,17 +323,74 @@ public class GestionnaireUtilisateur {
         return x;
     }
     
-        public Utilisateur fetchOneUS (int id){
-        Utilisateur OneU = new Utilisateur();
-        String qSql="select id,mail, nom from utilisateurs where id='"+id+"' ";
+    public Utilisateur fetchOneUS (int id){
+        Utilisateur u = new Utilisateur();
+        String qSql="select "
+                + "`id`, " //1
+                + "`username`, " //2
+                + "`username_canonical`, " //3
+                + "`email`, " //4
+                + "`email_canonical`, " //5
+                + "`enabled`, " //6 
+                + "`salt`," //7 
+                + "`password`, " //8
+                + "`last_login`, " //9
+                + "`confirmation_token`, " //10
+                + "`password_requested_at`, " //11
+                + "`roles`," //12
+                + " `nom`, " //13
+                + "`numTel`, " //14
+                + "`pays`, " //15
+                + "`ville`, " //16
+                + "`image`, " //17
+                + "`pointXP`, " //18
+                + "`prenom`, " //19
+                + "`genre`," //20
+                + " `dateNaissance`, " //21
+                + "`pageFB`, " //22
+                + "`siteWeb`, " //23
+                + "`description`, " //24
+                + "`longitude`, " //25
+                + "`latitude`," //26 
+                + " `yesNews` " //27
+                + "from fos_user where id='"+id+"' ";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(qSql);
             while(rs.next())
             {
-                OneU.setId(rs.getInt(1));
-                OneU.setEmail(rs.getString(2));
-                OneU.setNom(rs.getString(3));
+                u.setId(rs.getInt(1));
+                u.setUsername(rs.getString(2));
+                u.setUsername_canonical(rs.getString(3));
+                u.setEmail(rs.getString(4));
+                u.setEmail_canonical(rs.getString(5));
+                u.setEnabled(rs.getInt(6));
+                u.setPassword(rs.getString(8));
+
+                if(rs.getString(12).contains("US")) 
+                    u.setRoles("ROLE_US");
+                else if(rs.getString(12).contains("ORG")) 
+                    u.setRoles("ROLE_ORG");
+                else if(rs.getString(12).contains("RES")) 
+                    u.setRoles("ROLE_RES");
+                else if(rs.getString(12).contains("ENT")) 
+                    u.setRoles("ROLE_ENT");
+                
+                u.setNom(rs.getString(13));
+                u.setNumTel(rs.getString(14));
+                u.setAdresse(new Adresse(rs.getString(15), rs.getString(16)));
+                u.setImage(rs.getString(17));
+                u.setPrenom(rs.getString(19));
+                u.setGenre(rs.getString(20));
+                u.setDateNaissance(rs.getDate(21));
+                //System.out.println(rs.getString(21));
+                
+                u.setPageFB(rs.getString(22));
+                u.setSiteWeb(rs.getString(23));
+                u.setDescription(rs.getString(24));
+                u.setLatitude(rs.getFloat(25));                
+                u.setLongitude(rs.getFloat(26));
+                u.setYesNews(rs.getInt(27));
                 
                 //us.setDateNaissance(rs.getDate(12));
                 
@@ -247,7 +399,7 @@ public class GestionnaireUtilisateur {
         } catch (SQLException ex) {
             System.out.println("One U Select Erreur !!!");
         }   
-        return OneU;
+        return u;
     }
     
     public boolean pointXp(int id, float montant) {

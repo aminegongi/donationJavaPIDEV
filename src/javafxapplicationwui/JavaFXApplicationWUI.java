@@ -9,9 +9,11 @@ import Entities.*;
 import Services.*;
 import Utils.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -97,16 +99,12 @@ public class JavaFXApplicationWUI extends Application {
         }
           */
         
+        // El 5edma graphique
         
         //Graphique UI login Inscri + Activation
         
         Parent root = FXMLLoader.load(getClass().getResource("/views/UiLogin.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("/views/gestionemploiscategorie.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("/views/DashbordAdmin.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("/views/DashbordAdmin_NewsletterFXML.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("/views/afficherPublicite.fxml"));
-        //Parent root = FXMLLoader.load(getClass().getResource("/views/DashbordAdmin_Cagnotte.fxml"));
-
+        
         Scene scene = new Scene(root);
         Image image =new Image(getClass().getResourceAsStream("/images/Novant logo.png"));
         stage.getIcons().add(image);
@@ -114,20 +112,27 @@ public class JavaFXApplicationWUI extends Application {
         stage.setResizable(false); // taille fixe
 
          
-         /*stage.initStyle(StageStyle.UTILITY);
-         root.setOnMousePressed((MouseEvent event)-> {
-             xOffset = event.getSceneX();
-             yOffset = event.getSceneY();
-         });
-         
-         root.setOnMouseDragged((MouseEvent event)-> {
-             stage.setX(event.getSceneX()-xOffset);
-             stage.setY(event.getSceneY()-xOffset);
-         });*/
+//         stage.initStyle(StageStyle.UTILITY);
+//         root.setOnMousePressed((MouseEvent event)-> {
+//             xOffset = event.getSceneX();
+//             yOffset = event.getSceneY();
+//         });
+//         
+//         root.setOnMouseDragged((MouseEvent event)-> {
+//             stage.setX(event.getSceneX()-xOffset);
+//             stage.setY(event.getSceneY()-xOffset);
+//         });
          
          stage.setScene(scene);
          stage.show();
          
+        
+       
+        //GestionnaireUtilisateur gu = new GestionnaireUtilisateur();
+        //List<Utilisateur> uu = new ArrayList<>();
+        //uu = gu.fetchUserByRole("ROLE_US");
+        //int ii = gu.loginU("admin@donation.tn", "1231");
+
          //Utilisateur u = new Utilisateur("amine.gongi@esprit.tn", "aa", "ccc", "ddd");
          //GestionnaireUtilisateur g = new GestionnaireUtilisateur();
          //g.sendMail(u);
