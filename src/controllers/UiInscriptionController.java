@@ -67,8 +67,8 @@ public class UiInscriptionController implements Initializable {
     private JFXButton btInscri;
 
     //User 
-    JFXTextField tfNom = new JFXTextField();
-    Label ErrNom = new Label("Nom doit étre supérieur à 2 caractéres");
+    JFXTextField tfUsername = new JFXTextField();
+    Label ErrUsername = new Label("Username doit étre supérieur à 2 caractéres");
     JFXTextField tfMail = new JFXTextField();
     Label ErrMail = new Label("Mail Existant ou format erroné");
     JFXTextField tfTel = new JFXTextField();
@@ -84,6 +84,8 @@ public class UiInscriptionController implements Initializable {
     Label ErrVille = new Label("Champ Obligatoire ! ");
 
     //US
+    JFXTextField tfNom = new JFXTextField();
+    Label ErrNom = new Label("Nom doit étre supérieur à 2 caractéres");
     JFXTextField tfPrenom = new JFXTextField();
     Label ErrPnom = new Label("Prénom doit étre supérieur à 2 caractéres");
     JFXComboBox<String> cbGenre = new JFXComboBox<>();
@@ -172,18 +174,18 @@ public class UiInscriptionController implements Initializable {
         
         VBoxInscri.setSpacing(8);
 
-        tfNom.setPromptText("Votre Nom : ");
-        tfNom.setLabelFloat(true);
-        ErrNom.setTextFill(Color.web("#FF0000"));
-        ErrNom.setVisible(false);
-        tfNom.setOnKeyReleased(new EventHandler<KeyEvent>() {
+        tfUsername.setPromptText("Votre Username : ");
+        tfUsername.setLabelFloat(true);
+        ErrUsername.setTextFill(Color.web("#FF0000"));
+        ErrUsername.setVisible(false);
+        tfUsername.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if (tfNom.getText().length() <= 2) {
-                    ErrNom.setVisible(true);
+                if (tfUsername.getText().length() <= 2) {
+                    ErrUsername.setVisible(true);
                     btInscri.setDisable(true);
                 } else {
-                    ErrNom.setVisible(false);
+                    ErrUsername.setVisible(false);
                     btInscri.setDisable(false);
                 }
             }
@@ -280,7 +282,25 @@ public class UiInscriptionController implements Initializable {
         ErrVille.setVisible(false);
 
         if (CBType.getValue().equals("Utilisateur Simple")) {
-
+            
+            tfNom.setPromptText("Votre Nom : ");
+            tfNom.setLabelFloat(true);
+            ErrNom.setTextFill(Color.web("#FF0000"));
+            ErrNom.setVisible(false);
+            
+            tfNom.setOnKeyReleased(new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent event) {
+                    if (tfNom.getText().length() <= 2) {
+                        ErrNom.setVisible(true);
+                        btInscri.setDisable(true);
+                    } else {
+                        ErrNom.setVisible(false);
+                        btInscri.setDisable(false);
+                    }
+                }
+            });
+            
             tfPrenom.setPromptText("Votre Prénom : ");
             tfPrenom.setLabelFloat(true);
 
@@ -312,7 +332,7 @@ public class UiInscriptionController implements Initializable {
 
             ErrDateN.setTextFill(Color.web("#FF0000"));
             ErrDateN.setVisible(false);
-            VBoxInscri.getChildren().addAll(tfNom, ErrNom, tfPrenom, ErrPnom, tfMail, ErrMail, tfPassword, Errpass, tfConfirmPassword, ErrConpass, tfTel , ErrTel, tfPays, ErrPays, tfVille, ErrVille, cbGenre, ErrGenre, dateP, ErrDateN);
+            VBoxInscri.getChildren().addAll(tfUsername, ErrUsername, tfNom, ErrNom, tfPrenom, ErrPnom, tfMail, ErrMail, tfPassword, Errpass, tfConfirmPassword, ErrConpass, tfTel , ErrTel, tfPays, ErrPays, tfVille, ErrVille, cbGenre, ErrGenre, dateP, ErrDateN);
         } 
         //if (CBType.getValue().equals("Organisation")) {
         else {
@@ -333,7 +353,7 @@ public class UiInscriptionController implements Initializable {
             desc.setLabelFloat(true);
             Label ErrDesc = new Label(" ");
 
-            VBoxInscri.getChildren().addAll(tfNom, ErrNom, tfMail, ErrMail, tfPassword, Errpass, tfConfirmPassword, ErrConpass, tfTel, ErrTel, tfPays, ErrPays, tfVille, ErrVille,pageFb,ErrFB ,siteWeb,ErrWeb ,numVisa,ErrVisa,desc,ErrDesc);
+            VBoxInscri.getChildren().addAll(tfUsername, ErrUsername, tfMail, ErrMail, tfPassword, Errpass, tfConfirmPassword, ErrConpass, tfTel, ErrTel, tfPays, ErrPays, tfVille, ErrVille,pageFb,ErrFB ,siteWeb,ErrWeb ,numVisa,ErrVisa,desc,ErrDesc);
         }
     }
 
@@ -397,12 +417,13 @@ public class UiInscriptionController implements Initializable {
     @FXML
     private void Inscri(ActionEvent event) {
         mailToVal=tfMail.getText();
-        /*
+        
         if (CBType.getValue().equals("Utilisateur Simple")) {
-            GestionnaireUtilisateur_Simple gus = new GestionnaireUtilisateur_Simple();
+            GestionnaireUtilisateur gus = new GestionnaireUtilisateur();
             if (!CheckBeforeInscriUS()) {
-                Utilisateur_Simple us = new Utilisateur_Simple(tfPrenom.getText(), cbGenre.getValue(), Date.valueOf(dateP.getValue()), tfMail.getText(), tfPassword.getText(), "Bsalt", idn+tfTel.getText(), new Adresse(tfPays.getText(), tfVille.getText()), "image", 0, tfNom.getText());
-
+                //Utilisateur_Simple us = new Utilisateur_Simple(tfPrenom.getText(), cbGenre.getValue(), Date.valueOf(dateP.getValue()), tfMail.getText(), tfPassword.getText(), "Bsalt", idn+tfTel.getText(), new Adresse(tfPays.getText(), tfVille.getText()), "image", 0, tfNom.getText());
+                //    public Utilisateur(String username, String email, int enabled, String password, String confirmation_token, String roles, String nom, String numTel, Adresse adresse, String image, String prenom, String genre, Date dateNaissance, int yesNews) {
+                Utilisateur us = new Utilisateur(tfUsername.getText(), tfMail.getText(), 0, tfPassword.getText(), "0101", "us", tfNom.getText(), idn+tfTel.getText(), new Adresse(tfPays.getText(), tfVille.getText()), "user.png", tfPrenom.getText(), cbGenre.getValue(), Date.valueOf(dateP.getValue()), 1);
                 int mv = -1;
                 if (rbtVerifMail.isSelected()) {
                     mv = 1;
@@ -431,7 +452,8 @@ public class UiInscriptionController implements Initializable {
                     alE.showAndWait();
                 }
             }
-        } else if (CBType.getValue().equals("Organisation")) {
+        } 
+        /*else if (CBType.getValue().equals("Organisation")) {
             GestionnaireOrganisation gOrg = new GestionnaireOrganisation();
             Organisation org = new Organisation(numVisa.getText(), pageFb.getText(), siteWeb.getText(), desc.getText(), new Float(lat), new Float(lon) ,tfMail.getText(), tfPassword.getText(), "Bsalt", idn+tfTel.getText(), new Adresse(tfPays.getText(), tfVille.getText()), "image", 0, tfNom.getText());
             int mv = -1;

@@ -117,9 +117,9 @@ public class ProfilUserController implements Initializable {
         System.out.println("*************************************************************");
         System.out.println("../../../donationLastTry/web/uploads/UserImg/" + UiLoginController.uh.getImage());
         System.out.println("***************************************************************");
-        //File file = new File("../../../donationLastTry/web/uploads/UserImg/" + UiLoginController.uh.getImage());
-        //Image i = new Image(file.toURI().toString());
-        //circleImage.setFill(new ImagePattern(i));
+        File file = new File(UiLoginController.pathToSymfonyProject+"web/uploads/UserImg/" + UiLoginController.uh.getImage());
+        Image i = new Image(file.toURI().toString());
+        circleImage.setFill(new ImagePattern(i));
         if(UiLoginController.uh.getNom() == null){
             sideName.setText(UiLoginController.uh.getUsername());
         }
@@ -127,7 +127,7 @@ public class ProfilUserController implements Initializable {
             sideName.setText(UiLoginController.uh.getNom() + " " + UiLoginController.uh.getPrenom());
         }
         
-        //sideCircle.setFill(new ImagePattern(i));
+        sideCircle.setFill(new ImagePattern(i));
 
     }
 
@@ -165,7 +165,7 @@ public class ProfilUserController implements Initializable {
 //             System.out.println("Working Directory = " +
 //              System.getProperty("user.dir"));
                 System.out.println("nomfichier" + f.getName());
-                os = new FileOutputStream(new File("./src/images/" + f.getName()));
+                os = new FileOutputStream(new File(UiLoginController.pathToSymfonyProject+"web/uploads/UserImg/"  + f.getName()));
                 byte[] buffer = new byte[1024];
                 int length;
                 while ((length = is.read(buffer)) > 0) {
@@ -178,7 +178,7 @@ public class ProfilUserController implements Initializable {
                 os.close();
             }
 
-            File file = new File("./src/images/" + f.getName());
+            File file = new File(UiLoginController.pathToSymfonyProject+"web/uploads/UserImg/"  + f.getName());
 //            System.out.println(file.toURI().toString());
             //imagePublicitePreview.setImage(new Image(file.toURI().toString()));
             //imagePublicite=f.getName() ;
@@ -209,7 +209,7 @@ public class ProfilUserController implements Initializable {
         webcamPane.setVisible(true);
         wb.open();
         String name = UUID.randomUUID().toString().substring(1, 8) + ".jpg";
-        File f = new File("src/images/" + name);
+        File f = new File(UiLoginController.pathToSymfonyProject+"web/uploads/UserImg/"  + name);
 
         try {
             ImageIO.write(wb.getImage(), "JPG", f);
@@ -249,44 +249,12 @@ public class ProfilUserController implements Initializable {
 
     @FXML
     private void saveModif(MouseEvent event) {
-        /*
-         if(role.equals("us"))
-         {
-         GestionnaireUtilisateur_Simple gus = new GestionnaireUtilisateur_Simple();
-         System.out.println(HomeFXMLController.u);
-         nom.setText(HomeFXMLController.u.getNom());
-         prenom.setText(HomeFXMLController.u.getPrenom());
-         File file = new File("./src/images/"+HomeFXMLController.u.getImage());
+        GestionnaireUtilisateur gus = new GestionnaireUtilisateur();
+         nom.setText(UiLoginController.uh.getNom());
+         prenom.setText(UiLoginController.uh.getPrenom());
+         File file = new File(UiLoginController.pathToSymfonyProject+"web/uploads/UserImg/"+UiLoginController.uh.getImage());
          Image i= new Image(file.toURI().toString());
          circleImage.setFill(new ImagePattern(i));
-         }
-         else if(role.equals("org"))
-         {
-         System.out.println(HomeFXMLController.o);
-         nom.setText(HomeFXMLController.o.getNom());
-         prenom.setVisible(false);
-         File file = new File("./src/images/"+HomeFXMLController.o.getImage());
-         Image i= new Image(file.toURI().toString());
-         circleImage.setFill(new ImagePattern(i));
-         }
-         else if(role.equals("ent"))
-         {
-         System.out.println(HomeFXMLController.e);
-         nom.setText(HomeFXMLController.e.getNom());
-         prenom.setVisible(false);
-         File file = new File("./src/images/"+HomeFXMLController.e.getImage());
-         Image i= new Image(file.toURI().toString());
-         circleImage.setFill(new ImagePattern(i));
-         }
-         else if(role.equals("resto"))
-         {
-         System.out.println(HomeFXMLController.r);
-         nom.setText(HomeFXMLController.r.getNom());
-         prenom.setVisible(false);
-         File file = new File("./src/images/"+HomeFXMLController.r.getImage());
-         Image i= new Image(file.toURI().toString());
-         circleImage.setFill(new ImagePattern(i));
-         }*/
     }
 
 }
