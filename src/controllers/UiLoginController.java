@@ -92,17 +92,16 @@ public class UiLoginController implements Initializable {
                 Logger.getLogger(UiLoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            
+
             System.out.println("OK");
             String mail = txtMail.getText();
             String mdp = txtMdp.getText();
-            Utilisateur UHC = gu.fetchOneUS(gu.getIdByMail(mail));
-            uh = UHC;
+            uh = gu.fetchOneUS(gu.getIdByMail(mail));
             System.out.println(uh);
 
-            /* Historique Mezel
-            GestionnaireHistoriqueConnexion ghc = new GestionnaireHistoriqueConnexion();
-            ghc.AjouterHC(new HistoriqueConnexion(UHC));
+            // Historique Mezel
+            //GestionnaireHistoriqueConnexion ghc = new GestionnaireHistoriqueConnexion();
+            //ghc.AjouterHC(new HistoriqueConnexion(UHC));
              try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/HomeFXML.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
@@ -111,7 +110,7 @@ public class UiLoginController implements Initializable {
                 stage.show();
             } catch(Exception e) {
                 e.printStackTrace();
-            }*/
+            }
         }
         txtMail.clear();
         txtMdp.clear();

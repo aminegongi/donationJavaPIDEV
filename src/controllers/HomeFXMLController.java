@@ -53,11 +53,8 @@ public class HomeFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         System.out.println(UiLoginController.uh.getId());
-        isUser =UiLoginController.uh.getId();
-        GestionnaireUtilisateur gu = new GestionnaireUtilisateur();
-        isUserRole=gu.getroleById(isUser);
-
- 
+        System.out.println(UiLoginController.uh.getUsername());
+        
     }    
 
     
