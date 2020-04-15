@@ -114,7 +114,9 @@ public class ProfilUserController implements Initializable {
             nom.setText(UiLoginController.uh.getNom());
             prenom.setText(UiLoginController.uh.getPrenom());
         }
-        
+        System.out.println("*************************************************************");
+        System.out.println("../../../donationLastTry/web/uploads/UserImg/" + UiLoginController.uh.getImage());
+        System.out.println("***************************************************************");
         //File file = new File("../../../donationLastTry/web/uploads/UserImg/" + UiLoginController.uh.getImage());
         //Image i = new Image(file.toURI().toString());
         //circleImage.setFill(new ImagePattern(i));

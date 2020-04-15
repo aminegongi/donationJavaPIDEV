@@ -39,7 +39,8 @@ import javafx.stage.Stage;
  * @author Amine Gongi
  */
 public class UiLoginController implements Initializable {
-    public static Utilisateur uh = null ;
+
+    public static Utilisateur uh = null;
     @FXML
     private TextField txtMail;
     @FXML
@@ -50,8 +51,9 @@ public class UiLoginController implements Initializable {
     private StackPane pane;
     @FXML
     private Label labelMail;
-    
-    public static String mailToVal; 
+
+    public static String mailToVal;
+
     /**
      * Initializes the controller class.
      */
@@ -59,23 +61,23 @@ public class UiLoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
+
     @FXML
     private void Login(ActionEvent event) {
         GestionnaireUtilisateur gu = new GestionnaireUtilisateur();
-        
-        int l = gu.loginU(txtMail.getText(),  txtMdp.getText());
+
+        int l = gu.loginU(txtMail.getText(), txtMdp.getText());
         Alert al = new Alert(Alert.AlertType.WARNING, "Compte désactiver , Call l'administrateur", ButtonType.OK);
         Alert al1 = new Alert(Alert.AlertType.WARNING, "Activer votre Compte Redirection ..", ButtonType.OK);
         Alert al2 = new Alert(Alert.AlertType.ERROR, "Invalid Mail ou Mot de Pass", ButtonType.OK);
-        
+
         System.out.println(txtMail.getText());
         System.out.println("------------");
         System.out.println(txtMdp.getText());
         System.out.println("------------");
         System.out.println(l);
         System.out.println("------------");
-        
+
         if (l == -1) {
             al2.showAndWait();
         } else if (l == -2) {
@@ -84,7 +86,7 @@ public class UiLoginController implements Initializable {
             al1.showAndWait();
             Pane newLoadedPane;
             try {
-                mailToVal=txtMail.getText();
+                mailToVal = txtMail.getText();
                 newLoadedPane = FXMLLoader.load(getClass().getResource("/views/UIActivationCompte.fxml"));
                 pane.getChildren().clear();
                 pane.getChildren().add(newLoadedPane);
@@ -102,58 +104,72 @@ public class UiLoginController implements Initializable {
             // Historique Mezel
             //GestionnaireHistoriqueConnexion ghc = new GestionnaireHistoriqueConnexion();
             //ghc.AjouterHC(new HistoriqueConnexion(UHC));
-             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/HomeFXML.fxml"));
-                Parent root1 = (Parent) fxmlLoader.load();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root1));  
-                stage.show();
-            } catch(Exception e) {
-                e.printStackTrace();
+            if (uh.getRoles().equals("admin")) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/DashbordAdmin_Users.fxml"));
+                    Parent root1 = (Parent) fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root1));
+                    stage.show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/HomeFXML.fxml"));
+                    Parent root1 = (Parent) fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root1));
+                    stage.show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
+
         }
         txtMail.clear();
         txtMdp.clear();
-        
+
     }
-    
+
     @FXML
     private void VerifMail(KeyEvent event) {
         GestionnaireUtilisateur gus = new GestionnaireUtilisateur();
         /*
-                if (gus.checkMail(txtMail.getText())) {
-            System.out.println("fezezf");
-            labelMail.setVisible(true);
-        } else {
-            labelMail.setVisible(false);
-                        System.out.println("aaaaaa");
+         if (gus.checkMail(txtMail.getText())) {
+         System.out.println("fezezf");
+         labelMail.setVisible(true);
+         } else {
+         labelMail.setVisible(false);
+         System.out.println("aaaaaa");
 
-            btnCnx.setDisable(true);
-        }
-        */
+         btnCnx.setDisable(true);
+         }
+         */
     }
+
     @FXML
     private void CreeCompte(ActionEvent event) {
         Pane newLoadedPane;
-            try {
-                newLoadedPane = FXMLLoader.load(getClass().getResource("/views/UiInscription.fxml"));
-                pane.getChildren().clear();
-                pane.getChildren().add(newLoadedPane);
-            } catch (IOException ex) {
-                Logger.getLogger(UiLoginController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            newLoadedPane = FXMLLoader.load(getClass().getResource("/views/UiInscription.fxml"));
+            pane.getChildren().clear();
+            pane.getChildren().add(newLoadedPane);
+        } catch (IOException ex) {
+            Logger.getLogger(UiLoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+
     @FXML
     private void goBackAdmin(MouseEvent event) {
         Pane newLoadedPane;
-            try {
-                newLoadedPane = FXMLLoader.load(getClass().getResource("/views/AdminLogin.fxml"));
-                pane.getChildren().clear();
-                pane.getChildren().add(newLoadedPane);
-            } catch (IOException ex) {
-                Logger.getLogger(UiLoginController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            newLoadedPane = FXMLLoader.load(getClass().getResource("/views/AdminLogin.fxml"));
+            pane.getChildren().clear();
+            pane.getChildren().add(newLoadedPane);
+        } catch (IOException ex) {
+            Logger.getLogger(UiLoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+
 }
