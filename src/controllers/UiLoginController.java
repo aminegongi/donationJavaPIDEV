@@ -41,6 +41,7 @@ import javafx.stage.Stage;
 public class UiLoginController implements Initializable {
 
     public static Utilisateur uh = null;
+    public static String pathToSymfonyProject="./../../donationWebPIDEV/";
     @FXML
     private TextField txtMail;
     @FXML
