@@ -224,7 +224,8 @@ public class GestionRestauOrgController implements Initializable {
         list =ps.getAlea();
 //        titrePub1.setText(list.get(0).getTitre());
         idPub1.setText(Integer.toString(list.get(0).getId()));
-        File file = new File("./src/images/"+list.get(0).getImage());
+//        File file = new File("./src/images/"+list.get(0).getImage());
+        File file = new File("./../../donationWebPIDEV/web/uploads/imagesPubs/"+list.get(0).getImage());
         pubImage1.setImage(new Image(file.toURI().toString()));
         descriptionPub1 = list.get(0).getDescription();
        
@@ -320,7 +321,7 @@ public class GestionRestauOrgController implements Initializable {
                 GestionnaireUtilisateur go2 = new GestionnaireUtilisateur();
                 Utilisateur org2= go2.fetchOneUS(listX.get(i).getAjoutePar());
                 
-                File file3 = new File("./src/images/"+org2.getImage());
+                File file3 = new File("./../../donationWebPIDEV/web/uploads/UserImg/"+org2.getImage());
                 
                 c.setFill(new ImagePattern(new Image(new FileInputStream(file3))));
             } catch (FileNotFoundException ex) {
