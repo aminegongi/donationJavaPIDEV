@@ -14,8 +14,10 @@ import Entities.OffreDon;
 import Entities.PublicationDon;
 import Entities.PubliciteRegion;
 import Entities.Publicité;
+import Entities.Utilisateur;
 //import Entities.Restaurant;
 import Services.AppelAuDonService;
+import Services.GestionnaireUtilisateur;
 //import Services.GestionnaireOrganisation;
 //import Services.GestionnaireRestaurant;
 import Services.OffreDonService;
@@ -149,21 +151,22 @@ public class GestionRestauOrgController implements Initializable {
                    idPub1.setVisible(false);
                    
                    
-                    roleUser = HomeFXMLController.isUserRole; 
+                    //roleUser = HomeFXMLController.isUserRole; 
+                    roleUser=UiLoginController.uh.getRoles();
                     System.out.println("roleeeeeee"+roleUser);
          idUserConnecte = UiLoginController.uh.getId(); // met 11 (user= oragnisation)
        
        ajouterStackPane1.setVisible(false);
         
-        //affichage();
-        if(roleUser.equals("org")){
+        affichage();
+        if(roleUser.equals("ROLE_ORG")){
             ajouterOfrreDemandeLabel.setText("Appel au don");
             titreInput.setVisible(true);
             descpritionInput.setVisible(true);
             nbrePlatInput.setVisible(true);
             ajouterPublicationDon.setVisible(true);
         }
-        else if(roleUser.equals("resto")){
+        else if(roleUser.equals("ROLE_RES")){
         ajouterOfrreDemandeLabel.setText("Offre Don");
             titreInput.setVisible(true);
             descpritionInput.setVisible(true);
@@ -246,7 +249,7 @@ public class GestionRestauOrgController implements Initializable {
             alert.showAndWait();
             
         }else{
-        if(roleUser.equals("org") ){
+        if(roleUser.equals("ROLE_ORG") ){
             if(nbrePlatInput.getText().matches("[0-9]*") && nbrePlatInput.getText().length()<3 && nbrePlatInput.getText().length()>=1){
             AppelAuDon ap = new AppelAuDon(titreInput.getText(), descpritionInput.getText(), sdf.format(date),0,idUserConnecte,Integer.parseInt(nbrePlatInput.getText()),1 );
             AppelAuDonService aps = new AppelAuDonService();
@@ -259,7 +262,7 @@ public class GestionRestauOrgController implements Initializable {
             alert.showAndWait();
             }
         }
-        else if(roleUser.equals("resto"))
+        else if(roleUser.equals("ROLE_RES"))
         {   
             OffreDon of = new OffreDon(titreInput.getText(), descpritionInput.getText(), sdf.format(date), 0,idUserConnecte, 1);
             
@@ -271,10 +274,10 @@ public class GestionRestauOrgController implements Initializable {
             FlowPanePublications.getChildren().remove(0, FlowPanePublications.getChildren().size());
         
         
-        //affichage();
+        affichage();
         }
     }
-/*
+
      private void affichage() {
           FlowPanePublications.getChildren().remove(0, FlowPanePublications.getChildren().size());
            List<OffreDon> list;
@@ -288,9 +291,9 @@ public class GestionRestauOrgController implements Initializable {
         listX.addAll(list);
         listX.addAll(list2);
         listX.sort((PublicationDon p1 , PublicationDon p2)->p2.getDatePublicaton().compareToIgnoreCase(p1.getDatePublicaton()));
-//        System.out.println("taille listX"+ listX.size());
+        System.out.println("taille listX"+ listX.size());
          for(int i=0 ; i<listX.size();i++){
-             
+             System.out.println(listX.get(i));
              int etat; 
              if(listX.get(i).getClass()==OffreDon.class){
              OffreDon of = (OffreDon) listX.get(i); 
@@ -314,8 +317,8 @@ public class GestionRestauOrgController implements Initializable {
             Circle c = new Circle(25);
             if (listX.get(i).getClass()==AppelAuDon.class){
             try {
-                //GestionnaireOrganisation go2 = new GestionnaireOrganisation();
-                //Organisation org2= go2.fetchOneOrg(listX.get(i).getAjoutePar());
+                GestionnaireUtilisateur go2 = new GestionnaireUtilisateur();
+                Utilisateur org2= go2.fetchOneUS(listX.get(i).getAjoutePar());
                 
                 File file3 = new File("./src/images/"+org2.getImage());
                 
@@ -327,8 +330,8 @@ public class GestionRestauOrgController implements Initializable {
             }
             else if (listX.get(i).getClass()==OffreDon.class){
             try {
-                GestionnaireRestaurant gr2 = new GestionnaireRestaurant();
-                Restaurant res2= gr2.fetchOneResto(listX.get(i).getAjoutePar());
+                GestionnaireUtilisateur gr2 = new GestionnaireUtilisateur();
+                Utilisateur res2= gr2.fetchOneUS(listX.get(i).getAjoutePar());
                 
                 File file3 = new File("./src/images/"+res2.getImage());
                 
@@ -371,8 +374,8 @@ public class GestionRestauOrgController implements Initializable {
         });
             if (listX.get(i).getClass()==AppelAuDon.class){
                 System.out.println("appelAuDon");
-                GestionnaireOrganisation go = new GestionnaireOrganisation();
-                Organisation org= go.fetchOneOrg(listX.get(i).getAjoutePar());
+                GestionnaireUtilisateur go = new GestionnaireUtilisateur();
+                Utilisateur org= go.fetchOneUS(listX.get(i).getAjoutePar());
                 phone.setText(org.getNumTel()) ;
                 userName.setText("@"+org.getNom());
                 roleName.setText("*"+"Organisation");
@@ -382,8 +385,8 @@ public class GestionRestauOrgController implements Initializable {
                      
             else if(listX.get(i).getClass()==OffreDon.class){
                                      System.out.println("oofreDon");
-                GestionnaireRestaurant gr  = new GestionnaireRestaurant();
-                Restaurant resto =  gr.fetchOneResto(listX.get(i).getAjoutePar());
+                GestionnaireUtilisateur gr  = new GestionnaireUtilisateur();
+                Utilisateur resto =  gr.fetchOneUS(listX.get(i).getAjoutePar());
                 phone.setText(resto.getNumTel()) ;
                 userName.setText("@"+resto.getNom());
                 roleName.setText("*"+"Restaurant");
@@ -510,7 +513,7 @@ public class GestionRestauOrgController implements Initializable {
         
         
     }
-*/
+
     @FXML
     private void transtitionPublicite(MouseEvent event) { 
   trans.play(); 
