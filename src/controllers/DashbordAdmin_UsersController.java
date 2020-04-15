@@ -119,6 +119,14 @@ public class DashbordAdmin_UsersController implements Initializable {
         });
         
         HashMap<String, Integer> hm = gu.nbCompteparInscri();
+        int j=13;
+        for (int i=0;i<14;i++){
+            hm.put(j+"-04-2020", i);
+            if(i==3) j++;
+            else if(i==5) j++;
+            else if( i==7) j++;
+            else if( i==10) j++;
+        }
         System.out.println(hm);
         XYChart.Series series = new XYChart.Series();
         series.setName("Nombre Inscription par Jour");

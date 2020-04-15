@@ -375,6 +375,8 @@ public class GestionnaireUtilisateur {
                     u.setRoles("ROLE_RES");
                 else if(rs.getString(12).contains("ENT")) 
                     u.setRoles("ROLE_ENT");
+                else if(rs.getString(12).contains("ADMIN")) 
+                    u.setRoles("admin");
                 
                 u.setNom(rs.getString(13));
                 u.setNumTel(rs.getString(14));
@@ -430,12 +432,20 @@ public class GestionnaireUtilisateur {
     //SELECT count(*) FROM `utilisateurs` GROUP BY role
     public HashMap<String, Integer> nbCompteRole() {
         HashMap<String, Integer> hm = new HashMap<>();
-        String qSql = "SELECT role,count(*) FROM `utilisateurs` GROUP BY role";
+        String qSql = "SELECT roles,count(*) FROM `fos_user` GROUP BY roles";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(qSql);
             while (rs.next()) {
-                hm.put(rs.getString(1), rs.getInt(2));
+                if(rs.getString(1).contains("US")) 
+                    hm.put("us", rs.getInt(2));
+                else if(rs.getString(1).contains("ORG")) 
+                    hm.put("org", rs.getInt(2));
+                else if(rs.getString(1).contains("RES")) 
+                    hm.put("resto", rs.getInt(2));
+                else if(rs.getString(1).contains("ENT")) 
+                    hm.put("ent", rs.getInt(2));
+                
             }
         } catch (SQLException ex) {
         }

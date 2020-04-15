@@ -7,6 +7,8 @@ package controllers;
 
 //import Entities.Utilisateur_Simple;
 //import Services.GestionnaireUtilisateur_Simple;
+import Entities.Utilisateur;
+import Services.GestionnaireUtilisateur;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -102,11 +104,11 @@ public class DashbordAdmin_Users_USController implements Initializable {
         labelDProfil.setVisible(true);
         //affichageUS();
     }
-/*
-    private void affichageUS() {
-        GestionnaireUtilisateur_Simple gUs = new GestionnaireUtilisateur_Simple();
 
-        ArrayList<Utilisateur_Simple> listUs = (ArrayList<Utilisateur_Simple>) gUs.fetchUS();
+    private void affichageUS() {
+        GestionnaireUtilisateur gUs = new GestionnaireUtilisateur();
+
+        ArrayList<Utilisateur> listUs = (ArrayList<Utilisateur>) gUs.fetchUserByRole("ROLE_US");
         ArrayList<Separator> as = new ArrayList<>();
         ArrayList<VBox> vbx = new ArrayList<>();
 
@@ -139,7 +141,7 @@ public class DashbordAdmin_Users_USController implements Initializable {
 
             Label nom = new Label("Nom : " + listUs.get(i).getNom());
             Label prenom = new Label("Prénom: " + listUs.get(i).getPrenom());
-            Label mail = new Label("Mail: " + listUs.get(i).getMail());
+            Label mail = new Label("Mail: " + listUs.get(i).getEmail());
             Label etat = new Label();
             Label adresse = new Label("Adresse: " + listUs.get(i).getAdresse().getVille() + "," + listUs.get(i).getAdresse().getPays());
 
@@ -180,7 +182,7 @@ public class DashbordAdmin_Users_USController implements Initializable {
                         imgDProfil.setVisible(true);
                         
                         System.out.println("Voir Profil " + id);
-                        Utilisateur_Simple uProfil = null;
+                        Utilisateur uProfil = null;
                         uProfil = gUs.fetchOneUS(id);
                         String imgDP = uProfil.getImage(); 
                         try {
@@ -190,13 +192,13 @@ public class DashbordAdmin_Users_USController implements Initializable {
                         }
                         
                         Label np = new Label(uProfil.getNom()+" "+uProfil.getPrenom());
-                        Label Mail = new Label(uProfil.getMail());
+                        Label Mail = new Label(uProfil.getEmail());
                         Label tel = new Label(uProfil.getNumTel());
                         Label adresse = new Label(uProfil.getAdresse().getPays()+", "+uProfil.getAdresse().getVille());
                         Label genre = new Label(uProfil.getGenre());
                         //Label pointxp = new Label(uProfil.getPointXP()+"");
                         Label dateNaissance = new Label(uProfil.getDateNaissance().toString());
-                        Label dateInscri = new Label(uProfil.getDateInscription().toString());
+                        Label dateInscri = new Label("No Date");
                         Font f = new Font(16);
                         np.setTextFill(Color.web("white"));
                         np.setFont(f); 
@@ -277,7 +279,7 @@ public class DashbordAdmin_Users_USController implements Initializable {
             }
         }
     }
-*/
+
     @FXML
     private void goToProfile(MouseEvent event) {
     }
