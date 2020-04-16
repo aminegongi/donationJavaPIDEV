@@ -136,6 +136,7 @@ public class GestionnaireUtilisateur {
             pst.setString(6, mCrypt);
             
             String confirmation_token = UUID.randomUUID().toString().substring(1, 6);
+            us.setConfirmation_token(confirmation_token);
             pst.setString(7,confirmation_token);
             
             pst.setString(8, role);
