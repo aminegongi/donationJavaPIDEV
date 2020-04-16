@@ -334,7 +334,7 @@ public class GestionRestauOrgController implements Initializable {
                 GestionnaireUtilisateur gr2 = new GestionnaireUtilisateur();
                 Utilisateur res2= gr2.fetchOneUS(listX.get(i).getAjoutePar());
                 
-                File file3 = new File("./src/images/"+res2.getImage());
+                File file3 = new File(UiLoginController.pathToSymfonyProject+"web/uploads/UserImg/"+res2.getImage());
                 
                 c.setFill(new ImagePattern(new Image(new FileInputStream(file3))));
             } catch (FileNotFoundException ex) {
@@ -378,7 +378,7 @@ public class GestionRestauOrgController implements Initializable {
                 GestionnaireUtilisateur go = new GestionnaireUtilisateur();
                 Utilisateur org= go.fetchOneUS(listX.get(i).getAjoutePar());
                 phone.setText(org.getNumTel()) ;
-                userName.setText("@"+org.getNom());
+                userName.setText("@"+org.getUsername());
                 roleName.setText("*"+"Organisation");
                 // ici mettre image utilisateur dans la cercle 
                 
@@ -389,7 +389,7 @@ public class GestionRestauOrgController implements Initializable {
                 GestionnaireUtilisateur gr  = new GestionnaireUtilisateur();
                 Utilisateur resto =  gr.fetchOneUS(listX.get(i).getAjoutePar());
                 phone.setText(resto.getNumTel()) ;
-                userName.setText("@"+resto.getNom());
+                userName.setText("@"+resto.getUsername());
                 roleName.setText("*"+"Restaurant");
             }
 
