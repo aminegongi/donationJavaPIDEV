@@ -154,14 +154,14 @@ public class GestionnaireUtilisateur {
             
             pst.executeUpdate();
             System.out.println("US ADD Bravo ");
-            /*
+            
             if(st==1)
                 sendMail(us);
             if(st==2)
                 sendSMS(us);
             if(st==3)
                 sendPhoneCall(us);
-            */
+            
             return 1;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -171,8 +171,68 @@ public class GestionnaireUtilisateur {
         return 0;
     }
     
-    public void Inscrireb9iya(Utilisateur u,int st){
+    public int Inscrireb9iya(Utilisateur us,int st , String tRo){
+        String qSql = "INSERT INTO fos_user"
+                + "(`username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `password`, `confirmation_token`, `roles`, `numTel`, `pays`, `ville`, `image`,"
+                + " `pageFB`, `siteWeb`, `description`, `longitude`, `latitude`, `yesNews`) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement pst = null;
+        String role="";
+        if(tRo.equals("Organisation"))
+            role="a:1:{i:0;s:8:\"ROLE_ORG\";}";
+        else if (tRo.equals("Restaurant"))
+            role="a:1:{i:0;s:8:\"ROLE_RES\";}";
+        else if (tRo.equals("Entreprise"))
+            role="a:1:{i:0;s:8:\"ROLE_ENT\";}";
         
+        try {
+            pst = cnx.prepareStatement(qSql);
+            
+            pst.setString(1, us.getUsername());
+            pst.setString(2, us.getUsername().toLowerCase());
+            pst.setString(3, us.getEmail());
+            pst.setString(4, us.getEmail().toLowerCase());
+            pst.setInt(5, -1);
+            String mCrypt = BCrypt.hashpw(us.getPassword(), BCrypt.gensalt(13)).replace("$2a", "$2y")  ;
+            pst.setString(6, mCrypt);
+            
+            String confirmation_token = UUID.randomUUID().toString().substring(1, 6);
+            us.setConfirmation_token(confirmation_token);
+            pst.setString(7,confirmation_token);
+            
+            pst.setString(8, role);
+            
+            pst.setString(9, us.getNumTel());
+            
+            pst.setString(10, us.getAdresse().getPays());
+            pst.setString(11, us.getAdresse().getVille());
+            
+            pst.setString(12, "user.png");
+            
+            pst.setString(13, us.getPageFB());
+            pst.setString(14, us.getSiteWeb());
+            pst.setString(15, us.getDescription());
+            pst.setFloat(16, us.getLongitude());
+            pst.setFloat(17, us.getLatitude());
+            pst.setInt(18, 1);
+            
+            
+            pst.executeUpdate();
+            System.out.println("US ADD Bravo ");
+            
+            if(st==1)
+                sendMail(us);
+            if(st==2)
+                sendSMS(us);
+            if(st==3)
+                sendPhoneCall(us);
+            
+            return 1;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("US Add Erreur !!!");
+        }
+        return 0;
     }
     
     
@@ -604,7 +664,7 @@ public class GestionnaireUtilisateur {
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(user.getNumTel()+"@sms.clicksend.com"));
         message.setSubject("Donation");
         
-        String htmlCode = "<h1> Hi "+user.getNom()+" <br/>Merci </h1> <br/> <b>votre code de confirmation :" + user.getConfirmation_token() + "</b>";
+        String htmlCode = "<h1> Hi "+user.getUsername()+" <br/>Merci </h1> <br/> <b>votre code de confirmation :" + user.getConfirmation_token() + "</b>";
         
             
             

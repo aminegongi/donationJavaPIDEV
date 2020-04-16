@@ -225,7 +225,7 @@ public class Utilisateur {
         this.description = description;
     }
 
-    public double getLongitude() {
+    public float getLongitude() {
         return longitude;
     }
 
@@ -233,7 +233,7 @@ public class Utilisateur {
         this.longitude = longitude;
     }
 
-    public double getLatitude() {
+    public float getLatitude() {
         return latitude;
     }
 
@@ -304,6 +304,26 @@ public class Utilisateur {
         this.prenom = prenom;
         this.genre = genre;
         this.dateNaissance = dateNaissance;
+        this.yesNews = yesNews;
+    }
+
+    public Utilisateur(String username, String email, int enabled, String password, String confirmation_token, String roles, String numTel, Adresse adresse, String image, String pageFB, String siteWeb, String description, float longitude, float latitude, int yesNews) {
+        this.username = username;
+        this.username_canonical = username_canonical;
+        this.email = email;
+        this.email_canonical = email_canonical;
+        this.enabled = enabled;
+        this.password = password;
+        this.confirmation_token = confirmation_token;
+        this.roles = roles;
+        this.numTel = numTel;
+        this.adresse = adresse;
+        this.image = image;
+        this.pageFB = pageFB;
+        this.siteWeb = siteWeb;
+        this.description = description;
+        this.longitude = longitude;
+        this.latitude = latitude;
         this.yesNews = yesNews;
     }
     
