@@ -431,7 +431,9 @@ public class GestionRestauOrgController implements Initializable {
                 description.setText(listX.get(i).getDescription());
                
                 vbox1.getChildren().add(titre);
-                vbox1.getChildren().add(description);
+                Label khouth = new Label("Pour plus d'informations consulter notre siteweb www.Donation.tn en accédant à la plateforme Restaurant & Organisation .");
+                //khouth.getStyleClass().add("textLong");
+                vbox1.getChildren().add(khouth);
                 Label dateAj = new Label("Publié le: "+listX.get(i).getDatePublicaton());
                 hbox2.getChildren().add(dateAj);
                 HBox hbox3 = new HBox();
