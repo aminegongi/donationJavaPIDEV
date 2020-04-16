@@ -318,7 +318,7 @@ public class AfficherPubliciteController implements Initializable {
             alert.showAndWait();
         }
         else{
-         DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+         DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
          Date date = new Date();
         
         Publicité p = new Publicité(TitrePublicite.getText(), descriptionPublicite.getText(),marquePublicite.getText() ,sdf.format(date) , imagePublicite);
@@ -355,7 +355,7 @@ public class AfficherPubliciteController implements Initializable {
 //             System.out.println("Working Directory = " +
 //              System.getProperty("user.dir"));
 //            System.out.println("nomfichier"+f.getName());
-            os = new FileOutputStream(new File("./src/images/"+f.getName()));
+            os = new FileOutputStream(new File(UiLoginController.pathToSymfonyProject+"web/uploads/imagesPubs/"+f.getName()));
             byte[] buffer = new byte[1024];
             int length;
             while ((length = is.read(buffer)) > 0) {
@@ -369,7 +369,7 @@ public class AfficherPubliciteController implements Initializable {
             os.close();
         }
            
-            File file = new File("./src/images/"+f.getName());
+            File file = new File(UiLoginController.pathToSymfonyProject+"web/uploads/imagesPubs/"+f.getName());
 //            System.out.println(file.toURI().toString());
         imagePublicitePreview.setImage(new Image(file.toURI().toString()));
         imagePublicite=f.getName() ; 
