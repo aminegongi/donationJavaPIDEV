@@ -67,8 +67,8 @@ public class UiInscriptionController implements Initializable {
     private JFXButton btInscri;
 
     //User 
-    JFXTextField tfNom = new JFXTextField();
-    Label ErrNom = new Label("Nom doit étre supérieur à 2 caractéres");
+    JFXTextField tfUsername = new JFXTextField();
+    Label ErrUsername = new Label("Username doit étre supérieur à 2 caractéres");
     JFXTextField tfMail = new JFXTextField();
     Label ErrMail = new Label("Mail Existant ou format erroné");
     JFXTextField tfTel = new JFXTextField();
@@ -78,26 +78,27 @@ public class UiInscriptionController implements Initializable {
     JFXPasswordField tfConfirmPassword = new JFXPasswordField();
     Label ErrConpass = new Label("Mot de passe non identique ");
     //JFXComboBox<String> cbPays = new JFXComboBox<>();
-    JFXTextField tfPays = new JFXTextField();    
+    JFXTextField tfPays = new JFXTextField();
     Label ErrPays = new Label("Champ Obligatoire ! ");
     JFXTextField tfVille = new JFXTextField();
     Label ErrVille = new Label("Champ Obligatoire ! ");
 
     //US
+    JFXTextField tfNom = new JFXTextField();
+    Label ErrNom = new Label("Nom doit étre supérieur à 2 caractéres");
     JFXTextField tfPrenom = new JFXTextField();
     Label ErrPnom = new Label("Prénom doit étre supérieur à 2 caractéres");
     JFXComboBox<String> cbGenre = new JFXComboBox<>();
     Label ErrGenre = new Label("Champ Obligatoire ! ");
     JFXDatePicker dateP = new JFXDatePicker();
     Label ErrDateN = new Label("Champ Obligatoire ! ");
-    
+
     //Organisation
     JFXTextArea desc = new JFXTextArea();
     JFXTextField numVisa = new JFXTextField();
     JFXTextField siteWeb = new JFXTextField();
     JFXTextField pageFb = new JFXTextField();
-    
-    
+
     @FXML
     private StackPane stackInscri;
     @FXML
@@ -112,15 +113,16 @@ public class UiInscriptionController implements Initializable {
     private RadioButton rbtVerifSMS;
     @FXML
     private RadioButton rbtVerifPhone;
-    
-    String AIP=null;
+
+    String AIP = null;
     String pays;
-    String region; 
+    String region;
     String idn;
     String lon;
     String lat;
-    
-    public static String mailToVal; 
+
+    public static String mailToVal;
+
     /**
      * Initializes the controller class.
      */
@@ -129,61 +131,57 @@ public class UiInscriptionController implements Initializable {
         // TODO
         //Load Country
         //cbPays.getItems
-        try
-        { 
+        try {
             URL url_name = new URL("http://checkip.amazonaws.com/"); // wala  http://bot.whatismyipaddress.com
-            BufferedReader bf = new BufferedReader(new InputStreamReader(url_name.openStream())); 
-            AIP = bf.readLine().trim(); 
-        } 
-        catch (Exception e) 
-        { 
-            AIP = "IP Prob" ;
-        } 
-        
-         JSONObject json = null;
-         try {
-         json = readJsonFromUrl("https://api.ipgeolocation.io/ipgeo?apiKey=f2d99b10637d4a90b8084db4c8a9dc15&ip="+AIP);
-         } catch (IOException ex) {
-         System.out.println("ezfzezfzfzz");
-         } catch (JSONException ex) {
-         System.out.println("ezfzezfzfzz");
-         }
-         
+            BufferedReader bf = new BufferedReader(new InputStreamReader(url_name.openStream()));
+            AIP = bf.readLine().trim();
+        } catch (Exception e) {
+            AIP = "IP Prob";
+        }
+
+        JSONObject json = null;
+        try {
+            json = readJsonFromUrl("https://api.ipgeolocation.io/ipgeo?apiKey=f2d99b10637d4a90b8084db4c8a9dc15&ip=" + AIP);
+        } catch (IOException ex) {
+            System.out.println("ezfzezfzfzz");
+        } catch (JSONException ex) {
+            System.out.println("ezfzezfzfzz");
+        }
+
          //ystem.out.println(json.toString());
-         //System.out.println(json.get("country_name"));
-         pays =json.get("country_name").toString();
-         region=json.get("city").toString();
-         idn = json.get("calling_code").toString();
-         lat= json.get("latitude").toString();
-         lon =json.get("longitude").toString();
-         
-         
+        //System.out.println(json.get("country_name"));
+        pays = json.get("country_name").toString();
+        region = json.get("city").toString();
+        idn = json.get("calling_code").toString();
+        lat = json.get("latitude").toString();
+        lon = json.get("longitude").toString();
+
         //System.out.println(json.get("name"));
         CBType.getItems().addAll("Utilisateur Simple", "Organisation", "Restaurant", "Entreprise");
-        
+
         tfVille.setText(region);
-        
+
         //CBType.getItems().add("Entreprise");
     }
 
     @FXML
     private void choixType(ActionEvent event) {
         VBoxInscri.getChildren().clear();
-        
+
         VBoxInscri.setSpacing(8);
 
-        tfNom.setPromptText("Votre Nom : ");
-        tfNom.setLabelFloat(true);
-        ErrNom.setTextFill(Color.web("#FF0000"));
-        ErrNom.setVisible(false);
-        tfNom.setOnKeyReleased(new EventHandler<KeyEvent>() {
+        tfUsername.setPromptText("Votre Username : ");
+        tfUsername.setLabelFloat(true);
+        ErrUsername.setTextFill(Color.web("#FF0000"));
+        ErrUsername.setVisible(false);
+        tfUsername.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if (tfNom.getText().length() <= 2) {
-                    ErrNom.setVisible(true);
+                if (tfUsername.getText().length() <= 2) {
+                    ErrUsername.setVisible(true);
                     btInscri.setDisable(true);
                 } else {
-                    ErrNom.setVisible(false);
+                    ErrUsername.setVisible(false);
                     btInscri.setDisable(false);
                 }
             }
@@ -196,7 +194,7 @@ public class UiInscriptionController implements Initializable {
         tfMail.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if (gUser.checkMail(tfMail.getText()) ) {
+                if (gUser.checkMail(tfMail.getText())) {
                     btInscri.setDisable(true);
                     ErrMail.setVisible(true);
                 } else {
@@ -243,7 +241,7 @@ public class UiInscriptionController implements Initializable {
             }
         });
 
-        tfTel.setPromptText("Votre Téléphone (Sans IDN pays): "+idn);
+        tfTel.setPromptText("Votre Téléphone (Sans IDN pays): " + idn);
         tfTel.setLabelFloat(true);
 
         ErrTel.setTextFill(Color.web("#FF0000"));
@@ -281,6 +279,24 @@ public class UiInscriptionController implements Initializable {
 
         if (CBType.getValue().equals("Utilisateur Simple")) {
 
+            tfNom.setPromptText("Votre Nom : ");
+            tfNom.setLabelFloat(true);
+            ErrNom.setTextFill(Color.web("#FF0000"));
+            ErrNom.setVisible(false);
+
+            tfNom.setOnKeyReleased(new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent event) {
+                    if (tfNom.getText().length() <= 2) {
+                        ErrNom.setVisible(true);
+                        btInscri.setDisable(true);
+                    } else {
+                        ErrNom.setVisible(false);
+                        btInscri.setDisable(false);
+                    }
+                }
+            });
+
             tfPrenom.setPromptText("Votre Prénom : ");
             tfPrenom.setLabelFloat(true);
 
@@ -309,31 +325,24 @@ public class UiInscriptionController implements Initializable {
 
             dateP.setPromptText("Vote Date de Naissance : ");
 
-
             ErrDateN.setTextFill(Color.web("#FF0000"));
             ErrDateN.setVisible(false);
-            VBoxInscri.getChildren().addAll(tfNom, ErrNom, tfPrenom, ErrPnom, tfMail, ErrMail, tfPassword, Errpass, tfConfirmPassword, ErrConpass, tfTel , ErrTel, tfPays, ErrPays, tfVille, ErrVille, cbGenre, ErrGenre, dateP, ErrDateN);
-        } 
-        //if (CBType.getValue().equals("Organisation")) {
-        else {
-            
+            VBoxInscri.getChildren().addAll(tfUsername, ErrUsername, tfNom, ErrNom, tfPrenom, ErrPnom, tfMail, ErrMail, tfPassword, Errpass, tfConfirmPassword, ErrConpass, tfTel, ErrTel, tfPays, ErrPays, tfVille, ErrVille, cbGenre, ErrGenre, dateP, ErrDateN);
+        } else {
+
             pageFb.setPromptText("URL de votre Page Fb :");
             pageFb.setLabelFloat(true);
             Label ErrFB = new Label(" ");
-            
+
             siteWeb.setPromptText("URL de votre Site Web :");
             siteWeb.setLabelFloat(true);
             Label ErrWeb = new Label(" ");
-            
-            numVisa.setPromptText("Numéro de Visa : ");
-            numVisa.setLabelFloat(true);
-            Label ErrVisa = new Label(" ");
 
             desc.setPromptText("Déscription : ");
             desc.setLabelFloat(true);
             Label ErrDesc = new Label(" ");
 
-            VBoxInscri.getChildren().addAll(tfNom, ErrNom, tfMail, ErrMail, tfPassword, Errpass, tfConfirmPassword, ErrConpass, tfTel, ErrTel, tfPays, ErrPays, tfVille, ErrVille,pageFb,ErrFB ,siteWeb,ErrWeb ,numVisa,ErrVisa,desc,ErrDesc);
+            VBoxInscri.getChildren().addAll(tfUsername, ErrUsername, tfMail, ErrMail, tfPassword, Errpass, tfConfirmPassword, ErrConpass, tfTel, ErrTel, tfPays, ErrPays, tfVille, ErrVille, pageFb, ErrFB, siteWeb, ErrWeb, desc, ErrDesc);
         }
     }
 
@@ -396,13 +405,14 @@ public class UiInscriptionController implements Initializable {
 
     @FXML
     private void Inscri(ActionEvent event) {
-        mailToVal=tfMail.getText();
-        /*
-        if (CBType.getValue().equals("Utilisateur Simple")) {
-            GestionnaireUtilisateur_Simple gus = new GestionnaireUtilisateur_Simple();
-            if (!CheckBeforeInscriUS()) {
-                Utilisateur_Simple us = new Utilisateur_Simple(tfPrenom.getText(), cbGenre.getValue(), Date.valueOf(dateP.getValue()), tfMail.getText(), tfPassword.getText(), "Bsalt", idn+tfTel.getText(), new Adresse(tfPays.getText(), tfVille.getText()), "image", 0, tfNom.getText());
+        mailToVal = tfMail.getText();
 
+        if (CBType.getValue().equals("Utilisateur Simple")) {
+            GestionnaireUtilisateur gus = new GestionnaireUtilisateur();
+            if (!CheckBeforeInscriUS()) {
+                //Utilisateur_Simple us = new Utilisateur_Simple(tfPrenom.getText(), cbGenre.getValue(), Date.valueOf(dateP.getValue()), tfMail.getText(), tfPassword.getText(), "Bsalt", idn+tfTel.getText(), new Adresse(tfPays.getText(), tfVille.getText()), "image", 0, tfNom.getText());
+                //    public Utilisateur(String username, String email, int enabled, String password, String confirmation_token, String roles, String nom, String numTel, Adresse adresse, String image, String prenom, String genre, Date dateNaissance, int yesNews) {
+                Utilisateur us = new Utilisateur(tfUsername.getText(), tfMail.getText(), -1, tfPassword.getText(), "0101", "us", tfNom.getText(), idn + tfTel.getText(), new Adresse(tfPays.getText(), tfVille.getText()), "user.png", tfPrenom.getText(), cbGenre.getValue(), Date.valueOf(dateP.getValue()), 1);
                 int mv = -1;
                 if (rbtVerifMail.isSelected()) {
                     mv = 1;
@@ -431,37 +441,41 @@ public class UiInscriptionController implements Initializable {
                     alE.showAndWait();
                 }
             }
-        } else if (CBType.getValue().equals("Organisation")) {
-            GestionnaireOrganisation gOrg = new GestionnaireOrganisation();
-            Organisation org = new Organisation(numVisa.getText(), pageFb.getText(), siteWeb.getText(), desc.getText(), new Float(lat), new Float(lon) ,tfMail.getText(), tfPassword.getText(), "Bsalt", idn+tfTel.getText(), new Adresse(tfPays.getText(), tfVille.getText()), "image", 0, tfNom.getText());
+        } else {
+            GestionnaireUtilisateur gUser = new GestionnaireUtilisateur();
+            //Utilisateur org = new Utilisateur(numVisa.getText(), pageFb.getText(), siteWeb.getText(), desc.getText(), new Float(lat), new Float(lon) ,tfMail.getText(), tfPassword.getText(), "Bsalt", idn+tfTel.getText(), new Adresse(tfPays.getText(), tfVille.getText()), "image", 0, tfNom.getText());
+//    public Utilisateur(String username, String email, int enabled, String password, String confirmation_token, String roles, String numTel, Adresse adresse, String image, String pageFB, String siteWeb, String description, float longitude, float latitude, int yesNews) {
+
+            Utilisateur user = new Utilisateur(tfUsername.getText(), tfMail.getText(), -1, tfPassword.getText(), "0101", "autre", idn + tfTel.getText(), new Adresse(tfPays.getText(), tfVille.getText()), "user.png", pageFb.getText(), siteWeb.getText(), desc.getText(),new Float(lon), new Float(lat) , 1);
+
             int mv = -1;
-                if (rbtVerifMail.isSelected()) {
-                    mv = 1;
-                } else if (rbtVerifSMS.isSelected()) {
-                    mv = 2;
-                } else if (rbtVerifPhone.isSelected()) {
-                    mv = 3;
+            if (rbtVerifMail.isSelected()) {
+                mv = 1;
+            } else if (rbtVerifSMS.isSelected()) {
+                mv = 2;
+            } else if (rbtVerifPhone.isSelected()) {
+                mv = 3;
+            }
+            int X = gUser.Inscrireb9iya(user, mv,CBType.getValue());
+            Alert alV = new Alert(Alert.AlertType.CONFIRMATION, "Inscription Réussi , confirmer votre compte", ButtonType.OK);
+            Alert alE = new Alert(Alert.AlertType.WARNING, "Echec Inscription", ButtonType.OK);
+            if (X == 1) {
+                alV.showAndWait();
+
+                Pane newLoadedPane;
+                try {
+                    newLoadedPane = FXMLLoader.load(getClass().getResource("/views/UIActivationCompte.fxml"));
+                    stackInscri.getChildren().clear();
+                    stackInscri.getChildren().add(newLoadedPane);
+                } catch (IOException ex) {
+                    Logger.getLogger(UiLoginController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                int X = gOrg.InscrireORG(org,mv);
-                Alert alV = new Alert(Alert.AlertType.CONFIRMATION, "Inscription Réussi , confirmer votre compte", ButtonType.OK);
-                Alert alE = new Alert(Alert.AlertType.WARNING, "Echec Inscription", ButtonType.OK);
-                if (X == 1) {
-                    alV.showAndWait();
 
-                    Pane newLoadedPane;
-                    try {
-                        newLoadedPane = FXMLLoader.load(getClass().getResource("/views/UIActivationCompte.fxml"));
-                        stackInscri.getChildren().clear();
-                        stackInscri.getChildren().add(newLoadedPane);
-                    } catch (IOException ex) {
-                        Logger.getLogger(UiLoginController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+            } else {
 
-                } else {
-
-                    alE.showAndWait();
-                }
-        }*/
+                alE.showAndWait();
+            }
+        }
     }
 
     @FXML

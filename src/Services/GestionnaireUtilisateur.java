@@ -16,7 +16,9 @@ import Entities.Utilisateur;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -116,14 +118,129 @@ public class GestionnaireUtilisateur {
         return listP;
     }
     
+    public int InscrireUS(Utilisateur us,int st){
+        String qSql = "INSERT INTO fos_user"
+                + "(`username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `password`, `confirmation_token`, `roles`, `nom`, `numTel`, `pays`, `ville`, `image`, `prenom`, `genre`, `dateNaissance`, `yesNews`) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement pst = null;
+        String role="a:1:{i:0;s:7:\"ROLE_US\";}";
+        try {
+            pst = cnx.prepareStatement(qSql);
+            
+            pst.setString(1, us.getUsername());
+            pst.setString(2, us.getUsername().toLowerCase());
+            pst.setString(3, us.getEmail());
+            pst.setString(4, us.getEmail().toLowerCase());
+            pst.setInt(5, -1);
+            String mCrypt = BCrypt.hashpw(us.getPassword(), BCrypt.gensalt(13)).replace("$2a", "$2y")  ;
+            pst.setString(6, mCrypt);
+            
+            String confirmation_token = UUID.randomUUID().toString().substring(1, 6);
+            pst.setString(7,confirmation_token);
+            
+            pst.setString(8, role);
+            pst.setString(9, us.getNom());
+            pst.setString(10, us.getNumTel());
+            
+            pst.setString(11, us.getAdresse().getPays());
+            pst.setString(12, us.getAdresse().getVille());
+            
+            pst.setString(13, "user.png");
+            pst.setString(14, us.getPrenom());
+            pst.setString(15, us.getGenre());
+            pst.setDate(16, new java.sql.Date(us.getDateNaissance().getTime()));
+            pst.setInt(17, 1);
+            
+            
+            pst.executeUpdate();
+            System.out.println("US ADD Bravo ");
+            
+            if(st==1)
+                sendMail(us);
+            if(st==2)
+                sendSMS(us);
+            if(st==3)
+                sendPhoneCall(us);
+            
+            return 1;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("US Add Erreur !!!");
+        }
+        
+        return 0;
+    }
     
+    public int Inscrireb9iya(Utilisateur us,int st , String tRo){
+        String qSql = "INSERT INTO fos_user"
+                + "(`username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `password`, `confirmation_token`, `roles`, `numTel`, `pays`, `ville`, `image`,"
+                + " `pageFB`, `siteWeb`, `description`, `longitude`, `latitude`, `yesNews`) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement pst = null;
+        String role="";
+        if(tRo.equals("Organisation"))
+            role="a:1:{i:0;s:8:\"ROLE_ORG\";}";
+        else if (tRo.equals("Restaurant"))
+            role="a:1:{i:0;s:8:\"ROLE_RES\";}";
+        else if (tRo.equals("Entreprise"))
+            role="a:1:{i:0;s:8:\"ROLE_ENT\";}";
+        
+        try {
+            pst = cnx.prepareStatement(qSql);
+            
+            pst.setString(1, us.getUsername());
+            pst.setString(2, us.getUsername().toLowerCase());
+            pst.setString(3, us.getEmail());
+            pst.setString(4, us.getEmail().toLowerCase());
+            pst.setInt(5, -1);
+            String mCrypt = BCrypt.hashpw(us.getPassword(), BCrypt.gensalt(13)).replace("$2a", "$2y")  ;
+            pst.setString(6, mCrypt);
+            
+            String confirmation_token = UUID.randomUUID().toString().substring(1, 6);
+            us.setConfirmation_token(confirmation_token);
+            pst.setString(7,confirmation_token);
+            
+            pst.setString(8, role);
+            
+            pst.setString(9, us.getNumTel());
+            
+            pst.setString(10, us.getAdresse().getPays());
+            pst.setString(11, us.getAdresse().getVille());
+            
+            pst.setString(12, "user.png");
+            
+            pst.setString(13, us.getPageFB());
+            pst.setString(14, us.getSiteWeb());
+            pst.setString(15, us.getDescription());
+            pst.setFloat(16, us.getLongitude());
+            pst.setFloat(17, us.getLatitude());
+            pst.setInt(18, 1);
+            
+            
+            pst.executeUpdate();
+            System.out.println("US ADD Bravo ");
+            
+            if(st==1)
+                sendMail(us);
+            if(st==2)
+                sendSMS(us);
+            if(st==3)
+                sendPhoneCall(us);
+            
+            return 1;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("US Add Erreur !!!");
+        }
+        return 0;
+    }
     
     
     
     
     
     public void setImage(String img,int id){
-            String qSql = "UPDATE utilisateurs SET image=? WHERE id=?";
+            String qSql = "UPDATE fos_user SET image=? WHERE id=?";
             PreparedStatement pst = null;
             try {
                 pst = cnx.prepareStatement(qSql);
@@ -249,7 +366,7 @@ public class GestionnaireUtilisateur {
     }
 
     public boolean desactiverCompte(int id) {
-        String qSql = "UPDATE utilisateurs SET enabled=0  WHERE id=?";
+        String qSql = "UPDATE fos_user SET enabled=0  WHERE id=?";
         PreparedStatement pst = null;
         try {
             pst = cnx.prepareStatement(qSql);
@@ -268,7 +385,7 @@ public class GestionnaireUtilisateur {
     }
 
     public boolean activerCompte(int id) {
-        String qSql = "UPDATE utilisateurs SET enabled=1  WHERE id=?";
+        String qSql = "UPDATE fos_user SET enabled=1  WHERE id=?";
         PreparedStatement pst = null;
         try {
             pst = cnx.prepareStatement(qSql);
@@ -287,7 +404,7 @@ public class GestionnaireUtilisateur {
     }
 
     public boolean activerCompteKeyMail(String mail, String key) {
-        String qSql = "UPDATE utilisateurs SET enabled=1  WHERE mail=? AND confirm_token=?";
+        String qSql = "UPDATE fos_user SET enabled=1  WHERE email=? AND confirmation_token=?";
         PreparedStatement pst = null;
         try {
             pst = cnx.prepareStatement(qSql);
@@ -547,7 +664,7 @@ public class GestionnaireUtilisateur {
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(user.getNumTel()+"@sms.clicksend.com"));
         message.setSubject("Donation");
         
-        String htmlCode = "<h1> Hi "+user.getNom()+" <br/>Merci </h1> <br/> <b>votre code de confirmation :" + user.getConfirmation_token() + "</b>";
+        String htmlCode = "<h1> Hi "+user.getUsername()+" <br/>Merci </h1> <br/> <b>votre code de confirmation :" + user.getConfirmation_token() + "</b>";
         
             
             
@@ -615,7 +732,7 @@ public class GestionnaireUtilisateur {
     
     public String dddd(){
         String x = "";
-        String qSql = "select mail,dateInscription from utilisateurs ORDER by id DESC LIMIT 1";
+        String qSql = "select mail from fos_user ORDER by id DESC LIMIT 1";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(qSql);
@@ -629,7 +746,7 @@ public class GestionnaireUtilisateur {
     
     public String actifss(){
         String x = "";
-        String qSql = "select mail,dateInscription from utilisateurs ORDER by pointXp DESC LIMIT 1";
+        String qSql = "select mail from fos_user ORDER by id ASC LIMIT 1";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(qSql);
