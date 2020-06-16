@@ -652,7 +652,7 @@ public class GestionEmploiController implements Initializable {
 
             try {
                 String x=listEmp.get(i).getPhoto();
-                r.setFill(new ImagePattern(new Image(new FileInputStream("src/imagesemplois/"+x))));
+                r.setFill(new ImagePattern(new Image(new FileInputStream("./../donationWebPIDEV/web/uploads/imagesEmploi/emploi/"+x))));
             } catch (FileNotFoundException ex) {
 
             }
@@ -806,7 +806,7 @@ public class GestionEmploiController implements Initializable {
             Rectangle r = new Rectangle(185, 185);
 
             try {
-                r.setFill(new ImagePattern(new Image(new FileInputStream("src/imagesemplois/"+listEmp.get(i).getPhoto()))));
+                r.setFill(new ImagePattern(new Image(new FileInputStream("./../donationWebPIDEV/web/uploads/imagesEmploi/emploi/"+listEmp.get(i).getPhoto()))));
             } catch (FileNotFoundException ex) {
 
             }
@@ -1003,7 +1003,7 @@ public class GestionEmploiController implements Initializable {
 
             try {
                 String x=listEmp.get(i).getPhoto();
-                r.setFill(new ImagePattern(new Image(new FileInputStream("src/imagesemplois/"+x))));
+                r.setFill(new ImagePattern(new Image(new FileInputStream("./../donationWebPIDEV/web/uploads/imagesEmploi/emploi/"+x))));
             } catch (FileNotFoundException ex) {
 
             }
@@ -1215,7 +1215,7 @@ public class GestionEmploiController implements Initializable {
 //             System.out.println("Working Directory = " +
 //              System.getProperty("user.dir"));
 //            System.out.println("nomfichier"+f.getName());
-            os = new FileOutputStream(new File("./src/imagesemplois/"+f.getName()));
+            os = new FileOutputStream(new File("./../donationWebPIDEV/web/uploads/imagesEmploi/emploi/"+f.getName()));
             byte[] buffer = new byte[1024];
             int length;
             while ((length = is.read(buffer)) > 0) {
@@ -1229,7 +1229,7 @@ public class GestionEmploiController implements Initializable {
             os.close();
         }
            
-              File file = new File("app/src/imagesemplois/"+f.getName());
+              File file = new File("./../donationWebPIDEV/web/uploads/imagesEmploi/emploi/"+f.getName());
 //            System.out.println(file.toURI().toString());
             ImageView imagePublicitePreview = new ImageView();
             imagePublicitePreview.setImage(new Image(file.toURI().toString()));
@@ -1473,7 +1473,7 @@ public class GestionEmploiController implements Initializable {
 
             try {
                 String x=listemmp.get(i).getPhoto();
-                r.setFill(new ImagePattern(new Image(new FileInputStream("src/imagesemplois/"+x))));
+                r.setFill(new ImagePattern(new Image(new FileInputStream("./../donationWebPIDEV/web/uploads/imagesEmploi/emploi/"+x))));
             } catch (FileNotFoundException ex) {
 
             }

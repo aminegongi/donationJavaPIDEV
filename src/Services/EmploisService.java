@@ -45,7 +45,7 @@ public class EmploisService implements IServiceEmplois{
      
      @Override
     public void ajouter(Emplois t) throws SQLException {
-        PreparedStatement pre=con.prepareStatement("INSERT INTO `donation`.`emplois` (`id`, `titre`, `description`, `Photo`, `salaire`, `emplacement`, `TypeDemploi`, `TypeContrat`, `idcategorie`, `id_utilisateur`) VALUES ( NULL,?, ?, ?, ?, ?, ?, ?, ?, ?);");
+        PreparedStatement pre=con.prepareStatement("INSERT INTO `donationw`.`emplois` (`id`, `titre`, `description`, `Photo`, `salaire`, `emplacement`, `TypeDemploi`, `TypeContrat`, `idcategorie`, `id_utilisateur`) VALUES ( NULL,?, ?, ?, ?, ?, ?, ?, ?, ?);");
     pre.setString(1, t.getTitre());
     pre.setString(2, t.getDescreption());
     
@@ -71,7 +71,7 @@ public class EmploisService implements IServiceEmplois{
     
     public void ajouter1(Emplois p) throws SQLException
     {
-        PreparedStatement pre=con.prepareStatement("INSERT INTO `donation`.`emplois`  (`id`, `titre`, `description`, `Photo`, `salaire`, `emplacement`, `TypeDemploi`, `TypeContrat`, `idcategorie`, `id_utilisateur`) VALUES (NULL,?,?,?,?,?,?,?,?,?);");
+        PreparedStatement pre=con.prepareStatement("INSERT INTO `donationw`.`emplois`  (`id`, `titre`, `description`, `Photo`, `salaire`, `emplacement`, `TypeDemploi`, `TypeContrat`, `idcategorie`, `id_utilisateur`) VALUES (NULL,?,?,?,?,?,?,?,?,?);");
     pre.setString(1, p.getTitre());
     pre.setString(2, p.getDescreption()); 
      pre.setString(3, p.getPhoto());
@@ -89,7 +89,7 @@ public class EmploisService implements IServiceEmplois{
 
     @Override
     public boolean delete(int id) throws SQLException {
-        PreparedStatement pre = con.prepareStatement("DELETE FROM `donation`.`emplois` where id =?");
+        PreparedStatement pre = con.prepareStatement("DELETE FROM `donationw`.`emplois` where id =?");
         pre.setInt(1, id);
         pre.executeUpdate();
         int rowsDeleted = pre.executeUpdate();

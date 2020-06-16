@@ -40,7 +40,7 @@ public class Categorie_EmploisService implements IServiceCategorie_Emplois{
 
     @Override
     public void ajouterCategorieEmplois(Categorie_Emplois p) throws SQLException {
-PreparedStatement pre=con.prepareStatement("INSERT INTO `donation`.`categorie_emplois` (`id_categorie_emplois`, `titre_categorie`, `description_categorie`) VALUES ( NULL,?, ?);");
+PreparedStatement pre=con.prepareStatement("INSERT INTO `donationw`.`categorie_emploi` (`id`, `titre_categorie`, `description_categorie`) VALUES ( NULL,?, ?);");
     pre.setString(1, p.getTitre());
     pre.setString(2, p.getDescription());
     
@@ -55,7 +55,7 @@ PreparedStatement pre=con.prepareStatement("INSERT INTO `donation`.`categorie_em
     @Override
     public boolean deleteCategorieEmplois(int id) throws SQLException {
     
-        PreparedStatement pre = con.prepareStatement("DELETE FROM `donation`.`categorie_emplois` where id_categorie_emplois =?");
+        PreparedStatement pre = con.prepareStatement("DELETE FROM `donationw`.`categorie_emploi` where id =?");
         pre.setInt(1, id);
         pre.executeUpdate();
         int rowsDeleted = pre.executeUpdate();
@@ -68,7 +68,7 @@ PreparedStatement pre=con.prepareStatement("INSERT INTO `donation`.`categorie_em
 
     @Override
     public boolean updateCategorieEmplois(Categorie_Emplois t, int id) throws SQLException {
-String sql = "UPDATE categorie_emplois SET titre_categorie=?, description_categorie=? WHERE id_categorie_emplois=? ";
+String sql = "UPDATE categorie_emploi SET titre_categorie=?, description_categorie=? WHERE id=? ";
 
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setString(1, t.getTitre());
@@ -92,7 +92,7 @@ String sql = "UPDATE categorie_emplois SET titre_categorie=?, description_catego
     public List<Categorie_Emplois> readAllCategorieEmplois() throws SQLException {
       List<Categorie_Emplois> arr=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from categorie_emplois");
+    ResultSet rs=ste.executeQuery("select * from categorie_emploi");
      while (rs.next()) {                
                int id_categorie_emplois=rs.getInt(1);
                String titre_categorie=rs.getString("titre_categorie");
@@ -112,7 +112,7 @@ String sql = "UPDATE categorie_emplois SET titre_categorie=?, description_catego
         
         
         
-        String sql = "SELECT * FROM categorie_emplois WHERE titre_categorie=?";
+        String sql = "SELECT * FROM categorie_emploi WHERE titre_categorie=?";
         PreparedStatement pre = con.prepareStatement(sql);
         
         pre.setString(1,titre_categorie);
