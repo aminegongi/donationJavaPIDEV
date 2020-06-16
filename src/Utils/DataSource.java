@@ -21,7 +21,7 @@ constructeur privée + attribut static type de la classe + methode static type d
 */
 public class DataSource {
     Connection cnx;
-    String url="jdbc:mysql://localhost:3306/donationw";
+    String url="jdbc:mysql://localhost:3306/donationW";
     String login="root";
     String mdp="";
     static DataSource instance;

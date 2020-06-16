@@ -34,7 +34,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
     public void ajouter(DonRestaurant d) throws SQLException
     {
     
-    PreparedStatement pre=con.prepareStatement("INSERT INTO `DonRestaurant` ( `idDon`, `idResto`, `idUser`, `montant`, `date`) VALUES (?, ?, ?, ?, ?);");
+    PreparedStatement pre=con.prepareStatement("INSERT INTO `don_restaurant` ( `idDon`, `idResto`, `idUser`, `montant`, `date`) VALUES (?, ?, ?, ?, ?);");
     pre.setInt(1, d.getIdDon());
     pre.setInt(2, d.getIdResto());
     pre.setInt(3, d.getIdUser());
@@ -48,7 +48,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
     @Override
     public boolean delete(DonRestaurant d) throws SQLException {
         try{
-        PreparedStatement pre=con.prepareStatement("DELETE FROM `DonRestaurant` WHERE `idDon` = ?;");
+        PreparedStatement pre=con.prepareStatement("DELETE FROM `don_restaurant` WHERE `idDon` = ?;");
         pre.setInt(1, d.getIdDon());
         pre.execute();
     return true;
@@ -62,7 +62,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
     @Override
     public boolean update(DonRestaurant d) throws SQLException {
         try{
-    PreparedStatement pre=con.prepareStatement("UPDATE `DonRestaurant` SET `idUser`=?,`montant`=?,`date`=? WHERE `idDon` = ?;");
+    PreparedStatement pre=con.prepareStatement("UPDATE `don_restaurant` SET `idUser`=?,`montant`=?,`date`=? WHERE `idDon` = ?;");
     pre.setInt(1, d.getIdUser());
     pre.setFloat(2, d.getMontant());
     pre.setTimestamp(3, d.getDate());
@@ -79,7 +79,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
     public List<DonRestaurant> readAll() throws SQLException {
     List<DonRestaurant> arr=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from DonRestaurant");
+    ResultSet rs=ste.executeQuery("select * from don_restaurant");
      while (rs.next()) {                
                int idDon=rs.getInt(1);
                int idResto=rs.getInt(2);
@@ -107,7 +107,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
         nPV = selectPortefeuille(d) + d.getMontant();
         
         
-    PreparedStatement pre=con.prepareStatement("UPDATE `TarifResto` SET `portefeuilleVirtuel`=? WHERE `idResto` = ?;");
+    PreparedStatement pre=con.prepareStatement("UPDATE `tarif_resto` SET `portefeuille_virtuel`=? WHERE `idResto` = ?;");
     pre.setFloat(1, nPV);
     pre.setInt(2, d.getIdResto());
     pre.execute();
@@ -127,7 +127,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
     public float selectPortefeuille(DonRestaurant d) throws SQLException{
       
     ste=con.createStatement();
-        ResultSet rs=ste.executeQuery("select `portefeuilleVirtuel` from TarifResto WHERE `idResto` = '" + d.getIdResto() + "';");
+        ResultSet rs=ste.executeQuery("select `portefeuille_virtuel` from tarif_resto WHERE `idResto` = '" + d.getIdResto() + "';");
         if (rs.next()){    
                float portefeuilleVirtuel=rs.getFloat(1);
                return portefeuilleVirtuel;
@@ -140,7 +140,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
     
     
      public boolean tarifExist(int idResto) throws SQLException{
-        ResultSet rs=ste.executeQuery("select * from TarifResto WHERE `idResto` = '" + idResto + "';");       
+        ResultSet rs=ste.executeQuery("select * from tarif_resto WHERE `idResto` = '" + idResto + "';");       
         if(rs.next()){
             return true;
         } else {
@@ -152,7 +152,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
     public float selectTarifExist(int idResto) throws SQLException{
       if (tarifExist(idResto)==true){
         
-        ResultSet rs=ste.executeQuery("select `tarif` from TarifResto WHERE `idResto` = '" + idResto + "';");       
+        ResultSet rs=ste.executeQuery("select `tarif` from tarif_resto WHERE `idResto` = '" + idResto + "';");       
         rs.next();
             float tarif = rs.getFloat(1);
             return tarif;
@@ -176,7 +176,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
      public List<DonRestaurant> donationUser(int idUserR) throws SQLException {
     List<DonRestaurant> arr=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from DonRestaurant WHERE `idUser` = '" + idUserR + "';" );
+    ResultSet rs=ste.executeQuery("select * from don_restaurant WHERE `idUser` = '" + idUserR + "';" );
      while (rs.next()) {                
                int idDon=rs.getInt(1);
                int idResto=rs.getInt(2);
@@ -196,7 +196,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
       public List<DonRestaurant> donationResto(int idRestoR) throws SQLException {
     List<DonRestaurant> arr=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from DonRestaurant WHERE `idResto` = '" + idRestoR + "';" );
+    ResultSet rs=ste.executeQuery("select * from don_restaurant WHERE `idResto` = '" + idRestoR + "';" );
      while (rs.next()) {                
                int idDon=rs.getInt(1);
                int idResto=rs.getInt(2);
@@ -214,7 +214,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
       
        public String getName (int id)  throws SQLException {
          ste=con.createStatement();
-        ResultSet rs=ste.executeQuery("select `nom`,`prenom` from `utilisateurs` WHERE `id` = '" + id + "';");
+        ResultSet rs=ste.executeQuery("select `nom`,`prenom` from `fos_user` WHERE `id` = '" + id + "';");
         rs.next();    
                 String retour;
                 String Nom=rs.getString(1);
@@ -229,7 +229,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
         String nomDansLaTable;
         
          ste=con.createStatement();
-        ResultSet rs=ste.executeQuery("select `id`,`nom` from `utilisateurs`;");
+        ResultSet rs=ste.executeQuery("select `id`,`nom` from `fos_user`;");
         while (rs.next()) {   
                 int idUser = rs.getInt(1);
                 nomDansLaTable=rs.getString(2);
@@ -243,7 +243,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
        
        public float totalDonation() throws SQLException {
          ste=con.createStatement();
-        ResultSet rs=ste.executeQuery("select SUM(Montant)  from `DonRestaurant`");
+        ResultSet rs=ste.executeQuery("select SUM(montant)  from `don_restaurant`");
         rs.next();    
                float total =rs.getFloat(1);
                return total;
@@ -251,7 +251,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
     }
         public float totalDonationResto(int idResto) throws SQLException {
          ste=con.createStatement();
-        ResultSet rs=ste.executeQuery("select SUM(Montant)  from `DonRestaurant` WHERE `idResto` = '" + idResto + "';");
+        ResultSet rs=ste.executeQuery("select SUM(montant)  from `don_restaurant` WHERE `idResto` = '" + idResto + "';");
         rs.next();    
                float total =rs.getFloat(1);
                return total;
@@ -262,7 +262,7 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
         try {
             ste=con.createStatement();
             ResultSet rs;
-            rs = ste.executeQuery("select `id` from `utilisateurs` WHERE `mail` = '" + mail + "';");
+            rs = ste.executeQuery("select `id` from `fos_user` WHERE `email` = '" + mail + "';");
             rs.next();    
                int idUser=rs.getInt(1);
                return idUser;

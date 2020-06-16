@@ -159,12 +159,12 @@ public class GestionRestauDonController implements Initializable {
         //********************choix de pane a afficher********************************************
         ServiceRestoUser ru = new ServiceRestoUser(); 
         try {
-            if(ru.userOrResto(idResto).compareToIgnoreCase("Resto")== 0){
+            if(ru.userOrResto(idResto).contains("ROLE_RES")== true){
                 anchorPaneResto.setVisible(true);
                 anchorPaneUser.setVisible(false);
                 btnTarif.setVisible(true);
             }
-            if(ru.userOrResto(idResto).compareToIgnoreCase("us")== 0){
+            if(ru.userOrResto(idResto).contains("ROLE_US")== true){
                 anchorPaneResto.setVisible(false);
                 anchorPaneUser.setVisible(true);
                 btnTarif.setVisible(false);
@@ -397,6 +397,7 @@ public class GestionRestauDonController implements Initializable {
           //afficher que les demandes non signalées
           //listDmnd = serDmnd.readNotSign();
           listRU = serRU.readAll();
+            System.out.println(listRU);
           
           /*
           //comboBox choix trie demande : date d'ajout proche(nouvelles demandes)
@@ -600,7 +601,7 @@ public class GestionRestauDonController implements Initializable {
         browser.setMaxSize(880.0, 486.0);
         paneWeb.getChildren().add(browser);
         WebEngine webEngine = browser.getEngine();
-        webEngine.load("http://"+linkSiteWeb.getText());
+        webEngine.load(linkSiteWeb.getText());
         });
             
             linkPageFb.setOnAction((event) -> { 
@@ -612,7 +613,7 @@ public class GestionRestauDonController implements Initializable {
         browser.setMaxSize(880.0, 486.0);
         paneWeb.getChildren().add(browser);
         WebEngine webEngine = browser.getEngine();
-        webEngine.load("http://"+linkPageFb.getText());
+        webEngine.load(linkPageFb.getText());
         });
            
             

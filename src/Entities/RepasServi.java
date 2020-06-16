@@ -14,11 +14,18 @@ import java.sql.Timestamp;
 public class RepasServi {
     private int idResto;
     private Timestamp date;
+    private float montant;
     
     
     public RepasServi(int idResto, Timestamp date){
         this.idResto = idResto;
         this.date = date;
+    }
+    
+    public RepasServi(int idResto, Timestamp date, float montant){
+        this.idResto = idResto;
+        this.date = date;
+        this.montant = montant;
     }
     
     

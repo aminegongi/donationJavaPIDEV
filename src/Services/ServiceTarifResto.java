@@ -33,7 +33,7 @@ public class ServiceTarifResto implements IService<TarifResto> {
     @Override
     public void ajouter(TarifResto t) throws SQLException
     {
-    PreparedStatement pre=con.prepareStatement("INSERT INTO `TarifResto` ( `idResto`, `tarif`) VALUES ( ?, ?);");
+    PreparedStatement pre=con.prepareStatement("INSERT INTO `tarif_resto` ( `idResto`, `tarif`) VALUES ( ?, ?);");
     pre.setInt(1, t.getIdResto());
     pre.setFloat(2, t.getTarif());
     pre.executeUpdate();
@@ -43,7 +43,7 @@ public class ServiceTarifResto implements IService<TarifResto> {
     @Override
     public boolean delete(TarifResto t) throws SQLException {
         try{
-        PreparedStatement pre=con.prepareStatement("DELETE FROM `TarifResto` WHERE `idResto` = ? ;");
+        PreparedStatement pre=con.prepareStatement("DELETE FROM `tarif_resto` WHERE `idResto` = ? ;");
         pre.setInt(1, t.getIdResto());
         pre.execute();
     return true;
@@ -56,7 +56,7 @@ public class ServiceTarifResto implements IService<TarifResto> {
     @Override
     public boolean update(TarifResto t) throws SQLException {
     try{
-    PreparedStatement pre=con.prepareStatement("UPDATE `TarifResto` SET `tarif`=? WHERE `idResto` = ?;");
+    PreparedStatement pre=con.prepareStatement("UPDATE `tarif_resto` SET `tarif`=? WHERE `idResto` = ?;");
     pre.setFloat(1, t.getTarif());
     pre.setInt(2, t.getIdResto());
     pre.execute();
@@ -71,7 +71,7 @@ public class ServiceTarifResto implements IService<TarifResto> {
     public List<TarifResto> readAll() throws SQLException {
     List<TarifResto> arr=new ArrayList<>();
     ste=con.createStatement();
-    ResultSet rs=ste.executeQuery("select * from TarifResto");
+    ResultSet rs=ste.executeQuery("select * from tarif_resto");
      while (rs.next()) {                
                 int idResto=rs.getInt(1);
                String nomResto = getName(idResto);
@@ -92,7 +92,7 @@ public class ServiceTarifResto implements IService<TarifResto> {
     
     public boolean tarifExist(int idResto) throws SQLException{
         ste=con.createStatement();
-        ResultSet rs=ste.executeQuery("select * from TarifResto WHERE `idResto` = '" + idResto + "';");       
+        ResultSet rs=ste.executeQuery("select * from tarif_resto WHERE `idResto` = '" + idResto + "';");       
         if(rs.next()){
             System.out.println("Ce restaurant a déjà un tarif!");
             return true;
@@ -104,7 +104,7 @@ public class ServiceTarifResto implements IService<TarifResto> {
     
     public float selectPortefeuille(int idResto) throws SQLException{
         ste=con.createStatement();
-        ResultSet rs=ste.executeQuery("select `portefeuilleVirtuel` from TarifResto WHERE `idResto` = '" + idResto + "';");
+        ResultSet rs=ste.executeQuery("select `portefeuille_virtuel` from tarif_resto WHERE `idResto` = '" + idResto + "';");
         rs.next();    
                float portefeuilleVirtuel=rs.getFloat(1);
                return portefeuilleVirtuel;
@@ -115,7 +115,7 @@ public class ServiceTarifResto implements IService<TarifResto> {
     public float selectTarifExist(int idResto) throws SQLException{
       if (tarifExist(idResto)==true){
         
-        ResultSet rs=ste.executeQuery("select `tarif` from TarifResto WHERE `idResto` = '" + idResto + "';");       
+        ResultSet rs=ste.executeQuery("select `tarif` from tarif_resto WHERE `idResto` = '" + idResto + "';");       
         rs.next();
             float tarif = rs.getFloat(1);
             return tarif;
@@ -128,7 +128,7 @@ public class ServiceTarifResto implements IService<TarifResto> {
     
     public String getName (int id)  throws SQLException {
          ste=con.createStatement();
-        ResultSet rs=ste.executeQuery("select `nom` from `utilisateurs` WHERE `id` = '" + id + "';");
+        ResultSet rs=ste.executeQuery("select `nom` from `fos_user` WHERE `id` = '" + id + "';");
         rs.next();    
                String Nom=rs.getString(1);
                return Nom;
@@ -141,7 +141,7 @@ public class ServiceTarifResto implements IService<TarifResto> {
         String nomDansLaTable;
         
          ste=con.createStatement();
-        ResultSet rs=ste.executeQuery("select `id`,`nom` from `utilisateurs`;");
+        ResultSet rs=ste.executeQuery("select `id`,`nom` from `fos_user`;");
         while (rs.next()) {   
                 int idResto = rs.getInt(1);
                 nomDansLaTable=rs.getString(2);
@@ -178,7 +178,7 @@ public class ServiceTarifResto implements IService<TarifResto> {
     
     public int nbrTotalResto() throws SQLException{
          ste=con.createStatement();
-        ResultSet rs=ste.executeQuery("select COUNT(*) from `PiDev`.`TarifResto`");
+        ResultSet rs=ste.executeQuery("select COUNT(*) from `donationW`.`tarif_resto`");
         rs.next();    
                int nbrRS =rs.getInt(1);
                return nbrRS;
@@ -188,7 +188,7 @@ public class ServiceTarifResto implements IService<TarifResto> {
     
     public float totalPortefeuille() throws SQLException {
          ste=con.createStatement();
-        ResultSet rs=ste.executeQuery("select SUM(portefeuilleVirtuel)  from `TarifResto`");
+        ResultSet rs=ste.executeQuery("select SUM(portefeuille_virtuel)  from `tarif_resto`");
         rs.next();    
                float total =rs.getFloat(1);
                return total;
