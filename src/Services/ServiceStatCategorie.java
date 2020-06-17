@@ -31,7 +31,7 @@ public class ServiceStatCategorie {
     
     //retourne nombre des demandes pour chaque categorie (parametre : id categorie ) 
     public int nbrDmndCat(int id) throws SQLException{
-     String sql = "SELECT COUNT(*) AS nombre FROM demande WHERE id_categorie=?";
+     String sql = "SELECT COUNT(*) AS nombre FROM demande_aide WHERE id_categorie=?";
      pre= con.prepareStatement(sql);
      pre.setInt(1, id);
      ResultSet rs = pre.executeQuery();

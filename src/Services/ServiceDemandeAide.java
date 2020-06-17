@@ -11,6 +11,7 @@ import Entities.UserTest;
 import static Entities.UserTest.id;
 import Utils.DataSource;
 import Utils.Etat;
+import controllers.UiLoginController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,13 +39,13 @@ public class ServiceDemandeAide {
     
     public void ajouter(DemandeAide d) throws SQLException {
         
-    String sql = "INSERT INTO `demande` ( `id_categorie`, `id_user`, `titre`, `description`, `etat`, `nb_reactions` ) VALUES ( ?, ?, ?, ?, ?, ? );";
+    String sql = "INSERT INTO `demande_aide` ( `id_categorie`, `id_user`, `titre`, `description`, `etat`, `nb_reactions` ) VALUES ( ?, ?, ?, ?, ?, ? );";
     PreparedStatement pre = con.prepareStatement(sql);
     pre.setInt(1, d.getIdCategorie());
     pre.setInt(2, d.getIdUser());
     pre.setString(3, d.getTitre());
     pre.setString(4, d.getDescription());
-    pre.setString(5, d.getEtatAsString());
+    pre.setString(5, "valide");
     //pre.setInt(6, d.getNbParticipants());
     pre.setInt(6, d.getNbReactions());
     //pre.setInt(8, d.getNbCommentaires());
@@ -55,7 +56,7 @@ public class ServiceDemandeAide {
     public boolean update(int id, DemandeAide dN) throws SQLException {
     
     //String sql ="UPDATE categorie SET nom=? WHERE id=?";
-    String sql ="UPDATE demande SET id_categorie=?, id_user=?, titre=?, description=?, etat=?, nb_reactions=? WHERE id=?";
+    String sql ="UPDATE demande_aide SET id_categorie=?, id_user=?, titre=?, description=?, etat=?, nb_reactions=? WHERE id=?";
     pre= con.prepareStatement(sql);
     pre.setInt(1, dN.getIdCategorie());
     pre.setInt(2, dN.getIdUser());
@@ -78,7 +79,7 @@ public class ServiceDemandeAide {
     
     public boolean delete(int id) throws SQLException {
     
-    String sql = "DELETE FROM demande WHERE id=?";
+    String sql = "DELETE FROM demande_aide WHERE id=?";
     pre = con.prepareStatement(sql);
     pre.setInt(1, id);
     int rowsDeleted = pre.executeUpdate();
@@ -92,7 +93,7 @@ public class ServiceDemandeAide {
     
     public List<DemandeAide> readAll() throws SQLException {
     List<DemandeAide> arr = new ArrayList<>();
-    String sql = "SELECT * FROM demande";
+    String sql = "SELECT * FROM demande_aide";
     ste = con.createStatement();
     ResultSet rs = ste.executeQuery(sql);
     
@@ -102,11 +103,11 @@ public class ServiceDemandeAide {
             int idUser=rs.getInt(3);
             String titre=rs.getString("titre");
             String description=rs.getString(5);
-            Etat etat=Etat.valueOf(rs.getString("etat"));
+           // Etat etat=Etat.valueOf(rs.getString("etat"));
             //int nbParticipants=rs.getInt(7);
             int nbReactions=rs.getInt(7);
             //int nbCommentaires=rs.getInt(9);
-            DemandeAide d =new DemandeAide(id, idCategorie, idUser,  titre,  description, etat,  nbReactions);
+            DemandeAide d =new DemandeAide(id, idCategorie, idUser,  titre,  description,  nbReactions);
             arr.add(d);
     }
     
@@ -118,7 +119,7 @@ public class ServiceDemandeAide {
     //retourne que les demandes non signalées
     public List<DemandeAide> readNotSign() throws SQLException {
     List<DemandeAide> arr = new ArrayList<>();
-    String sql = "SELECT * FROM demande where etat <> 'SIGNALEE'";
+    String sql = "SELECT * FROM demande_aide where etat <> 'SIGNALEE'";
     ste = con.createStatement();
     ResultSet rs = ste.executeQuery(sql);
     
@@ -146,7 +147,7 @@ public class ServiceDemandeAide {
         //retourne que les demandes non signalées avec idUserReel from table
     public List<DemandeAide> readNotSignSql() throws SQLException {
     List<DemandeAide> arr = new ArrayList<>();
-    String sql = "SELECT * FROM demande where etat <> 'SIGNALEE'";
+    String sql = "SELECT * FROM demande_aide where etat <> 'SIGNALEE'";
     ste = con.createStatement();
     ResultSet rs = ste.executeQuery(sql);
     
@@ -156,11 +157,13 @@ public class ServiceDemandeAide {
             int idUser=rs.getInt(3);
             String titre=rs.getString("titre");
             String description=rs.getString(5);
-            Etat etat=Etat.valueOf(rs.getString("etat"));
+            //Etat etat=Etat.valueOf(rs.getString("etat"));
             //int nbParticipants=rs.getInt(7);
             int nbReactions=rs.getInt(7);
             //int nbCommentaires=rs.getInt(9);
-            DemandeAide d =new DemandeAide(titre, idCategorie, idUser,  id,  description, etat,  nbReactions);
+            
+            //DemandeAide d =new DemandeAide(titre, idCategorie, idUser,  id,  description, etat,  nbReactions);
+            DemandeAide d =new DemandeAide(titre, idCategorie, idUser,  id,  description,  nbReactions);
             arr.add(d);
     }
     
@@ -171,7 +174,7 @@ public class ServiceDemandeAide {
         //idUser from table not userTest
         public  DemandeAide readByIdSql(int id) throws SQLException{
         
-        String sql = "SELECT * FROM demande WHERE id=?";
+        String sql = "SELECT * FROM demande_aide WHERE id=?";
         pre = con.prepareStatement(sql);
         pre.setInt(1, id);
         ResultSet rs = pre.executeQuery();
@@ -180,11 +183,12 @@ public class ServiceDemandeAide {
             int idUser=rs.getInt(3);
             String titre=rs.getString("titre");
             String description=rs.getString(5);
-            Etat etat=Etat.valueOf(rs.getString("etat"));
+            //Etat etat=Etat.valueOf(rs.getString("etat"));
             //int nbParticipants=rs.getInt(7);
             int nbReactions=rs.getInt(7);
             //int nbCommentaires=rs.getInt(9);
-            DemandeAide d =new DemandeAide(titre, idCategorie, idUser,  id,  description, etat,  nbReactions);
+            //DemandeAide d =new DemandeAide(titre, idCategorie, idUser,  id,  description, etat,  nbReactions);
+            DemandeAide d =new DemandeAide(titre, idCategorie, idUser,  id,  description,  nbReactions);
             System.out.println("la demande de ID "+id+" existe");
             System.out.println(d);
             return d;
@@ -203,7 +207,7 @@ public class ServiceDemandeAide {
     
     public  DemandeAide readById(int id) throws SQLException{
         
-        String sql = "SELECT * FROM demande WHERE id=?";
+        String sql = "SELECT * FROM demande_aide WHERE id=?";
         pre = con.prepareStatement(sql);
         pre.setInt(1, id);
         ResultSet rs = pre.executeQuery();
@@ -212,11 +216,11 @@ public class ServiceDemandeAide {
             int idUser=rs.getInt(3);
             String titre=rs.getString("titre");
             String description=rs.getString(5);
-            Etat etat=Etat.valueOf(rs.getString("etat"));
+            //Etat etat=Etat.valueOf(rs.getString("etat"));
             //int nbParticipants=rs.getInt(7);
             int nbReactions=rs.getInt(7);
             //int nbCommentaires=rs.getInt(9);
-            DemandeAide d =new DemandeAide(id, idCategorie, idUser,  titre,  description, etat,  nbReactions);
+            DemandeAide d =new DemandeAide(id, idCategorie, idUser,  titre,  description,   nbReactions);
             System.out.println("la demande de ID "+id+" existe");
             System.out.println(d);
             return d;
@@ -277,7 +281,7 @@ public class ServiceDemandeAide {
     
     public DemandeAide derniereDmndAjout() throws SQLException{
     
-        String sql = "SELECT MAX(id) FROM demande";
+        String sql = "SELECT MAX(id) FROM demande_aide";
         pre = con.prepareStatement(sql);
         ResultSet rs = pre.executeQuery();
         if (rs.next()){
@@ -303,21 +307,23 @@ public class ServiceDemandeAide {
     //read all demande by id user
     public  List<DemandeAide> readByIdUser() throws SQLException{
         List<DemandeAide> arr = new ArrayList<>();
-        String sql = "SELECT * FROM demande WHERE id_user=?";
+        String sql = "SELECT * FROM demande_aide WHERE id_user=?";
         pre = con.prepareStatement(sql);
-        pre.setInt(1, UserTest.id);
+        
+        //pre.setInt(1, UserTest.id);
+        pre.setInt(1, UiLoginController.uh.getId());
         ResultSet rs = pre.executeQuery();
         while (rs.next()){
             int id=rs.getInt(1);
             int idCategorie=rs.getInt(2);
-            int idUser=rs.getInt(3);
+            int idUser=rs.getInt("id_user");
             String titre=rs.getString("titre");
             String description=rs.getString(5);
-            Etat etat=Etat.valueOf(rs.getString("etat"));
+            //Etat etat=Etat.valueOf(rs.getString("etat"));
             //int nbParticipants=rs.getInt(7);
             int nbReactions=rs.getInt(7);
             //int nbCommentaires=rs.getInt(9);
-            DemandeAide d =new DemandeAide(id, idCategorie, idUser,  titre,  description, etat,  nbReactions);
+            DemandeAide d =new DemandeAide(id, idCategorie, idUser,  titre,  description,  nbReactions);
             
             arr.add(d);
         }

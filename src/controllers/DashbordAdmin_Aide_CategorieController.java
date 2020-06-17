@@ -315,8 +315,11 @@ public class DashbordAdmin_Aide_CategorieController implements Initializable {
             sh.setVisible(false);
             
             
-            //boutton supprimer Categorie = btnSupp            
-            FileInputStream inputSupp = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/delete.png");
+            //boutton supprimer Categorie = btnSupp  C:/Users/Hedi/Downloads/pidevJavaImg/   
+            //*********************************************************************************************************************
+            //FileInputStream inputSupp = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/delete.png");
+            FileInputStream inputSupp = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/delete.png");
+            
             Image imageSupp = new Image(inputSupp);
             ImageView imageViewSupp = new ImageView(imageSupp);
             imageViewSupp.setFitHeight(20);
@@ -346,7 +349,9 @@ public class DashbordAdmin_Aide_CategorieController implements Initializable {
                                         });
             
             //boutton modifier Categorie = btnModif
-            FileInputStream inputModif = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/edit.png");
+            //**************************************************************************************************
+            //FileInputStream inputModif = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/edit.png");
+            FileInputStream inputModif = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/edit.png");
             Image imageModif = new Image(inputModif);
             ImageView imageViewModif = new ImageView(imageModif);
             imageViewModif.setFitHeight(20);

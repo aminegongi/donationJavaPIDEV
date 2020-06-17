@@ -9,6 +9,7 @@ import Entities.Categorie;
 import Entities.DemandeAide;
 import Entities.StatCategorie;
 import Entities.User;
+import Entities.Utilisateur;
 import Services.ServiceBarchart;
 import Services.ServiceCategorie;
 import Services.ServiceDemandeAide;
@@ -265,10 +266,10 @@ public class DashbordAdmin_AideController implements Initializable {
         
         int idUser = dmnd.getIdUser();
             ServiceUser serUser = new ServiceUser();
-            User  user = serUser.readById(idUser);
-            String nomUser = user.getNom();
+            Utilisateur  user = serUser.getById(idUser);
+            String nomUser = user.getUsername();
             String prenomUser = user.getPrenom();
-            String mailUser = user.getMail();
+            //String mailUser = user.getMail();
             
             int idDmnd = dmnd.getId();
             String TitreDmnd = dmnd.getTitre();
@@ -299,10 +300,10 @@ public class DashbordAdmin_AideController implements Initializable {
             Label publierParLbl = new Label("Publiée par :");
             publierParLbl.getStyleClass().add("pbParLbl");
             //Label nomUser et prenomUser
-            Label nomPrenomUserLbl = new Label(nomUser+" "+prenomUser);
+            Label nomPrenomUserLbl = new Label(nomUser);
             //Label mailUser
-            Label mailUserLbl = new Label(mailUser);
-            mailUserLbl.getStyleClass().add("mailLbl");
+            //Label mailUserLbl = new Label(mailUser);
+            //mailUserLbl.getStyleClass().add("mailLbl");
             //Label nombre reaction jaime
             Label nbrReactLbl = new Label("J'aime : "+dmnd.getNbReactions());
             nbrReactLbl.getStyleClass().add("aimeLbl");
@@ -314,9 +315,9 @@ public class DashbordAdmin_AideController implements Initializable {
             
             VBoxCat.getChildren().add(publierParLbl);
             VBoxCat.getChildren().add(nomPrenomUserLbl);
-            VBoxCat.getChildren().add(mailUserLbl);
+            //VBoxCat.getChildren().add(mailUserLbl);
             
-            VBoxCat.getChildren().add(nbrReactLbl);
+            //VBoxCat.getChildren().add(nbrReactLbl);
         
        /*
         //Recuperation des different attributs
@@ -362,7 +363,10 @@ public class DashbordAdmin_AideController implements Initializable {
         
  //boutton supprimer Categorie = btnSupp   
        // System.out.println("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/controllers/delete.png");
-            FileInputStream inputSupp = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/delete.png");
+       //********************************************************************     
+       //FileInputStream inputSupp = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/delete.png");
+            FileInputStream inputSupp = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/delete.png");
+
             Image imageSupp = new Image(inputSupp);
             ImageView imageViewSupp = new ImageView(imageSupp);
             imageViewSupp.setFitHeight(20);
@@ -395,7 +399,11 @@ public class DashbordAdmin_AideController implements Initializable {
                                         });
 
             //boutton modifier Categorie = btnModif
-            FileInputStream inputModif = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/edit.png");
+            //**********************************************************************************************
+            
+            //FileInputStream inputModif = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/edit.png");
+            FileInputStream inputModif = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/edit.png");
+
             Image imageModif = new Image(inputModif);
             ImageView imageViewModif = new ImageView(imageModif);
             imageViewModif.setFitHeight(20);

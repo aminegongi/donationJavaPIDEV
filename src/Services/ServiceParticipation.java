@@ -11,6 +11,7 @@ import Entities.Participation;
 import Entities.UserTest;
 import Utils.DataSource;
 import Utils.Etat;
+import controllers.UiLoginController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,16 +37,16 @@ public class ServiceParticipation {
      
     public void ajouter(Participation p) throws SQLException {
         
-    String sql = "INSERT INTO `participation` ( `id_demande`, `id_user` ) VALUES ( ?, ? );";
+    String sql = "INSERT INTO `participation_aide` ( `id_demande`, `id_user` ) VALUES ( ?, ? );";
     PreparedStatement pre = con.prepareStatement(sql);
     pre.setInt(1, p.getIdDemande());
-    pre.setInt(2, p.getIdUser());
+    pre.setInt(2, UiLoginController.uh.getId());
     pre.executeUpdate();
     //modification de la table demande si etat = visible( 0 participations)
     int idDmnd = p.getIdDemande();
     ServiceDemandeAide ser = new ServiceDemandeAide();
     DemandeAide d = ser.readById(idDmnd);
-    if( d.getEtat() == Etat.VISIBLE)
+   /* if( d.getEtat() == Etat.VISIBLE)
     {   System.out.println("demande avant update");
         System.out.println(ser.readById(idDmnd));
        d.setEtat(Etat.VALIDE);
@@ -53,7 +54,7 @@ public class ServiceParticipation {
        System.out.println("demande apres update");
        System.out.println(ser.readById(idDmnd));
         
-    }
+    }*/
     }
     
     //RIEN A MODIFIER POUR LE MOMENT    

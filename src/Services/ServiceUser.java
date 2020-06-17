@@ -6,6 +6,7 @@
 package Services;
 
 import Entities.User;
+import Entities.Utilisateur;
 import Utils.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,5 +49,30 @@ public class ServiceUser {
             }
     }
     
-    
+    public Utilisateur getById(int id)throws SQLException{
+                String sql = "SELECT * FROM fos_user  WHERE id=?";
+        pre = con.prepareStatement(sql);
+        pre.setInt(1, id);
+        ResultSet rs = pre.executeQuery();
+        if (rs.next()){
+            
+            /*
+            String nom = rs.getString("nom");
+            String prenom = rs.getString("prenom");
+            String mail = rs.getString("mail");
+            User user =new User(id,nom,prenom,mail);
+            */
+            String userName = rs.getString("username");
+            Utilisateur user = new Utilisateur();
+            user.setUsername(userName);
+            
+            System.out.println(user);
+            return user;
+            }
+        else{
+            System.out.println("user de ID  "+id+" n'existe pas");
+            Utilisateur user =new Utilisateur();
+            return user;
+            }
+    }
 }

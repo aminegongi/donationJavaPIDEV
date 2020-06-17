@@ -7,9 +7,11 @@ package controllers;
 
 import Entities.Categorie;
 import Entities.DemandeAide;
+import Entities.Participation;
 import Entities.Signalement;
 import Entities.User;
 import Entities.UserTest;
+import Entities.Utilisateur;
 import Services.ServiceCategorie;
 import Services.ServiceDemandeAide;
 import Services.ServiceParticipation;
@@ -150,6 +152,9 @@ public class Front_Aide_AccueilController implements Initializable {
   
           listDmnd = serDmnd.readByIdUser();
           
+          System.out.print("my demandes : ");
+          System.out.print(listDmnd);
+          
           
         } catch (SQLException ex) {
             Logger.getLogger(DashbordAdmin_Aide_CategorieController.class.getName()).log(Level.SEVERE, null, ex);
@@ -160,17 +165,35 @@ public class Front_Aide_AccueilController implements Initializable {
         for (int i = 0; i < listDmnd.size(); i++) {
             
             DemandeAide dmnd = listDmnd.get(i);
-            
+            //integration modif ***************************************************************************************
             //details sur user proprietaire du demande
-            int idUser = listDmnd.get(i).getIdUser();
+           /* int idUser = listDmnd.get(i).getIdUser();
             ServiceUser serUser = new ServiceUser();
             User  user = serUser.readById(idUser);
             String nomUser = user.getNom();
             String prenomUser = user.getPrenom();
             String mailUser = user.getMail();
+            */
+            //**********************************************************************************************************
+            /*
+            String nomUser = "hedi";
+            String prenomUser = "hedi";
+            String mailUser = "hedi";
+            */
+            int idUser = listDmnd.get(i).getIdUser();
+            ServiceUser serUser = new ServiceUser();
+            Utilisateur  user = serUser.getById(idUser);
+            String nomUser = user.getUsername();
+            System.out.println("connected" + nomUser);
+            //String prenomUser = user.getPrenom();
+            String mailUser = user.getEmail();
+            
             
             int idDmnd = listDmnd.get(i).getId();
             String TitreDmnd = listDmnd.get(i).getTitre();
+            
+            
+            
             
             //Separator vertical entre les categories
             Separator h = new Separator(Orientation.VERTICAL);
@@ -204,7 +227,7 @@ public class Front_Aide_AccueilController implements Initializable {
             Label publierParLbl = new Label("Publiée par :");
             publierParLbl.getStyleClass().add("pbParLbl");
             //Label nomUser et prenomUser
-            Label nomPrenomUserLbl = new Label(nomUser+" "+prenomUser);
+            Label nomPrenomUserLbl = new Label(nomUser);
             //Label mailUser
             Label mailUserLbl = new Label(mailUser);
             mailUserLbl.getStyleClass().add("mailLbl");
@@ -224,12 +247,18 @@ public class Front_Aide_AccueilController implements Initializable {
             
             
             //boutton supprimer demande = btnSupp            
-            FileInputStream inputSupp = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/delete.png");
+//integration modif ***************************************************************
+            //FileInputStream inputSupp = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/delete.png");
+            FileInputStream inputSupp = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/delete.png");
+
             Image imageSupp = new Image(inputSupp);
             ImageView imageViewSupp = new ImageView(imageSupp);
             imageViewSupp.setFitHeight(20);
             imageViewSupp.setFitWidth(20);
             Button btnSupp = new Button("", imageViewSupp);
+          
+       //Button btnSupp = new Button("supp");
+//************************************************************************************************
             btnSupp.setTooltip(new Tooltip("Supprimer"));
             btnSupp.setMaxSize(100, 200);
             btnSupp.setOnAction((e) -> {       
@@ -258,12 +287,20 @@ public class Front_Aide_AccueilController implements Initializable {
  //************************************************************************************************************************************           
             
             //boutton preview Demande = btnpreview
-            FileInputStream inputPreview = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/preview.png");
+            
+//integration modif*************************************************************************************************************************
+           
+            //FileInputStream inputPreview = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/preview.png");
+            FileInputStream inputPreview = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/preview.png");
+
             Image imagePreview = new Image(inputPreview);
             ImageView imageViewPreview = new ImageView(imagePreview);
             imageViewPreview.setFitHeight(30);
             imageViewPreview.setFitWidth(30);
             Button btnPreview = new Button("", imageViewPreview);
+            
+           //Button btnPreview = new Button("prev");
+//***************************************************************************************************************************************
             btnPreview.setTooltip(new Tooltip("Description"));
             btnPreview.setMaxSize(100, 200);
             btnPreview.setOnAction((e) -> {
@@ -290,7 +327,7 @@ public class Front_Aide_AccueilController implements Initializable {
             VBoxCat.getChildren().add(nomPrenomUserLbl);
             VBoxCat.getChildren().add(mailUserLbl);
             
-            VBoxCat.getChildren().add(nbrReactLbl);
+            //VBoxCat.getChildren().add(nbrReactLbl);
             VBoxCat.getChildren().add(sh);
             
             HBox btnHBox = new HBox();
@@ -381,6 +418,10 @@ public class Front_Aide_AccueilController implements Initializable {
           //listDmnd = serDmnd.readNotSign();
           listDmnd = serDmnd.readNotSignSql();
           
+          System.out.println("liste demandes : ");
+          
+          System.out.println(listDmnd);
+          
           /*
           //comboBox choix trie demande : date d'ajout proche(nouvelles demandes)
           if(trieType.equals("alphabetique")){
@@ -416,13 +457,37 @@ public class Front_Aide_AccueilController implements Initializable {
             
             DemandeAide dmnd = listDmnd.get(i);
             
+            
+            //integration modif******************************************************************************************************************
+            
             //details sur user proprietaire du demande
+            /*
             int idUser = listDmnd.get(i).getIdUser();
             ServiceUser serUser = new ServiceUser();
             User  user = serUser.readById(idUser);
             String nomUser = user.getNom();
             String prenomUser = user.getPrenom();
             String mailUser = user.getMail();
+            */
+            //**********************************************************************************************************************************
+            /*
+            String nomUser = "khalifa";
+            String prenomUser = "hedi";
+            String mailUser = "hedi.khalifa@gmail.com";
+            */
+            
+            
+            int idUser = listDmnd.get(i).getIdUser();
+            ServiceUser serUser = new ServiceUser();
+            Utilisateur  user = serUser.getById(idUser);
+            String nomUser = user.getUsername();
+            //String prenomUser = user.getPrenom();
+            String mailUser = user.getEmail();
+            
+            
+            
+            
+            
             
             int idDmnd = listDmnd.get(i).getId();
             String TitreDmnd = listDmnd.get(i).getTitre();
@@ -459,7 +524,8 @@ public class Front_Aide_AccueilController implements Initializable {
             Label publierParLbl = new Label("Publiée par :");
             publierParLbl.getStyleClass().add("pbParLbl");
             //Label nomUser et prenomUser
-            Label nomPrenomUserLbl = new Label(nomUser+" "+prenomUser);
+            //Label nomPrenomUserLbl = new Label(nomUser+" "+prenomUser);
+            Label nomPrenomUserLbl = new Label(nomUser);
             //Label mailUser
             Label mailUserLbl = new Label(mailUser);
             mailUserLbl.getStyleClass().add("mailLbl");
@@ -476,12 +542,22 @@ public class Front_Aide_AccueilController implements Initializable {
             
             
             //boutton aime Demande = btnAime            
-            FileInputStream inputAime = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/like.png");
+//modif integration****************************************************************************************
+
+
+            //FileInputStream inputAime = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/like.png");
+            FileInputStream inputAime = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/like.png");
+            
             Image imageAime = new Image(inputAime);
             ImageView imageViewAime = new ImageView(imageAime);
             imageViewAime.setFitHeight(30);
             imageViewAime.setFitWidth(30);
             Button btnAime = new Button("", imageViewAime);
+           
+            //Button btnAime = new Button("j'aime");
+//**********************************************************************************************************
+
+            
             btnAime.setTooltip(new Tooltip("J'aime"));
             btnAime.setMaxSize(100, 200);
             btnAime.setOnAction((event) -> { 
@@ -496,12 +572,18 @@ public class Front_Aide_AccueilController implements Initializable {
                                         });
             
             //boutton preview Demande = btnpreview
-            FileInputStream inputPreview = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/preview.png");
+            //modif integration****************************************************************************************
+            //FileInputStream inputPreview = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/preview.png");
+            FileInputStream inputPreview = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/preview.png");
             Image imagePreview = new Image(inputPreview);
             ImageView imageViewPreview = new ImageView(imagePreview);
             imageViewPreview.setFitHeight(30);
             imageViewPreview.setFitWidth(30);
+          
             Button btnPreview = new Button("", imageViewPreview);
+            //Button btnPreview = new Button("preview");
+            //*********************************************************************************************************
+            
             btnPreview.setTooltip(new Tooltip("Description"));
             btnPreview.setMaxSize(100, 200);
             btnPreview.setOnAction((event) -> {
@@ -517,20 +599,31 @@ public class Front_Aide_AccueilController implements Initializable {
             
           
             //boutton participate demande = btnPart
-            FileInputStream inputPart = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/hands.png");
+            //modif integration*********************************************************************************************************
+            //FileInputStream inputPart = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/hands.png");
+            FileInputStream inputPart = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/hands.png");
             Image imagePart = new Image(inputPart);
             ImageView imageViewPart = new ImageView(imagePart);
             imageViewPart.setFitHeight(30);
             imageViewPart.setFitWidth(30);
             //Button btnPart = new Button("Participer", imageViewPart);
             Button btnPart = new Button("", imageViewPart);
+            
+           //Button btnPart = new Button("particip");
+            //*****************************************************************************************************************************
             btnPart.setTooltip(new Tooltip("Participer"));
             //btnPart.setMaxSize(100, 200);
            // btnPart.setMaxSize(300, 200);
            String titre = listDmnd.get(i).getTitre();
             btnPart.setOnAction((event) -> {
             System.out.println("Button participate ");
-            
+            Participation part = new Participation(idDmnd, UiLoginController.uh.getId());
+            ServiceParticipation serPart  = new ServiceParticipation();
+                try {
+                    serPart.ajouter(part);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Front_Aide_AccueilController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             Mail.sendMail(titre);
             System.out.println("mail send ok");
                             Alert a = new Alert(AlertType.INFORMATION); 
@@ -548,12 +641,12 @@ public class Front_Aide_AccueilController implements Initializable {
             VBoxCat.getChildren().add(nomPrenomUserLbl);
             VBoxCat.getChildren().add(mailUserLbl);
             
-            VBoxCat.getChildren().add(nbrReactLbl);
+            //VBoxCat.getChildren().add(nbrReactLbl);
             VBoxCat.getChildren().add(sh);
             
             HBox btnHBox = new HBox();
             btnHBox.getStyleClass().add("hbox");
-            btnHBox.getChildren().add(btnAime);
+           // btnHBox.getChildren().add(btnAime);
             btnHBox.getChildren().add(btnPreview);
             btnHBox.getChildren().add(btnPart);
             btnHBox.setSpacing(10);
@@ -601,12 +694,12 @@ public class Front_Aide_AccueilController implements Initializable {
       //données de user
         int idUser = dmnd.getIdUser();
             ServiceUser serUser = new ServiceUser();
-            User  user = serUser.readById(idUser);
-            String nomUser = user.getNom();
-            String prenomUser = user.getPrenom();
-            String mailUser = user.getMail();
-            String userphrase = nomUser+" "+prenomUser+", "+mailUser;
-
+            Utilisateur  user = serUser.getById(idUser);
+            String nomUser = user.getUsername();
+            //String prenomUser = user.getPrenom();
+            String mailUser = user.getEmail_canonical();
+            //String userphrase = nomUser+", "+mailUser;
+            String userphrase = nomUser;
     
     String titre = "\n"+dmnd.getTitre()+"\n"+"\n";
     Text titreTxt = new Text(titre);
@@ -647,13 +740,17 @@ public class Front_Aide_AccueilController implements Initializable {
     
     HBox btnBox = new HBox();
     
-            //boutton aime Demande = btnAime            
+            //boutton aime Demande = btnAime      
+            /*
             FileInputStream inputAime = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/like.png");
             Image imageAime = new Image(inputAime);
             ImageView imageViewAime = new ImageView(imageAime);
             imageViewAime.setFitHeight(30);
             imageViewAime.setFitWidth(30);
             Button btnAime = new Button("", imageViewAime);
+            */
+            
+            Button btnAime = new Button("");
             //btnAime.setTooltip(new Tooltip("J'aime"));
             btnAime.setText("J'aime");
             btnAime.setMaxSize(150, 250);
@@ -670,19 +767,35 @@ public class Front_Aide_AccueilController implements Initializable {
             
             
             //boutton participate demande = btnPart
-            FileInputStream inputPart = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/hands.png");
+            
+            //FileInputStream inputPart = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/hands.png");
+            FileInputStream inputPart = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/hands.png");
+           
             Image imagePart = new Image(inputPart);
             ImageView imageViewPart = new ImageView(imagePart);
             imageViewPart.setFitHeight(30);
             imageViewPart.setFitWidth(30);
             //Button btnPart = new Button("Participer", imageViewPart);
             Button btnPart = new Button("", imageViewPart);
+            
+            // Button btnPart = new Button("");
+                    
+                    
             //btnPart.setTooltip(new Tooltip("Participer"));
             btnPart.setText("Participer");
             //btnPart.setMaxSize(100, 200);
            // btnPart.setMaxSize(300, 200);
             btnPart.setOnAction((event) -> {
             System.out.println("Button participate ");
+            
+             Participation part = new Participation(idDmnd, UiLoginController.uh.getId());
+            ServiceParticipation serPart  = new ServiceParticipation();
+                try {
+                    serPart.ajouter(part);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Front_Aide_AccueilController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
             Mail.sendMail(titre);
             System.out.println("mail send ok");
                             Alert a = new Alert(AlertType.INFORMATION); 
@@ -692,13 +805,20 @@ public class Front_Aide_AccueilController implements Initializable {
             
             
             //boutton retour demande = btnBack
-            FileInputStream inputBack = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/back.png");
+            
+            //FileInputStream inputBack = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/back.png");
+            FileInputStream inputBack = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/back.png");
+
             Image imageBack = new Image(inputBack);
             ImageView imageViewBack = new ImageView(imageBack);
             imageViewBack.setFitHeight(30);
             imageViewBack.setFitWidth(30);
             //Button btnPart = new Button("Participer", imageViewPart);
             Button btnBack = new Button("", imageViewBack);
+            
+            
+             //Button btnBack = new Button("");
+            
             //btnBack.setTooltip(new Tooltip("retour"));
             btnBack.setText("Retour");
             //btnPart.setMaxSize(100, 200);
@@ -713,7 +833,8 @@ public class Front_Aide_AccueilController implements Initializable {
             
     
     //btnBox.getChildren().addAll(btnAime,btnPart,btnBack);
-    btnBox.getChildren().addAll(btnAime,btnPart,btnBack);
+    //btnBox.getChildren().addAll(btnAime,btnPart,btnBack);
+    btnBox.getChildren().addAll(btnPart,btnBack);
     btnBox.setSpacing(20);
     btnBox.getStyleClass().add("hboxcplt");
     
@@ -1042,13 +1163,20 @@ Alert a = new Alert(AlertType.ERROR);
          
          
             //boutton retour demande = btnBack
-            FileInputStream inputBack = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/back.png");
+            
+//integration modif**********************************************************************************************************************
+            //FileInputStream inputBack = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/back.png");
+            FileInputStream inputBack = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/back.png");
+
             Image imageBack = new Image(inputBack);
             ImageView imageViewBack = new ImageView(imageBack);
             imageViewBack.setFitHeight(30);
             imageViewBack.setFitWidth(30);
             //Button btnPart = new Button("Participer", imageViewPart);
             Button btnBack = new Button("", imageViewBack);
+           
+         // Button btnBack = new Button("back");
+//*********************************************************************************************************************************************
             //btnBack.setTooltip(new Tooltip("retour"));
             btnBack.setText("Retour");
             //btnPart.setMaxSize(100, 200);
@@ -1064,13 +1192,20 @@ Alert a = new Alert(AlertType.ERROR);
          
          
            //boutton ajouter demande = btnAdd
-            FileInputStream inputAdd = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/add.png");
-            Image imageAdd = new Image(inputAdd);
+
+//integration modif*********************************************************************************************************************************    
+           //FileInputStream inputAdd = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/add.png");
+           FileInputStream inputAdd = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/add.png");
+ 
+           Image imageAdd = new Image(inputAdd);
             ImageView imageViewAdd = new ImageView(imageAdd);
             imageViewAdd.setFitHeight(30);
             imageViewAdd.setFitWidth(30);
             //Button btnPart = new Button("Participer", imageViewPart);
             Button btnAdd = new Button("", imageViewAdd);
+
+          //Button btnAdd = new Button("");
+//*************************************************************************************************************************************
             //btnBack.setTooltip(new Tooltip("retour"));
             btnAdd.setText("Publier");
             //btnPart.setMaxSize(100, 200);
@@ -1098,7 +1233,7 @@ Alert a = new Alert(AlertType.ERROR);
         System.out.println("categorie: "+dmndCatNom);
         System.out.println("description: "+description);*/
             //dialog.close();   
-        DemandeAide dmnd = new DemandeAide (idCat, 0, titre, description, Etat.VISIBLE, 0);
+        DemandeAide dmnd = new DemandeAide (idCat, UiLoginController.uh.getId(), titre, description, 0);
             try {
 
                 if (!(titre.isEmpty())){
@@ -1107,8 +1242,11 @@ Alert a = new Alert(AlertType.ERROR);
                 Alert a = new Alert(AlertType.INFORMATION); 
                 a.setHeaderText("Demande ajoutée avec succès!");
                 //**************************SMS******************SMS**********************************SMS************************SMS
-                Sms sms = new Sms();
+                
+//integration modif*************************************************************************************************
+           /*     Sms sms = new Sms();
                 sms.sendSms("votre demande a ete ajoutée avec succès");
+*/
                 a.show();
                 //dialog.close();
                 flowPaneListeDmnd.getChildren().clear();
@@ -1206,6 +1344,7 @@ Alert a = new Alert(AlertType.ERROR);
 
       //données de user
         int idUser = dmnd.getIdUser();
+        /*
             ServiceUser serUser = new ServiceUser();
             User  user = serUser.readById(idUser);
             String nomUser = user.getNom();
@@ -1213,7 +1352,15 @@ Alert a = new Alert(AlertType.ERROR);
             String mailUser = user.getMail();
             String userphrase = nomUser+" "+prenomUser+", "+mailUser;
 
-    
+    */
+        ServiceUser serUser = new ServiceUser();
+            Utilisateur  user = serUser.getById(idUser);
+            String nomUser = user.getUsername();
+            //String prenomUser = user.getPrenom();
+            String mailUser = user.getEmail_canonical();
+            //String userphrase = nomUser+", "+mailUser;
+            String userphrase = nomUser;
+            
     String titre = "\n"+dmnd.getTitre()+"\n"+"\n";
     Text titreTxt = new Text(titre);
     titreTxt.getStyleClass().add("titredmndcplt");
@@ -1253,13 +1400,20 @@ Alert a = new Alert(AlertType.ERROR);
     
     HBox btnBox = new HBox();
     
-            //boutton supprimer demande = btnSupp            
-            FileInputStream inputSupp = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/delete.png");
+            //boutton supprimer demande = btnSupp     
+            //*********************************************************************************************************************************
+            
+            //FileInputStream inputSupp = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/delete.png");
+            FileInputStream inputSupp = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/delete.png");
+
             Image imageSupp = new Image(inputSupp);
             ImageView imageViewSupp = new ImageView(imageSupp);
             imageViewSupp.setFitHeight(20);
             imageViewSupp.setFitWidth(20);
             Button btnSupp = new Button("supprimer", imageViewSupp);
+            
+            //Button btnSupp = new Button("supprimer");
+            //**************************************************************************
             btnSupp.setTooltip(new Tooltip("Supprimer"));
             btnSupp.setMaxSize(150, 230);
             btnSupp.setOnAction((event) -> {       
@@ -1285,13 +1439,20 @@ Alert a = new Alert(AlertType.ERROR);
             
             
             //boutton participate demande = btnPart
-            FileInputStream inputPart = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/hands.png");
+            //**********************************************************************************************
+           
+            //FileInputStream inputPart = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/hands.png");
+            FileInputStream inputPart = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/hands.png");
+
             Image imagePart = new Image(inputPart);
             ImageView imageViewPart = new ImageView(imagePart);
             imageViewPart.setFitHeight(30);
             imageViewPart.setFitWidth(30);
             //Button btnPart = new Button("Participer", imageViewPart);
             Button btnPart = new Button("", imageViewPart);
+            
+           //Button btnPart = new Button("");
+            //***********************************************************************************************
             //btnPart.setTooltip(new Tooltip("Participer"));
             btnPart.setText("Participer");
             //btnPart.setMaxSize(100, 200);
@@ -1307,13 +1468,19 @@ Alert a = new Alert(AlertType.ERROR);
             
             
             //boutton retour demande = btnBack
-            FileInputStream inputBack = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/back.png");
+            //*****************************************
+            
+            //FileInputStream inputBack = new FileInputStream("C:/Users/Amine Gongi/Desktop/Esprit 3A/PIDEV/DoNationJava/JavaFXApplicationWUI/src/images/hedi/back.png");
+            FileInputStream inputBack = new FileInputStream("C:/Users/Hedi/Downloads/pidevJavaImg/back.png");
+
             Image imageBack = new Image(inputBack);
             ImageView imageViewBack = new ImageView(imageBack);
             imageViewBack.setFitHeight(30);
             imageViewBack.setFitWidth(30);
             //Button btnPart = new Button("Participer", imageViewPart);
             Button btnBack = new Button("", imageViewBack);
+            
+            //Button btnBack = new Button("");
             //btnBack.setTooltip(new Tooltip("retour"));
             btnBack.setText("Retour");
             //btnPart.setMaxSize(100, 200);

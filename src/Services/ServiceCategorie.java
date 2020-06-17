@@ -34,7 +34,7 @@ public class ServiceCategorie {
     
     public void ajouter(Categorie c) throws SQLException {
         
-        String sql = "INSERT INTO `categorie` ( `nom` ) VALUES ( ? );";
+        String sql = "INSERT INTO `categorie_aide` ( `nom` ) VALUES ( ? );";
         PreparedStatement pre = con.prepareStatement(sql);
         pre.setString(1, c.getNom());
         pre.executeUpdate();
@@ -43,7 +43,7 @@ public class ServiceCategorie {
     
     public boolean delete(int id) throws SQLException {
     
-    String sql = "DELETE FROM categorie WHERE id=?";
+    String sql = "DELETE FROM categorie_aide WHERE id=?";
     pre = con.prepareStatement(sql);
     pre.setInt(1, id);
     int rowsDeleted = pre.executeUpdate();
@@ -57,7 +57,7 @@ public class ServiceCategorie {
     //parametres : id de categorie à modifier, cN: nouvelle categorie
     public boolean update(int id, Categorie cN) throws SQLException {
     
-    String sql ="UPDATE categorie SET nom=? WHERE id=?";
+    String sql ="UPDATE categorie_aide SET nom=? WHERE id=?";
     //String sql ="UPDATE categorie SET nom=? WHERE nom=?";
     pre= con.prepareStatement(sql);
     pre.setString(1, cN.getNom());
@@ -73,7 +73,7 @@ public class ServiceCategorie {
     
     public List<Categorie> readAll() throws SQLException {
     List<Categorie> arr = new ArrayList<>();
-    String sql = "SELECT * FROM categorie";
+    String sql = "SELECT * FROM categorie_aide";
     ste = con.createStatement();
     ResultSet rs = ste.executeQuery(sql);
     
@@ -90,7 +90,7 @@ public class ServiceCategorie {
     
         public  Categorie readById(int id) throws SQLException{
         
-        String sql = "SELECT * FROM categorie WHERE id=?";
+        String sql = "SELECT * FROM categorie_aide WHERE id=?";
         pre = con.prepareStatement(sql);
         pre.setInt(1, id);
         ResultSet rs = pre.executeQuery();
@@ -115,7 +115,7 @@ public class ServiceCategorie {
         
         public  Categorie readByName(String name) throws SQLException{
         
-        String sql = "SELECT * FROM categorie WHERE nom=?";
+        String sql = "SELECT * FROM categorie_aide WHERE nom=?";
         pre = con.prepareStatement(sql);
         pre.setString(1, name);
         ResultSet rs = pre.executeQuery();
@@ -155,7 +155,7 @@ public class ServiceCategorie {
    //trier les categories par ordre d'ajout proche ( id la plus grande = date la plus proche )
    public List<Categorie> trierCatOrdreAjtDec() throws SQLException{
        List<Categorie> arr = new ArrayList<>();
-       String sql = "SELECT * FROM categorie ORDER BY id DESC";
+       String sql = "SELECT * FROM categorie_aide ORDER BY id DESC";
            ste = con.createStatement();
     ResultSet rs = ste.executeQuery(sql);
     
@@ -175,7 +175,7 @@ public class ServiceCategorie {
    //trier les categories par ordre d'ajout loin ( id la plus petite = date la plus lointaine )
      public List<Categorie> trierCatOrdreAjtCroi() throws SQLException{
        List<Categorie> arr = new ArrayList<>();
-       String sql = "SELECT * FROM categorie ORDER BY id ASC";
+       String sql = "SELECT * FROM categorie_aide ORDER BY id ASC";
            ste = con.createStatement();
     ResultSet rs = ste.executeQuery(sql);
     
@@ -194,7 +194,7 @@ public class ServiceCategorie {
    
    public Categorie derniereCatAjout() throws SQLException{
     
-        String sql = "SELECT MAX(id) FROM categorie";
+        String sql = "SELECT MAX(id) FROM categorie_aide";
         pre = con.prepareStatement(sql);
         ResultSet rs = pre.executeQuery();
         if (rs.next()){

@@ -45,6 +45,24 @@ public class DemandeAide {
     }
  
     
+    
+    
+        public DemandeAide(int id, int idCategorie,int idUser, String titre, String description, int nbReactions) {
+        this.id = id;
+        this.idCategorie = idCategorie;
+        //this.idUser = idUser;
+        //pour tester 
+        this.idUser = idUser;
+        this.titre = titre;
+        this.description = description;
+       // this.etat = etat;
+        //this.nbParticipants = nbParticipants;
+        this.nbReactions = nbReactions;
+        //this.nbCommentaires = nbCommentaires;
+    }
+    
+    
+    
     //Constructeur pour test idUser fromTableSql not UserTest
     //titre,idCategorie,idUser,id,description,etat,nbReaction
     //RQ : titre en premier lieu
@@ -55,6 +73,19 @@ public class DemandeAide {
         this.titre = titre;
         this.description = description;
         this.etat = etat;
+        //this.nbParticipants = nbParticipants;
+        this.nbReactions = nbReactions;
+        //this.nbCommentaires = nbCommentaires;
+    }
+        
+//integration modif
+         public DemandeAide(String titre, int idCategorie,int idUser, int id, String description, int nbReactions) {
+        this.id = id;
+        this.idCategorie = idCategorie;
+        this.idUser = idUser;
+        this.titre = titre;
+        this.description = description;
+        //this.etat = etat;
         //this.nbParticipants = nbParticipants;
         this.nbReactions = nbReactions;
         //this.nbCommentaires = nbCommentaires;
@@ -75,6 +106,20 @@ public class DemandeAide {
         //this.nbCommentaires = nbCommentaires;
     }
     
+    
+    
+    //tout les attributs sauf id
+    public DemandeAide(int idCategorie, int idUser, String titre, String description, int nbReactions) {
+        this.idCategorie = idCategorie;
+        //this.idUser = idUser;
+        this.idUser = idUser;
+        this.titre = titre;
+        this.description = description;
+        //this.etat = etat;
+        //this.nbParticipants = nbParticipants;
+        this.nbReactions = nbReactions;
+        //this.nbCommentaires = nbCommentaires;
+    }
     
     //pour test iduser from table not userTest
     public DemandeAide(String titre, int idUser, int idCategorie, String description, Etat etat, int nbReactions) {

@@ -54,12 +54,14 @@ public class Mail {
         message.setFrom(new InternetAddress(myAccountEmail));
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(UserTest.emailSendTo));
         message.setSubject("Donation , Votre Compte");
-        
+       System.out.println("before  html"); 
         //String htmlCode = "<h1> Merci </h1> <br/> <h2><b>votre code confirmation :" + user.getConfirmation_token() + "</b></h2>";
-        String htmlCode = "<h1> Bonne nouvelle! quelqu'un peut vous aider :) </h1> <br/> <p>l'utilisateur :" + UserTest.emailSigned + " a participé a votre demande: <b>"+titrePart+" </b>N'hésitez-pas à le contacter pour obtenir plus d'informations!</p>";
-
+        //String htmlCode = "<h1> Bonne nouvelle! quelqu'un peut vous aider :) </h1> <br/> <p>l'utilisateur :" + UserTest.emailSigned + " a participé a votre demande: <b>"+titrePart+" </b>N'hésitez-pas à le contacter pour obtenir plus d'informations!</p>";
+       String htmlCode ="hi";
+System.out.println("Mail after html");
             message.setContent(htmlCode, "text/html");
             //Send mail
+            System.out.println("Mail before transport ");
             Transport.send(message);
             System.out.println("Mail Confirm key OK");
 
