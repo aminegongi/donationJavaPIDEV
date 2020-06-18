@@ -226,6 +226,14 @@ public class DashbordAdminRestoController implements Initializable {
      //initPopup();
      //initPopup();
      //initPopup();
+     //initPopup();
+     //initPopup();
+     //initPopup();
+     //initPopup();
+     //initPopup();
+     //initPopup();
+     //initPopup();
+     //initPopup();
     }
     @FXML
     private void goToProfile(MouseEvent event) {
@@ -524,6 +532,14 @@ public class DashbordAdminRestoController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(DashbordAdminRestoController.class.getName()).log(Level.SEVERE, null, ex);
         }
+     //initPopup();
+     //initPopup();
+     //initPopup();
+     //initPopup();
+     //initPopup();
+     //initPopup();
+     //initPopup();
+     //initPopup();
      //initPopup();
      //initPopup();
      //initPopup();

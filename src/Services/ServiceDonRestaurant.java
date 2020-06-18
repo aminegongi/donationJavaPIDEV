@@ -81,13 +81,13 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
     ste=con.createStatement();
     ResultSet rs=ste.executeQuery("select * from don_restaurant");
      while (rs.next()) {                
-               int idDon=rs.getInt(1);
-               int idResto=rs.getInt(2);
+               int idDon=rs.getInt("idDon");
+               int idResto=rs.getInt("idResto");
                String nomResto = getName(idResto);
-               int idUser=rs.getInt(3);
+               int idUser=rs.getInt("idUser");
                String nomUser = getName(idUser);
-               float montant=rs.getFloat(4);
-               Timestamp date=rs.getTimestamp(5);
+               float montant=rs.getFloat("montant");
+               Timestamp date=rs.getTimestamp("date");
                DonRestaurant d=new DonRestaurant(idDon, idResto, nomResto, idUser, nomUser, montant, date);
      arr.add(d);
      }
@@ -198,13 +198,13 @@ public class ServiceDonRestaurant implements IService<DonRestaurant> {
     ste=con.createStatement();
     ResultSet rs=ste.executeQuery("select * from don_restaurant WHERE `idResto` = '" + idRestoR + "';" );
      while (rs.next()) {                
-               int idDon=rs.getInt(1);
-               int idResto=rs.getInt(2);
+               int idDon=rs.getInt("idDon");
+               int idResto=rs.getInt("iDResto");
                String nomResto=getName(idResto);
-               int idUser=rs.getInt(3);
+               int idUser=rs.getInt("idUser");
                String nomUser=getName(idUser);
-               float montant=rs.getFloat(4);
-               Timestamp date=rs.getTimestamp(5);
+               float montant=rs.getFloat("montant");
+               Timestamp date=rs.getTimestamp("date");
                DonRestaurant d=new DonRestaurant(idDon, idResto, nomResto, idUser, nomUser , montant, date);
      arr.add(d);
      }

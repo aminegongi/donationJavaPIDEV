@@ -73,10 +73,10 @@ public class ServiceTarifResto implements IService<TarifResto> {
     ste=con.createStatement();
     ResultSet rs=ste.executeQuery("select * from tarif_resto");
      while (rs.next()) {                
-                int idResto=rs.getInt(1);
+                int idResto=rs.getInt("idResto");
                String nomResto = getName(idResto);
-               float tarif=rs.getFloat(2);
-               float portefeuilleVirtuel=rs.getFloat(3);
+               float tarif=rs.getFloat("tarif");
+               float portefeuilleVirtuel=rs.getFloat("portefeuille_virtuel");
                TarifResto t=new TarifResto(idResto, nomResto, tarif, portefeuilleVirtuel);
      arr.add(t);
      }
@@ -141,10 +141,10 @@ public class ServiceTarifResto implements IService<TarifResto> {
         String nomDansLaTable;
         
          ste=con.createStatement();
-        ResultSet rs=ste.executeQuery("select `id`,`nom` from `fos_user`;");
+        ResultSet rs=ste.executeQuery("select `id`,`username` from `fos_user`;");
         while (rs.next()) {   
-                int idResto = rs.getInt(1);
-                nomDansLaTable=rs.getString(2);
+                int idResto = rs.getInt("id");
+                nomDansLaTable=rs.getString("username");
                 if(nomDansLaTable.equalsIgnoreCase(nomRecherche)){
                 return idResto;
                 }
